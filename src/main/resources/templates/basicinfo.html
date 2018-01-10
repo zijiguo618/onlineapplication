@@ -1,0 +1,212 @@
+
+<html>
+<head>
+<script type="text/javascript" src="ssqaddress.js"></script>
+<script language="javascript" src="/js/jquery.min.js"></script>
+</head>
+<body>
+	<form action="#" th:action="@{/basicinfo}" th:object="${basicinfo}"
+		method="post">
+		<table>
+
+			<tr>
+				<td>Merchant Name:</td>
+				<td><input type="text" th:field="*{merchantname}" /></td>
+				<td th:if="${#fields.hasErrors('merchantname')}"
+					th:errors="*{merchantname}">MerchantName Error</td>
+			</tr>
+			<tr>
+				<td>Nature of Merchant:</td>
+				<td><select id="natureofmerchantlist"
+					name="natureofmerchantlist" th:field="*{natureofmerchant}">
+						<option value="Coporation">Coporation</option>
+						<option value="Partnership">Partnership</option>
+						<option value="Sole Proprietorship">Sole Proprietorship</option>
+						<option value="Professional assoc">Professional assoc</option>
+						<option value="Tax exempt org">Tax exempt org.(510C)</option>
+						<option value="LLC">LLC</option>
+				</select></td>
+				<td th:if="${#fields.hasErrors('natureofmerchant')}"
+					th:errors="*{natureofmerchant}">natureofmerchant Error</td>
+			</tr>
+			<tr>
+				<td>MCC:</td>
+				<td><select id="mcclist" name="mcclist" th:field="*{mcc}">
+						<option th:each="mcc : ${mcclist}" th:text="${mcc}"
+							th:value="${mcc}" />
+				</select></td>
+				<td th:if="${#fields.hasErrors('merchantlegalname')}"
+					th:errors="*{mcc}">mcc Error</td>
+			</tr>
+
+			<tr>
+				<td>Federal tax ID:</td>
+				<td><input type="text" th:field="*{federaltaxid}" /></td>
+				<td th:if="${#fields.hasErrors('federaltaxid')}"
+					th:errors="*{federaltaxid}">federaltaxid Error</td>
+			</tr>
+			<tr>
+				<td>Agent:</td>
+				<td><input type="text" th:field="*{agent}" /></td>
+				<td th:if="${#fields.hasErrors('agent')}" th:errors="*{agent}">agent
+					Error</td>
+			</tr>
+			<!-- 			<tr>
+				<td>Merchant Store Pic:</td>
+				<td>
+				<input type="text" th:field="*{merchantstorepic}" />
+					<form method="POST" enctype="multipart/form-data" action="/upload" th:field="*{merchantstorepic}">
+						<table>
+							<tr>
+								<td>File to upload:</td>
+								<td><input type="file" name="file"/></td>
+							</tr>
+						</table>
+					</form></td>
+				<td th:if="${#fields.hasErrors('merchantstorepic')}"
+					th:errors="*{merchantstorepic}">merchantstorepic Error</td>
+			</tr> -->
+			<tr>
+				<td>Merchant Legal Name:</td>
+				<td><input type="text" th:field="*{merchantlegalname}" /></td>
+				<td th:if="${#fields.hasErrors('merchantlegalname')}"
+					th:errors="*{merchantlegalname}">LegalName Error</td>
+			</tr>
+
+			<tr>
+				<td>Merchant Website URL:</td>
+				<td><input type="text" th:field="*{merchanturl}" /></td>
+				<td th:if="${#fields.hasErrors('merchanturl')}"
+					th:errors="*{merchanturl}">WebsiteURL Error</td>
+			</tr>
+			<tr>
+				<td>Customer Service Tel:</td>
+				<td><input type="text" th:field="*{customerservicetel}" /></td>
+				<td th:if="${#fields.hasErrors('customerservicetel')}"
+					th:errors="*{customerservicetel}">CustomerTel Error</td>
+			</tr>
+
+
+			<tr>
+				<td>Mailing Address:</td>
+				<td><select id="mailaddress_country" name="mailaddress_country"
+					th:field="*{mailaddress_country}"></select> <select
+					id="mailaddress_state" name="mailaddress_state"
+					th:field="*{mailaddress_state}"></select> <select
+					id="mailaddress_city" name="mailaddress_city"
+					th:field="*{mailaddress_city}"></select> <script
+						type="text/javascript">
+						addressInit('mailaddress_country', 'mailaddress_state',
+								'mailaddress_city');
+					</script></td>
+			<tr>
+				<td>Mailing Address Line 2:</td>
+					<td><input type="text" th:field="*{mailaddress_street}"/>
+						<input type="text" th:field="*{mailaddress_zipcode}" />
+					</td>
+				<td>
+					<input id="physicaladdressappeared" type="checkbox" name="physicaladdressappeared" onchange="return valueChanged()" /> Same as Physical Address 
+					<script>
+						
+						function valueChanged() {
+							//进入function 但判定语句出错 无法执行
+							var row = document.getElementById("physicaladdress");
+							var row1 = document.getElementById("physicaladdress2");
+							 if (document.getElementById("physicaladdressappeared").checked == true) {
+								alert("Is checked");
+								row.style.display = "none"; 
+								row1.style.display = "none"; 
+								} else{	
+									row.style.display = ""; 
+									row1.style.display = "";
+									} 
+				}
+			</script></td>
+			</tr>
+			<td th:if="${#fields.hasErrors('mailaddress_street')}"
+				th:errors="*{mailaddress_street}">mailaddress_street</td>
+			</tr>
+			
+			<tr id ="physicaladdress">
+				<td>Physical Address:</td>
+				<td><select id="phyaddress_country" name="phyaddress_country"
+					th:field="*{phyaddress_country}"></select> <select
+					id="phyaddress_state" name="phyaddress_state"
+					th:field="*{phyaddress_state}"></select> <select
+					id="phyaddress_city" name="phyaddress_city"
+					th:field="*{phyaddress_city}"></select> <script
+						type="text/javascript">
+						addressInit('phyaddress_country', 'phyaddress_state',
+								'phyaddress_city');
+					</script></td>
+			<tr id ="physicaladdress2">
+				<td>Physical Address Line 2:</td>
+				<td><input type="text" th:field="*{phyaddress_street}"
+					value="Street number"></input><input type="text"
+					th:field="*{phyaddress_zipcode}" value="Zip Code" /></td>
+			</tr>
+
+			<td th:if="${#fields.hasErrors('mailaddress_street')}"
+				th:errors="*{mailaddress_street}">mailaddress_street</td>
+			</tr>
+			
+			
+			
+			<tr>
+				<td>Merchant type:</td>
+				<td><select id="merchanttypelist" name="merchanttypelist"
+					th:field="*{merchanttype}">
+						<option value="Individual">Individual</option>
+						<option value="Company">Company</option>
+						<option value="Group">Group</option>
+				</select></td>
+				<td th:if="${#fields.hasErrors('merchanttype')}"
+					th:errors="*{merchanttype}">MerchantType Error</td>
+			</tr>
+			<tr>
+				<td>Business Established Date (DD/MM/YY):</td>
+				<td><input type="text" th:field="*{establisheddate}" /></td>
+				<td th:if="${#fields.hasErrors('establisheddate')}"
+					th:errors="*{establisheddate}">EstablishedDate Error</td>
+			</tr>
+			
+			
+			<tr>
+				<td>Industry:</td>
+				<td><select id="industryselect" name="industryselect"
+					th:field="*{industry}">
+						<option value="Internet and eCommerce">Internet and
+							eCommerce</option>
+						<option value="Electronic">Electronic</option>
+						<option value="Automotive">Automotive</option>
+						<option value="Education and School">Education and School</option>
+						<option value="Tourism and Travel">Tourism and travel</option>
+						<option value="Beauty and Health Care">Beauty and Health
+							Care</option>
+						<option value="Resturant and Food">Resturant and Food</option>
+						<option value="Retail">Retail</option>
+						<option value="Jewelry">Jewelry</option>
+						<option value="Fashion">Fashion</option>
+						<option value="Baby products and Toys">Baby products and
+							Toys</option>
+						<option value="Entertainment, music and Games">Entertainment,
+							Music and Games</option>
+						<option value="Sports and Outdoors">Sports and Outdoors</option>
+						<option value="Professional Services">Professional
+							Services</option>
+						<option value="Business Services">Business Services</option>
+						<option value="Government Services">Government Services</option>
+						<option value="Other">Other</option>
+				</select></td>
+
+				<td th:if="${#fields.hasErrors('industry')}" th:errors="*{industry}">Industry
+					Error</td>
+			</tr>
+			<form:select path="country" items="${countryList}" />
+			<tr>
+				<td><button type="submit">Submit</button></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
