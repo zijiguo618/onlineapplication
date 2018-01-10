@@ -30,13 +30,9 @@ public class BasicinfoController {
 		Basicinfo basicinfo = new Basicinfo();
 		MCClist mcclist= new MCClist();
 		ModelAndView modelAndView = new ModelAndView();
-//		basicindo_industry industry= new basicindo_industry();
 		modelAndView.addObject("basicinfo", basicinfo);
 		modelAndView.setViewName("basicinfo");
 		modelAndView.addObject("mcclist", mcclist.getlist());
-//		Object obj= request.getSession().getAttribute("userApplication");  
-//		System.out.println(obj.toString());
-//		System.out.println(request.getSession().getAttribute("message").toString());
 		return modelAndView;
 	}
 
@@ -44,15 +40,18 @@ public class BasicinfoController {
 	@PostMapping("/basicinfo")
 	public ModelAndView processRegistration(@Valid Basicinfo basicinfo,HttpServletRequest request,
 			BindingResult result) {
-		System.out.println("confirm");
-		System.out.println(basicinfo.getIndustry());
-		System.out.println(basicinfo.getMcc());
-		System.out.println(basicinfo.getNatureofmerchant());
-		System.out.println(basicinfo.getMailaddress_city());
+		System.out.println(basicinfo.getAddressmatch());
+		if(basicinfo.getAddressmatch().equals("1")) {
+			basicinfo.setPhyaddress_country(basicinfo.getMailaddress_country());
+			basicinfo.setPhyaddress_state(basicinfo.getMailaddress_state());
+			basicinfo.setPhyaddress_city(basicinfo.getMailaddress_city());
+			basicinfo.setPhyaddress_street(basicinfo.getMailaddress_street());
+					}
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("basicinfo", basicinfo);
-		modelAndView.setViewName("success");
-	
+		modelAndView.setViewName("redirect:/contact");
+		HttpSession session = request.getSession();  
+		session.setAttribute("basicinfo",basicinfo);  
 		if (result.hasErrors()) {
 			modelAndView.setViewName("basicinfo");
 			return modelAndView;

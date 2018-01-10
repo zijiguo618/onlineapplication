@@ -53,15 +53,11 @@ public class RegistrationController {
 //		Basicinfo basicinfo= new Basicinfo();
 		applicant applicant= new applicant();
 		applicant.setCompany(registration.getcompany());
-	
 	    HttpSession session = request.getSession();  
 		session.setAttribute("userApplication",applicant);  
 		session.setAttribute("message","the message");  
 		Object obj=	session.getAttribute("userApplication");
 		System.out.println(obj.toString());
-//		modelAndView.addObject("applicant", applicant);
-//		modelAndView.addObject("basicinfo", basicinfo);
-//		modelAndView.setViewName("redirect:/basicinfo");
 		return new ModelAndView("redirect:/basicinfo");
 	}
 }

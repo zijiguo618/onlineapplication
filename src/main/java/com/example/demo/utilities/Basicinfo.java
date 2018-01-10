@@ -26,6 +26,15 @@ public class Basicinfo {
 	private String federaltaxid;
 	@NotEmpty
 	private String agent;
+	private String addressmatch;
+	public String getAddressmatch() {
+		return addressmatch;
+	}
+
+	public void setAddressmatch(String addressmatch) {
+		this.addressmatch = addressmatch;
+	}
+
 	@NotEmpty
 	private String mailaddress_country;
 	private String mailaddress_state;
@@ -152,6 +161,19 @@ public class Basicinfo {
 
 	public void setCustomerservicetel(String customerservicetel) {
 		this.customerservicetel = customerservicetel;
+	}
+
+	@Override
+	public String toString() {
+		return "Basicinfo [merchantname=" + merchantname + ", merchantlegalname=" + merchantlegalname + ", merchanturl="
+				+ merchanturl + ", customerservicetel=" + customerservicetel + ", merchanttype=" + merchanttype
+				+ ", establisheddate=" + establisheddate + ", natureofmerchant=" + natureofmerchant + ", mcc=" + mcc
+				+ ", industry=" + industry + ", federaltaxid=" + federaltaxid + ", agent=" + agent + ", addressmatch="
+				+ addressmatch + ", mailaddress_country=" + mailaddress_country + ", mailaddress_state="
+				+ mailaddress_state + ", mailaddress_city=" + mailaddress_city + ", mailaddress_street="
+				+ mailaddress_street + ", mailaddress_zipcode=" + mailaddress_zipcode + ", phyaddress_country="
+				+ phyaddress_country + ", phyaddress_state=" + phyaddress_state + ", phyaddress_city=" + phyaddress_city
+				+ ", phyaddress_street=" + phyaddress_street + ", phyaddress_zipcode=" + phyaddress_zipcode + "]";
 	}
 
 	public String getMerchanttype() {
