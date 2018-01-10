@@ -4,9 +4,9 @@ var addressInit = function(_mailaddress_country, _mailaddress_state,
 	var mailaddresscountry = document.getElementById(_mailaddress_country);
 	var mailaddressstate = document.getElementById(_mailaddress_state);
 	var mailaddresscity = document.getElementById(_mailaddress_city);
-	//      alert(cmbProvince);
-	//      alert('cmbProvince');
+	
 	function mailaddressSelect(mailaddress, str) {
+		
 		for (var i = 0; i < mailaddress.options.length; i++) {
 			if (mailaddress.options[i].value == str) {
 				mailaddress.selectedIndex = i;
@@ -15,6 +15,7 @@ var addressInit = function(_mailaddress_country, _mailaddress_state,
 		}
 	}
 	function mailaddressAddOption(mailaddress, str, obj) {
+
 		var option = document.createElement("OPTION");
 		mailaddress.options.add(option);
 		option.innerText = str;
@@ -23,6 +24,7 @@ var addressInit = function(_mailaddress_country, _mailaddress_state,
 	}
 
 	function changestate() {
+
 		mailaddresscity.options.length = 0;
 		if (mailaddressstate.selectedIndex == -1)
 			return;
@@ -33,6 +35,7 @@ var addressInit = function(_mailaddress_country, _mailaddress_state,
 		mailaddressSelect(mailaddresscity, defaultcity);
 	}
 	function changecountry() {
+
 		mailaddressstate.options.length = 0;
 		mailaddressstate.onchange = null;
 		if (mailaddresscountry.selectedIndex == -1)
@@ -53,7 +56,7 @@ var addressInit = function(_mailaddress_country, _mailaddress_state,
 	}
 	mailaddressSelect(mailaddresscountry, defaultcountry);
 	changecountry();
-	mailaddressProvince.onchange = changecountry;
+	mailaddresscountry.onchange = changecountry;
 }
 
 var countryList = [ {

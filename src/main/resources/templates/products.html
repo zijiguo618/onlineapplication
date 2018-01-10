@@ -1,0 +1,62 @@
+<html>
+<head>
+<script language="javascript" src="/js/jquery.min.js"></script></head>
+<body>
+<script type="text/javascript" src="buttonhide_show.js"></script>
+	<form action="#" th:action="@{/products}"
+		th:object="${products}" method="post">
+		<td><input id="onlinepaymentbutton" type="button"
+			name="onlinepaymentbutton" value="Online Payment"
+			onclick="onlinepaymentfunc();" />
+			<script type="text/javascript">
+						buttonhide('onlinepaymentbutton','onlinepaymenttable');
+						</script></td>
+		<table id="onlinepaymenttable" name="onlinepaymenttable">
+			<tr>
+				<td>securepay:</td>
+				<td><input type="text" th:field="*{securepay}" /></td>
+				<td th:if="${#fields.hasErrors('securepay')}"
+					th:errors="*{securepay}">securepay Error</td>
+			</tr>
+
+			<table id="securepaytable" name="securepaytable">
+				<tr>
+					<td><input id="securepaybutton" type="button"
+						name="securepaybutton" value="Securepay Button"
+						onclick="securepaybuttonfunc();"/> 
+						<script>
+						function securepaybuttonfunc(){
+							var onlinepaymentbutton =document.getElementById('securepaybutton');
+							onlinepaymentbutton.addEventListener('click', function(event) {
+							   alert("clicked securepaybutton");
+							  });
+						}
+						
+						</script>
+					</td>
+				</tr>
+			</table>
+
+
+			<table>
+
+				<tr>
+					<td>securepay:</td>
+					<td><input type="text" th:field="*{securepay}" /></td>
+					<td th:if="${#fields.hasErrors('securepay')}"
+						th:errors="*{securepay}">securepay Error</td>
+				</tr>
+				<tr>
+					<td><input id="securepay_unionpay" type="checkbox"
+						th:field="*{securepay_unionpay}" value="1"
+						name="physicaladdressappeared" onchange="return valueChanged()" />
+						Securepay Unionpay</td>
+				</tr>
+			</table>
+
+		
+		</table>
+	</form>
+
+</body>
+</html>

@@ -1,10 +1,10 @@
 
 <html>
 <head>
-<script type="text/javascript" src="ssqaddress.js"></script>
 <script language="javascript" src="/js/jquery.min.js"></script>
 </head>
 <body>
+
 	<form action="#" th:action="@{/basicinfo}" th:object="${basicinfo}"
 		method="post">
 		<table>
@@ -51,7 +51,7 @@
 				<td th:if="${#fields.hasErrors('agent')}" th:errors="*{agent}">agent
 					Error</td>
 			</tr>
-			<!-- 			<tr>
+			<!-- <tr>
 				<td>Merchant Store Pic:</td>
 				<td>
 				<input type="text" th:field="*{merchantstorepic}" />
@@ -85,20 +85,24 @@
 				<td th:if="${#fields.hasErrors('customerservicetel')}"
 					th:errors="*{customerservicetel}">CustomerTel Error</td>
 			</tr>
-
-
+		
 			<tr>
+			
 				<td>Mailing Address:</td>
 				<td><select id="mailaddress_country" name="mailaddress_country"
 					th:field="*{mailaddress_country}"></select> <select
 					id="mailaddress_state" name="mailaddress_state"
 					th:field="*{mailaddress_state}"></select> <select
 					id="mailaddress_city" name="mailaddress_city"
-					th:field="*{mailaddress_city}"></select> <script
+					th:field="*{mailaddress_city}"></select> 
+					
+						<script type="text/javascript" src="ssqaddress.js"></script>
+					<script
 						type="text/javascript">
 						addressInit('mailaddress_country', 'mailaddress_state',
 								'mailaddress_city');
-					</script></td>
+					</script>
+					</td>
 				<td th:if="${#fields.hasErrors('mailaddress_street')}"
 					th:errors="*{mailaddress_street}">mailaddress_street</td>
 			</tr>
