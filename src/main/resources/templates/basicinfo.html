@@ -38,7 +38,6 @@
 				<td th:if="${#fields.hasErrors('merchantlegalname')}"
 					th:errors="*{mcc}">mcc Error</td>
 			</tr>
-
 			<tr>
 				<td>Federal tax ID:</td>
 				<td><input type="text" th:field="*{federaltaxid}" /></td>
@@ -72,7 +71,6 @@
 				<td th:if="${#fields.hasErrors('merchantlegalname')}"
 					th:errors="*{merchantlegalname}">LegalName Error</td>
 			</tr>
-
 			<tr>
 				<td>Merchant Website URL:</td>
 				<td><input type="text" th:field="*{merchanturl}" /></td>
@@ -85,7 +83,6 @@
 				<td th:if="${#fields.hasErrors('customerservicetel')}"
 					th:errors="*{customerservicetel}">CustomerTel Error</td>
 			</tr>
-		
 			<tr>
 			
 				<td>Mailing Address:</td>
@@ -109,7 +106,7 @@
 			<tr>
 				<td>Mailing Address Line 2:</td>
 				<td><input type="text" th:field="*{mailaddress_street}" /> <input
-					type="text" th:field="*{mailaddress_zipcode}" /></td>
+					type="text" th:field="*{mailaddress_zipcode}" placeholder="Your street name, apt number" /></td>
 				<td><input id="physicaladdressappeared" type="checkbox" th:field="*{addressmatch}" value="1"
 					name="physicaladdressappeared" onchange="return valueChanged()" />
 					Same as Physical Address <script>

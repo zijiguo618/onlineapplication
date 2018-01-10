@@ -1,60 +1,128 @@
 <html>
 <head>
-<script language="javascript" src="/js/jquery.min.js"></script></head>
+<script language="javascript" src="/js/jquery.min.js"></script>
+</head>
 <body>
-<script type="text/javascript" src="buttonhide_show.js"></script>
-	<form action="#" th:action="@{/products}"
-		th:object="${products}" method="post">
+	<script type="text/javascript" src="buttonhide_show.js"></script>
+	<form action="#" th:action="@{/products}" th:object="${products}"
+		method="post">
 		<td><input id="onlinepaymentbutton" type="button"
-			name="onlinepaymentbutton" value="Online Payment"
-			onclick="onlinepaymentfunc();" />
-			<script type="text/javascript">
-						buttonhide('onlinepaymentbutton','onlinepaymenttable');
+			name="onlinepaymentbutton" value="Online Payment" /> <script
+				type="text/javascript">
+						buttonhide('onlinepaymentbutton','securepaytable');
+						buttonhide('onlinepaymentbutton','expresspaytable');
 						</script></td>
 		<table id="onlinepaymenttable" name="onlinepaymenttable">
-			<tr>
-				<td>securepay:</td>
-				<td><input type="text" th:field="*{securepay}" /></td>
-				<td th:if="${#fields.hasErrors('securepay')}"
-					th:errors="*{securepay}">securepay Error</td>
-			</tr>
-
 			<table id="securepaytable" name="securepaytable">
 				<tr>
 					<td><input id="securepaybutton" type="button"
-						name="securepaybutton" value="Securepay Button"
-						onclick="securepaybuttonfunc();"/> 
-						<script>
-						function securepaybuttonfunc(){
-							var onlinepaymentbutton =document.getElementById('securepaybutton');
-							onlinepaymentbutton.addEventListener('click', function(event) {
-							   alert("clicked securepaybutton");
-							  });
-						}
-						
-						</script>
-					</td>
+						name="securepaybutton" value="Securepay Button" /><script
+				type="text/javascript">
+						buttonhide('securepaybutton','securepaytunnel');
+						buttonhide('securepaybutton','securepaycurrencies');
+						</script></td>
 				</tr>
-			</table>
-
-
-			<table>
-
-				<tr>
-					<td>securepay:</td>
-					<td><input type="text" th:field="*{securepay}" /></td>
-					<td th:if="${#fields.hasErrors('securepay')}"
-						th:errors="*{securepay}">securepay Error</td>
-				</tr>
-				<tr>
+				<tr id="securepaytunnel" name="securepaytunnel">
 					<td><input id="securepay_unionpay" type="checkbox"
 						th:field="*{securepay_unionpay}" value="1"
-						name="physicaladdressappeared" onchange="return valueChanged()" />
-						Securepay Unionpay</td>
+						name="securepay_unionpay"/>
+						Unionpay</td>
+						<td><input id="securepay_wechatpay" type="checkbox"
+						th:field="*{securepay_wechatpay}" value="1"
+						name="securepay_wechatpay"/>
+						WechatPay</td>
+						<td><input id="securepay_alipay" type="checkbox"
+						th:field="*{securepay_alipay}" value="1"
+						name="securepay_alipay" />
+						AliPay</td>
 				</tr>
+				<tr id="securepaycurrencies" name="securepaycurrencies">
+					<td><input id="securepaycurrency_USD" type="checkbox"
+						th:field="*{securepaycurrency_USD}" value="1"
+						name="securepaycurrency_USD"  />
+						USD</td>
+						<td><input id="securepaycurrency_JPY" type="checkbox"
+						th:field="*{securepaycurrency_JPY}" value="1"
+						name="securepaycurrency_JPY"/>
+						JPY</td>
+						<td><input id="securepaycurrency_HKD" type="checkbox"
+						th:field="*{securepaycurrency_HKD}" value="1"
+						name="securepaycurrency_HKD"/>
+						HKD</td>
+						<td><input id="securepaycurrency_EUR" type="checkbox"
+						th:field="*{securepaycurrency_EUR}" value="1"
+						name="securepaycurrency_EUR"/>
+						EUR</td>
+						<td><input id="securepaycurrency_GBP" type="checkbox"
+						th:field="*{securepaycurrency_GBP}" value="1"
+						name="securepaycurrency_GBP"/>
+						GBP</td>
+						<td><input id="securepaycurrency_CAD" type="checkbox"
+						th:field="*{securepaycurrency_CAD}" value="1"
+						name="securepaycurrency_CAD"/>
+						CAD</td>
+				</tr>
+				
+				
+				<tr>
+				<td> Settlement Cycle Setting:  T+</td>
+				<td><input type="text" th:field="*{securepay_settlement}" id="seccurepaysettmenet"/></td>
+				<script>document.getElementById("seccurepaysettmenet").defaultValue="2";</script>
+				<td th:if="${#fields.hasErrors('securepay_settlement')}"
+					th:errors="*{securepay_settlement}">securepay_settlement Error</td>
+			</tr>
 			</table>
-
-		
+			<table id="expresspaytable" name="expresspaytable">
+				<tr>
+					<td><input id="expresspaybutton" type="button"
+						name="expresspaybutton" value="Expresspay Button" /><script
+				type="text/javascript">
+						buttonhide('expresspaybutton','expresspaytunnel');
+						buttonhide('expresspaybutton','expresspaycurrencies');
+						</script></td>
+				</tr>
+				<tr id="expresspaytunnel" name="expresspaytunnel">
+					<td><input id="expresspay_unionpay" type="checkbox"
+						th:field="*{expresspay_unionpay}" value="1"
+						name="expresspay_unionpay"/>
+						UnionPay</td>
+				</tr>
+				<tr id="expresspaycurrencies" name="expresspayurrencies">
+					<td><input id="expresspaycurrency_USD" type="checkbox"
+						th:field="*{expresspaycurrency_USD}" value="1"
+						name="expresspaycurrency_USD"  />
+						USD</td>
+						<td><input id="expresspaycurrency_JPY" type="checkbox"
+						th:field="*{expresspaycurrency_JPY}" value="1"
+						name="expresspaycurrency_JPY"/>
+						JPY</td>
+						<td><input id="expresspaycurrency_HKD" type="checkbox"
+						th:field="*{expresspaycurrency_HKD}" value="1"
+						name="expresspaycurrency_HKD"/>
+						HKD</td>
+						<td><input id="expresspaycurrency_EUR" type="checkbox"
+						th:field="*{expresspaycurrency_EUR}" value="1"
+						name="expresspaycurrency_EUR"/>
+						EUR</td>
+						<td><input id="expresspaycurrency_GBP" type="checkbox"
+						th:field="*{expresspaycurrency_GBP}" value="1"
+						name="expresspaycurrency_GBP"/>
+						GBP</td>
+						<td><input id="expresspaycurrency_CAD" type="checkbox"
+						th:field="*{expresspaycurrency_CAD}" value="1"
+						name="expresspaycurrency_CAD"/>
+						CAD</td>
+				</tr>
+				
+				
+				<tr>
+				<td> Settlement Cycle Setting:  T+</td>
+				<td><input type="text" th:field="*{expresspay_settlement}" id="expresspaysettmenet"/></td>
+				<script>document.getElementById("expresspaysettmenet").defaultValue="2";</script>
+				<td th:if="${#fields.hasErrors('expresspay_settlement')}"
+					th:errors="*{expresspay_settlement}">expresspay_settlement Error</td>
+			</tr>
+			</table>
 		</table>
 	</form>
 

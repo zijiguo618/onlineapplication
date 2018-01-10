@@ -1,7 +1,7 @@
 package com.example.demo.utilities;
 
 public class Products {
-	private String securepay;
+
 	private String securepay_unionpay;
 	private String securepay_wechatpay;
 	private String securepay_alipay;
@@ -11,15 +11,15 @@ public class Products {
 	private String securepaycurrency_EUR;
 	private String securepaycurrency_GBP;
 	private String securepaycurrency_CAD;
-	private String expresspay;
-	private String expresspay_alipay;
+
+	private String expresspay_unionpay;
 	private String expresspaycurrency_USD;
 	private String expresspaycurrency_JPY;
 	private String expresspaycurrency_HKD;
 	private String expresspaycurrency_EUR;
 	private String expresspaycurrency_GBP;
 	private String expresspaycurrency_CAD;
-	private String showqrcode;
+
 	private String showqrcode_alipay;
 	private String showqrcode_wechatpay;
 	private String showqrcodecurrency_USD;
@@ -35,12 +35,37 @@ public class Products {
 	private String POScurrency_USD;
 	private String POScurrency_JPY;
 	private String POScurrency_HKD;
-	public String getSecurepay() {
-		return securepay;
+	private String expresspay_settlement;
+	private String securepay_settlement;
+	private String showqrcode_settlement;
+	private String POS_settlement;
+	
+	public String getExpresspay_settlement() {
+		return expresspay_settlement;
 	}
-	public void setSecurepay(String securepay) {
-		this.securepay = securepay;
+	public void setExpresspay_settlement(String expresspay_settlement) {
+		this.expresspay_settlement = expresspay_settlement;
 	}
+	public String getSecurepay_settlement() {
+		return securepay_settlement;
+	}
+	public void setSecurepay_settlement(String securepay_settlement) {
+		this.securepay_settlement = securepay_settlement;
+	}
+	public String getShowqrcode_settlement() {
+		return showqrcode_settlement;
+	}
+	public void setShowqrcode_settlement(String showqrcode_settlement) {
+		this.showqrcode_settlement = showqrcode_settlement;
+	}
+	public String getPOS_settlement() {
+		return POS_settlement;
+	}
+	public void setPOS_settlement(String pOS_settlement) {
+		POS_settlement = pOS_settlement;
+	}
+
+
 	public String getSecurepay_unionpay() {
 		return securepay_unionpay;
 	}
@@ -95,17 +120,12 @@ public class Products {
 	public void setSecurepaycurrency_CAD(String securepaycurrency_CAD) {
 		this.securepaycurrency_CAD = securepaycurrency_CAD;
 	}
-	public String getExpresspay() {
-		return expresspay;
+
+	public String getExpresspay_unionpay() {
+		return expresspay_unionpay;
 	}
-	public void setExpresspay(String expresspay) {
-		this.expresspay = expresspay;
-	}
-	public String getExpresspay_alipay() {
-		return expresspay_alipay;
-	}
-	public void setExpresspay_alipay(String expresspay_alipay) {
-		this.expresspay_alipay = expresspay_alipay;
+	public void setExpresspay_unionpay(String expresspay_unionpay) {
+		this.expresspay_unionpay = expresspay_unionpay;
 	}
 	public String getExpresspaycurrency_USD() {
 		return expresspaycurrency_USD;
@@ -143,12 +163,7 @@ public class Products {
 	public void setExpresspaycurrency_CAD(String expresspaycurrency_CAD) {
 		this.expresspaycurrency_CAD = expresspaycurrency_CAD;
 	}
-	public String getShowqrcode() {
-		return showqrcode;
-	}
-	public void setShowqrcode(String showqrcode) {
-		this.showqrcode = showqrcode;
-	}
+
 	public String getShowqrcode_alipay() {
 		return showqrcode_alipay;
 	}

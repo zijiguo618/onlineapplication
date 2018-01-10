@@ -1,6 +1,5 @@
 
 var buttonhide =function(_ID,_target,defauleId,defaulttarget){
-	alert("button js inside");
 	var onlinepaymentbutton =document.getElementById(_ID);
 	onlinepaymentbutton.addEventListener('click', function(event) {
 	   if (document.getElementById(_target).style.display!="none" ) {
