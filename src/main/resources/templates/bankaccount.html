@@ -1,0 +1,110 @@
+<html>
+<head>
+<script language="javascript" src="/js/jquery.min.js"></script>
+</head>
+<body>
+	<form action="#" th:action="@{/bankaccount}" th:object="${bankaccount}"
+		method="post">
+		<table>
+		<script>
+			document.getElementById("swiftcoderow").style.display="none";
+		 	document.getElementById("routingnumberrow").style.display="none";
+		</script>
+			<tr>
+				<td>Account Type:</td>
+				<td><input type="radio" name="accounttype" value="Individual" />Individual</td>
+				<td><input type="radio" name="accounttype" value="Company" />Company</td>
+				<td><input type="radio" name="accounttype" value="Group" />Group</td>
+			</tr>
+			<tr>
+				<td>Currency:</td>
+				<td><select id="currencylist" name="currencylist" th:field="*{currency}">
+						<option th:each="currency : ${currencylist}" th:text="${currency}"
+							th:value="${currency}" />
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Bank Address:</td></tr>
+			<tr>	<td>
+				<select id="bankaddress_country" name="bankaddress_country"
+					th:field="*{bankaddress_country}">
+				</select></td>
+			</tr>
+					
+					<tr>	<td> <select id="bankaddress_state" name="bankaddress_state"
+					th:field="*{bankaddress_state}"></select> </td></tr>
+					<tr>	<td><select	id="bankaddress_city" name="bankaddress_city"
+					th:field="*{bankaddress_city}"></select> </td></tr>
+					
+					<script type="text/javascript" src="ssqaddress.js"></script>
+					<script	type="text/javascript">	addressInit('bankaddress_country', 'bankaddress_state',
+								'bankaddress_city');
+					</script>
+					<script>
+					var countryselected=document.getElementById("bankaddress_country");
+					countryselected.addEventListener("change", function() {
+						if(this.value=="United States"){
+							alert("united states");
+							 document.getElementById('swiftinput').value='';
+	    			    			 document.getElementById("swiftcoderow").style.display="none";
+	    			    	 		 document.getElementById("routingnumberrow").style.display="block";
+						}else{
+							alert("else");
+							 document.getElementById('routinginput').value='';
+			    			 document.getElementById("swiftcoderow").style.display="block";
+			    	 		 document.getElementById("routingnumberrow").style.display="none";
+						}
+					});
+					
+				</script>	
+			<tr>
+				<td><input type="text" th:field="*{bankaddress_street}" placeholder="Detailed Address*"/></td>
+				<td th:if="${#fields.hasErrors('bankaddress_street')}"
+					th:errors="*{bankaddress_street}">bankaddress_street</td>
+			</tr>
+			
+			<tr>
+				<td>Bank Name:</td>
+				<td><input type="text" th:field="*{bankname}" /></td>
+				<td th:if="${#fields.hasErrors('bankname')}"
+					th:errors="*{bankname}">bankaddress_street</td>
+			</tr>
+			
+			<tr>
+				<td>Account Name:</td>
+				<td><input type="text" th:field="*{accountname}"/></td>
+				<td th:if="${#fields.hasErrors('accountname')}"
+					th:errors="*{accountname}">bankaddress_street</td>
+			</tr>
+			
+			<tr>
+				<td>Account Number:</td>
+				<td><input type="text" th:field="*{account}"/></td>
+				<td th:if="${#fields.hasErrors('account')}"
+					th:errors="*{account}">bankaddress_street</td>
+			</tr>
+			
+			<tr id="swiftcoderow">
+				<td>Swift Code:</td>
+				<td><input id="swiftinput" type="text" th:field="*{swiftcode}"/></td>
+				<td th:if="${#fields.hasErrors('swiftcode')}"
+					th:errors="*{swiftcode}">bankaddress_street</td>
+			</tr>
+			
+			<tr id="routingnumberrow">
+				<td>Routing Number:</td>
+				<td><input id="routinginput" type="text" th:field="*{routingnumber}"/></td>
+				<td th:if="${#fields.hasErrors('routingnumber')}"
+					th:errors="*{routingnumber}">bankaddress_street</td>
+			</tr>
+			
+			
+			<tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+		</table>
+	</form>
+</body>
+</html>
+		

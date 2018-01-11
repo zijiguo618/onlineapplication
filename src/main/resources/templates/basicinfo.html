@@ -50,21 +50,6 @@
 				<td th:if="${#fields.hasErrors('agent')}" th:errors="*{agent}">agent
 					Error</td>
 			</tr>
-			<!-- <tr>
-				<td>Merchant Store Pic:</td>
-				<td>
-				<input type="text" th:field="*{merchantstorepic}" />
-					<form method="POST" enctype="multipart/form-data" action="/upload" th:field="*{merchantstorepic}">
-						<table>
-							<tr>
-								<td>File to upload:</td>
-								<td><input type="file" name="file"/></td>
-							</tr>
-						</table>
-					</form></td>
-				<td th:if="${#fields.hasErrors('merchantstorepic')}"
-					th:errors="*{merchantstorepic}">merchantstorepic Error</td>
-			</tr> -->
 			<tr>
 				<td>Merchant Legal Name:</td>
 				<td><input type="text" th:field="*{merchantlegalname}" /></td>
