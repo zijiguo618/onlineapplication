@@ -28,17 +28,22 @@ public class Products {
 	private String showqrcodecurrency_EUR;
 	private String showqrcodecurrency_GBP;
 	private String showqrcodecurrency_CAD;
-	private String POS;
+	
 	private String POS_alipay;
 	private String POS_wechatpay;
 	private String POS_unionpay;
 	private String POScurrency_USD;
 	private String POScurrency_JPY;
 	private String POScurrency_HKD;
+	private String POScurrency_EUR;
+	private String POScurrency_GBP;
+	private String POScurrency_CAD;
+	
 	private String expresspay_settlement;
 	private String securepay_settlement;
 	private String showqrcode_settlement;
 	private String POS_settlement;
+	private String easypay;
 	
 	public String getExpresspay_settlement() {
 		return expresspay_settlement;
@@ -212,12 +217,7 @@ public class Products {
 	public void setShowqrcodecurrency_CAD(String showqrcodecurrency_CAD) {
 		this.showqrcodecurrency_CAD = showqrcodecurrency_CAD;
 	}
-	public String getPOS() {
-		return POS;
-	}
-	public void setPOS(String pOS) {
-		POS = pOS;
-	}
+
 	public String getPOS_alipay() {
 		return POS_alipay;
 	}
@@ -278,8 +278,5 @@ public class Products {
 	public void setEasypay(String easypay) {
 		this.easypay = easypay;
 	}
-	private String POScurrency_EUR;
-	private String POScurrency_GBP;
-	private String POScurrency_CAD;
-	private String easypay;
+
 }
