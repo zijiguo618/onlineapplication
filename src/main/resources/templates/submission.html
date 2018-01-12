@@ -1,0 +1,23 @@
+<html>
+<head>
+<script language="javascript" src="/js/jquery.min.js"></script>
+</head>
+<body>
+<embed src="SixFlags.pdf" width="800px" height="2100px" />
+	<form action="#" th:action="@{/submission}" th:object="${submission}"
+		method="post">
+		
+		<table>
+			<tr><td><input type="checkbox" name="readandagree" value="readandagree" />Has read term carefully and agree to accept terms</td></tr>
+			<tr><td>Signature:</td>><td><input id="signatureinp" type="text" th:field="*{signature}"/></td></tr>
+			<tr><td><input type="date" id="currentdate" th:field="*{currentdate}"/>
+			</td></tr>
+		
+			<tr>
+             	<td><button type="submit">Submit</button></td>
+            </tr>
+		</table>
+	</form>
+</body>
+</html>
+		

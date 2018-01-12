@@ -1,0 +1,46 @@
+<html>
+
+<body>
+	<h1>Spring MVC multi files upload example</h1>
+	<div th:if="${message}">
+		<h2 th:text="${message}" />
+	</div>
+	<form method="POST" enctype="multipart/form-data" action="/uploadMulti">
+		<table>
+			<tr>
+				<td>Business License</td>
+				<td><input type="file" name="businessfile" /></td>
+			</tr>
+			<tr>
+				<td>Owner/CEO/CFO government issued ID </td>
+				<td><input type="file" name="issuedid" /></td>
+			</tr>
+			<tr>
+				<td> voided check</td>
+				<td><input type="file" name="voidedcheck" /></td>
+			</tr>
+			<tr>
+				<td>Recent 3-monty bank statement with transaction history (If Business Established Date entered in basic info page is 3 months earlier than the contract date, contract start date will be the date submitted the application and the terms of contract is 2 years which is listed in the terms and conditions)
+				</td>
+				<td><input type="file" name="bankstatement" /></td>
+			</tr>
+			<tr>
+				<td> Store Picture</td>
+				<td><input type="file" name="files" /></td>
+				<td><input type="file" name="files" /></td>
+				<td><input type="file" name="files" /></td>
+				
+			</tr>
+			
+			
+			<tr>
+				<td><input type="submit" value="Submit" /></td>
+			</tr>
+
+
+		</table>
+
+	</form>
+
+</body>
+</html>

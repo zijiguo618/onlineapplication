@@ -24,6 +24,6 @@ public class SettlementController {
 	public String greetingSubmit(@ModelAttribute Settlement Settlement,HttpServletRequest request,
 			BindingResult result) {
 		System.out.println(Settlement.toString());
-		return "success";
+		return "uploadMulti";
 	}
 }
