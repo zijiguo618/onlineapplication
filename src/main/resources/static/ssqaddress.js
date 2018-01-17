@@ -59,7 +59,7 @@ var addressInit = function(_mailaddress_country, _mailaddress_state,
 	mailaddresscountry.onchange = changecountry;
 }
 
-var countryList = [ {
+var countryList = [{
 	"Name" : "United States",
 	"Code" : "001",
 	"State" : [ {

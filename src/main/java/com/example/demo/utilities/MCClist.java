@@ -12,6 +12,7 @@ public class MCClist {
 
 	public List<String> getlist() {
 		res = new ArrayList<String>();
+		res.add("");
 		res.add("0742	Veterinary services");
 		res.add("0780	Landscaping and horticultural services");
 		res.add("4111	Local and suburban commuter passenger transportation, including ferries");

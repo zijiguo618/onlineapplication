@@ -23,7 +23,6 @@ import com.example.demo.utilities.Registration;
 import com.example.demo.utilities.applicant;
 
 @Controller
-@SessionAttributes("applicant")
 public class RegistrationController {
 	@GetMapping("/registration")
 	public ModelAndView showRegistration(Model model,HttpServletRequest request) {
@@ -33,11 +32,7 @@ public class RegistrationController {
 		modelAndView.setViewName("registration");
 		return modelAndView;
 	}
-//	@ModelAttribute("applicant")
-//	public applicant populateForm() {
-//	    return new applicant();
-//	}
-	// Process the form.
+
 	@PostMapping("/registration")
 	public ModelAndView processRegistration(@Valid Registration registration,
 			BindingResult result, HttpServletRequest request) {
@@ -49,15 +44,8 @@ public class RegistrationController {
 		if (result.hasErrors()) {
 			return new ModelAndView("registration");
 		}
-//		ModelAndView modelAndView = new ModelAndView();
-//		Basicinfo basicinfo= new Basicinfo();
-		applicant applicant= new applicant();
-		applicant.setCompany(registration.getcompany());
 	    HttpSession session = request.getSession();  
-		session.setAttribute("userApplication",applicant);  
-		session.setAttribute("message","the message");  
-		Object obj=	session.getAttribute("userApplication");
-		System.out.println(obj.toString());
+		session.setAttribute("registration",registration);  
 		return new ModelAndView("redirect:/basicinfo");
 	}
 }

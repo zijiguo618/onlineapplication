@@ -1,19 +1,21 @@
 
+
 <html>
 <head>
 <script language="javascript" src="/js/jquery.min.js"></script>
 </head>
 <body>
-
+<div th:if ="${message}">
+			<h2 th:text="${message}" />
+			</div>
 	<form action="#" th:action="@{/basicinfo}" th:object="${basicinfo}"
 		method="post">
 		<table>
-
+			
 			<tr>
 				<td>Merchant Name:</td>
 				<td><input type="text" th:field="*{merchantname}" /></td>
-				<td th:if="${#fields.hasErrors('merchantname')}"
-					th:errors="*{merchantname}">MerchantName Error</td>
+				<td th:if="${#fields.hasErrors('merchantname')}" th:errors="*{merchantname}">MerchantName Error</td>
 			</tr>
 			<tr>
 				<td>Nature of Merchant:</td>
@@ -86,22 +88,20 @@
 					</script>
 					</td>
 				<td th:if="${#fields.hasErrors('mailaddress_street')}"
-					th:errors="*{mailaddress_street}">mailaddress_street</td>
+					th:errors="*{mailaddress_street}">mailaddress_street Errors</td>
 			</tr>
 			<tr>
 				<td>Mailing Address Line 2:</td>
-				<td><input type="text" th:field="*{mailaddress_street}" /> <input
-					type="text" th:field="*{mailaddress_zipcode}" placeholder="Your street name, apt number" /></td>
+				<td><input type="text" th:field="*{mailaddress_street}" placeholder="street name"  /> </td>
+				<td><input type="text" th:field="*{mailaddress_zipcode}"  placeholder=" option. Apt Number" /></td>
 				<td><input id="physicaladdressappeared" type="checkbox" th:field="*{addressmatch}" value="1"
 					name="physicaladdressappeared" onchange="return valueChanged()" />
 					Same as Physical Address <script>
-						
 						function valueChanged() {
 							//进入function 但判定语句出错 无法执行
 							var row = document.getElementById("physicaladdress");
 							var row1 = document.getElementById("physicaladdress2");
 							 if (document.getElementById("physicaladdressappeared").checked == true) {
-								alert("Is checked");
 								row.style.display = "none"; 
 								row1.style.display = "none"; 
 								} else{	
@@ -110,8 +110,7 @@
 									} 
 				}
 			</script></td>
-				<td th:if="${#fields.hasErrors('mailaddress_street')}"
-					th:errors="*{mailaddress_street}">mailaddress_street</td>
+				
 			</tr>
 
 			<tr id="physicaladdress">
@@ -142,6 +141,7 @@
 				<td>Merchant type:</td>
 				<td><select id="merchanttypelist" name="merchanttypelist"
 					th:field="*{merchanttype}">
+						<option value=""></option>
 						<option value="Individual">Individual</option>
 						<option value="Company">Company</option>
 						<option value="Group">Group</option>
@@ -151,7 +151,7 @@
 			</tr>
 			<tr>
 				<td>Business Established Date (DD/MM/YY):</td>
-				<td><input type="text" th:field="*{establisheddate}" /></td>
+				<td><input type="date" th:field="*{establisheddate}" /></td>
 				<td th:if="${#fields.hasErrors('establisheddate')}"
 					th:errors="*{establisheddate}">EstablishedDate Error</td>
 			</tr>
@@ -160,6 +160,7 @@
 				<td>Industry:</td>
 				<td><select id="industryselect" name="industryselect"
 					th:field="*{industry}">
+						<option value=""></option>
 						<option value="Internet and eCommerce">Internet and
 							eCommerce</option>
 						<option value="Electronic">Electronic</option>

@@ -1,7 +1,7 @@
 <html>
 
 <body>
-	<h1>Spring MVC multi files upload example</h1>
+	
 	<div th:if="${message}">
 		<h2 th:text="${message}" />
 	</div>
@@ -26,9 +26,10 @@
 			</tr>
 			<tr>
 				<td> Store Picture</td>
-				<td><input type="file" name="files" /></td>
-				<td><input type="file" name="files" /></td>
-				<td><input type="file" name="files" /></td>
+				<label for="files" class="btn">Select Image</label>
+				<td><input type="file" name="files" />In-Store Picture</td>
+				<td><input type="file" name="files" />Logo</td>
+				<td><input type="file" name="files" />Store Picture</td>
 				
 			</tr>
 			

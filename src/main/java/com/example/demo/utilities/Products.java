@@ -278,5 +278,36 @@ public class Products {
 	public void setEasypay(String easypay) {
 		this.easypay = easypay;
 	}
+	@Override
+	public String toString() {
+		return "Products [securepay_unionpay=" + securepay_unionpay + ", securepay_wechatpay=" + securepay_wechatpay
+				+ ", securepay_alipay=" + securepay_alipay + ", securepaycurrency_USD=" + securepaycurrency_USD
+				+ ", securepaycurrency_JPY=" + securepaycurrency_JPY + ", securepaycurrency_HKD="
+				+ securepaycurrency_HKD + ", securepaycurrency_EUR=" + securepaycurrency_EUR
+				+ ", securepaycurrency_GBP=" + securepaycurrency_GBP + ", securepaycurrency_CAD="
+				+ securepaycurrency_CAD + ", expresspay_unionpay=" + expresspay_unionpay + ", expresspaycurrency_USD="
+				+ expresspaycurrency_USD + ", expresspaycurrency_JPY=" + expresspaycurrency_JPY
+				+ ", expresspaycurrency_HKD=" + expresspaycurrency_HKD + ", expresspaycurrency_EUR="
+				+ expresspaycurrency_EUR + ", expresspaycurrency_GBP=" + expresspaycurrency_GBP
+				+ ", expresspaycurrency_CAD=" + expresspaycurrency_CAD + ", showqrcode_alipay=" + showqrcode_alipay
+				+ ", showqrcode_wechatpay=" + showqrcode_wechatpay + ", showqrcodecurrency_USD="
+				+ showqrcodecurrency_USD + ", showqrcodecurrency_JPY=" + showqrcodecurrency_JPY
+				+ ", showqrcodecurrency_HKD=" + showqrcodecurrency_HKD + ", showqrcodecurrency_EUR="
+				+ showqrcodecurrency_EUR + ", showqrcodecurrency_GBP=" + showqrcodecurrency_GBP
+				+ ", showqrcodecurrency_CAD=" + showqrcodecurrency_CAD + ", POS_alipay=" + POS_alipay
+				+ ", POS_wechatpay=" + POS_wechatpay + ", POS_unionpay=" + POS_unionpay + ", POScurrency_USD="
+				+ POScurrency_USD + ", POScurrency_JPY=" + POScurrency_JPY + ", POScurrency_HKD=" + POScurrency_HKD
+				+ ", POScurrency_EUR=" + POScurrency_EUR + ", POScurrency_GBP=" + POScurrency_GBP + ", POScurrency_CAD="
+				+ POScurrency_CAD + ", expresspay_settlement=" + expresspay_settlement + ", securepay_settlement="
+				+ securepay_settlement + ", showqrcode_settlement=" + showqrcode_settlement + ", POS_settlement="
+				+ POS_settlement + ", easypay=" + easypay + "]";
+	}
+	
 
+
+	public boolean checkstatus() {
+				return securepaycurrency_USD==null&& securepaycurrency_JPY==null&&securepaycurrency_HKD==null&&securepaycurrency_EUR==null&&securepaycurrency_GBP==null&&securepaycurrency_CAD==null&& expresspaycurrency_USD==null&& expresspaycurrency_JPY==null&&expresspaycurrency_HKD==null&&expresspaycurrency_EUR==null&&expresspaycurrency_GBP==null&&expresspaycurrency_CAD==null&&
+				showqrcodecurrency_USD ==null&&showqrcodecurrency_JPY==null&&showqrcodecurrency_HKD==null&&showqrcodecurrency_EUR ==null&&showqrcodecurrency_GBP==null&&showqrcodecurrency_CAD ==null&&
+				POScurrency_USD ==null&&POScurrency_JPY==null&&POScurrency_HKD==null&&POScurrency_EUR==null&&POScurrency_GBP==null&&POScurrency_CAD ==null;
+	}
 }

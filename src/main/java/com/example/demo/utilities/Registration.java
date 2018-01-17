@@ -73,5 +73,11 @@ public class Registration {
 	public String getemail() {
 		return email;
 	}
+
+	@Override
+	public String toString() {
+		return "Registration [firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + ", password="
+				+ password + ", company=" + company + ", confirmpassword=" + confirmpassword + "]";
+	}
 	
 }

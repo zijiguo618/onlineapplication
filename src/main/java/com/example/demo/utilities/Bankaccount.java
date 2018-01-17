@@ -1,20 +1,36 @@
 package com.example.demo.utilities;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Bankaccount {
 
 //	private String ;
+	@NotEmpty(message = "Please select Currency options")
 	private String currency;
+	@NotEmpty(message = "Please select your bank country")
 	private String bankaddress_country;
 	private String bankaddress_state;
 	private String bankaddress_city;
+	@NotEmpty(message = "Please enter your bank address.")
 	private String bankaddress_street;
+	@NotEmpty(message = "Please enter your bank name.")
 	private String bankname;
+	@NotEmpty(message = "Please enter the name of your bank account")
 	private String accountname;
+	@NotEmpty(message = "Please enter your bank account number.")
 	private String account;
 	private String swiftcode;
 	private String routingnumber;
+	@NotEmpty(message = "Please select your bank account type.")
+	private String accounttype;
 	
 	
+	public String getAccounttype() {
+		return accounttype;
+	}
+	public void setAccounttype(String accounttype) {
+		this.accounttype = accounttype;
+	}
 	public String getBankaddress_country() {
 		return bankaddress_country;
 	}

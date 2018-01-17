@@ -1,30 +1,31 @@
 package com.example.demo.utilities;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.web.bind.annotation.SessionAttributes;
-@SessionAttributes("applicant")
 public class Basicinfo {
-	@NotEmpty
+	@NotEmpty(message = "Please enter your merchant name.")
 	private String merchantname;
-	@NotEmpty
+	@NotEmpty(message = "Please enter your merchant Leagel name.")
 	private String merchantlegalname;
-	@NotEmpty
+	@NotEmpty(message = "Please enter your merchant URL.")
+	@URL(message = "Your URL should start with http: ")
 	private String merchanturl;
-	@NotEmpty
+	@NotEmpty(message = "Please enter your Customer service Telephone number.")
 	private String customerservicetel;
-	@NotEmpty
+	@NotEmpty(message = "Please select your merchant type.")
 	private String merchanttype;
-	@NotEmpty
+	@NotEmpty(message = "Please select your merchant established date.")
 	private String establisheddate;
-	@NotEmpty
+	@NotEmpty(message = "Please select.")
 	private String natureofmerchant;
-	@NotEmpty
+	@NotEmpty(message = "Please select MCC.")
 	private String mcc;
-	@NotEmpty
+	@NotEmpty(message = "Please select industry.")
 	private String industry;
-	@NotEmpty
+	@NotEmpty(message = "Please enter your federal tax ID.")
 	private String federaltaxid;
-	@NotEmpty
+	@NotEmpty(message = "Please enter your agent name.")
 	private String agent;
 	private String addressmatch;
 	public String getAddressmatch() {
@@ -35,10 +36,13 @@ public class Basicinfo {
 		this.addressmatch = addressmatch;
 	}
 
-	@NotEmpty
+	@NotEmpty(message = "Please enter your mailaddress.")
 	private String mailaddress_country;
+	
 	private String mailaddress_state;
+	
 	private String mailaddress_city;
+	@NotEmpty(message = "Please enter your mailaddress.")
 	private String mailaddress_street;
 	private String mailaddress_zipcode;
 //	@NotEmpty

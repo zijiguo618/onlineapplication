@@ -3,21 +3,25 @@
 <script language="javascript" src="/js/jquery.min.js"></script>
 </head>
 <body>
+	<div th:if="${message}">
+	<h2 th:text="${message}" />
+	</div>
 	<form action="#" th:action="@{/settlement}" th:object="${settlement}"
 		method="post">
 		<table>
+		
 			<tr>
 				<td><input type="radio" name="radAnswer"
 					id="settlesinglecurrency" value="settlesinglecurrency" />Single
 					Currency Settlement</td>
 
-				<td><input type="radio" name="singlecurrency"
-					id="settlesinglecurrency_USD" th:value="USD" />USD 
-					<input type="radio"	name="singlecurrency" id="settlesinglecurrency_JPY" th:field="*{singlecurrency}" th:value="JPY"/>JPY 
-					<input type="radio" name="singlecurrency" id="settlesinglecurrency_HKD" th:field="*{singlecurrency}" th:value="HKD" />HKD
-					<input type="radio" name="singlecurrency" id="settlesinglecurrency_EUR" th:field="*{singlecurrency}" th:value="EUR"/>EUR 
-					<input type="radio" name="singlecurrency" id="settlesinglecurrency_GBP" th:field="*{singlecurrency}" th:value="GBP"/>GBP 
-					<input type="radio" name="singlecurrency" id="settlesinglecurrency_CAD" th:field="*{singlecurrency}" th:value="CAD"/>CAD
+				<td>
+					<input type="radio" name="singlecurrency" id="settlesinglecurrency_USD" th:field="*{settlemulticurrency_USD}" th:value="USD" />USD 
+					<input type="radio"	name="singlecurrency" id="settlesinglecurrency_JPY" th:field="*{settlemulticurrency_JPY}" th:value="JPY"/>JPY 
+					<input type="radio" name="singlecurrency" id="settlesinglecurrency_HKD" th:field="*{settlemulticurrency_HKD}" th:value="HKD" />HKD
+					<input type="radio" name="singlecurrency" id="settlesinglecurrency_EUR" th:field="*{settlemulticurrency_EUR}" th:value="EUR"/>EUR 
+					<input type="radio" name="singlecurrency" id="settlesinglecurrency_GBP" th:field="*{settlemulticurrency_GBP}" th:value="GBP"/>GBP 
+					<input type="radio" name="singlecurrency" id="settlesinglecurrency_CAD" th:field="*{settlemulticurrency_CAD}" th:value="CAD"/>CAD
 				</td>
 			</tr>
 			<tr>
@@ -34,9 +38,33 @@
 				</td>
 			</tr>
 			<script>
-    		alert(document.getElementById("settlesinglecurrency").checked);
-    		document.getElementById("settlesinglecurrency").onclick=function() {
-    			alert("settlesinglecurrency");
+			document.getElementById("settlemulticurrency_USD").disabled = true;
+			document.getElementById("settlemulticurrency_JPY").disabled = true;
+			document.getElementById("settlemulticurrency_HKD").disabled = true;
+			document.getElementById("settlemulticurrency_EUR").disabled = true;
+			document.getElementById("settlemulticurrency_GBP").disabled = true;
+			document.getElementById("settlemulticurrency_CAD").disabled = true;
+			document.getElementById("settlesinglecurrency_USD").disabled=true;
+			document.getElementById("settlesinglecurrency_JPY").disabled=true;
+			document.getElementById("settlesinglecurrency_HKD").disabled=true;
+			document.getElementById("settlesinglecurrency_EUR").disabled=true;
+			document.getElementById("settlesinglecurrency_GBP").disabled=true;
+			document.getElementById("settlesinglecurrency_CAD").disabled=true;
+			document.getElementById("settlemulticurrency_USD").checked = false;
+			document.getElementById("settlemulticurrency_JPY").checked = false;
+			document.getElementById("settlemulticurrency_HKD").checked = false;
+			document.getElementById("settlemulticurrency_EUR").checked = false;
+			document.getElementById("settlemulticurrency_GBP").checked = false;
+			document.getElementById("settlemulticurrency_CAD").checked = false;
+			document.getElementById("settlesinglecurrency_USD").checked=false;
+			document.getElementById("settlesinglecurrency_JPY").checked=false;
+			document.getElementById("settlesinglecurrency_HKD").checked=false;
+			document.getElementById("settlesinglecurrency_EUR").checked=false;
+			document.getElementById("settlesinglecurrency_GBP").checked=false;
+			document.getElementById("settlesinglecurrency_CAD").checked=false; 
+			</script>
+			<script>
+    			document.getElementById("settlesinglecurrency").onclick=function() {
     			document.getElementById("settlesinglecurrency_USD").disabled=false;
 			document.getElementById("settlesinglecurrency_JPY").disabled=false;
 			document.getElementById("settlesinglecurrency_HKD").disabled=false;
@@ -60,7 +88,6 @@
 			
     		};
     		document.getElementById("settlemulticurrencies").onclick=function() {
-    			alert("settlemulticurrencies");
     			document.getElementById("settlesinglecurrency_USD").disabled=true;
 			document.getElementById("settlesinglecurrency_JPY").disabled=true;
 			document.getElementById("settlesinglecurrency_HKD").disabled=true;
@@ -81,19 +108,21 @@
 			document.getElementById("settlemulticurrency_EUR").disabled = false;
 			document.getElementById("settlemulticurrency_GBP").disabled = false;
 			document.getElementById("settlemulticurrency_CAD").disabled = false;
-    			
-			
     		};
     		</script>
 			<tr>
 				<td>Whether to allow account overdraft:</td>
 				<td><input type="radio" name="overdraft" value="yes" th:field="*{overdraft}"/>Yes <input
 					type="radio" name="overdraft" value="no" th:field="*{overdraft}"/>No</td>
+				<td th:if="${#fields.hasErrors('overdraft')}" th:errors="*{overdraft}">overdraft Error</td>
+					
 			</tr>
 			<tr>
 				<td>Whether to allow account lending:</td>
 				<td><input type="radio" name="lending" value="yes" th:field="*{lending}"/>Yes <input
 					type="radio" name="lending" value="no" th:field="*{lending}"/>No</td>
+					<td th:if="${#fields.hasErrors('lending')}" th:errors="*{lending}">lending Error</td>
+					
 			</tr>
 			<tr />
 			<tr>
@@ -104,6 +133,8 @@
 						<option value="Regular">Regular</option>
 						<option value="Manually">Manually</option>
 				</select></td>
+				<td th:if="${#fields.hasErrors('withdrawallist')}" th:errors="*{withdrawallist}">withdrawallist Error</td>
+				
 			</tr>
 			<tr id="minumumrow">
 				<td>Minimum amount:</td>
@@ -149,6 +180,8 @@
 			<tr>
 				<td>Reserve Amount:</td>
 				<td><input type="text" id="withdrawalreserveamount" th:field="*{withdrawalreserveamount}"/></td>
+				<td th:if="${#fields.hasErrors('withdrawalreserveamount')}" th:errors="*{withdrawalreserveamount}">withdrawalreserveamount Error</td>
+				
 			</tr>
 			 <tr>
                     <td><button type="submit">Submit</button></td>

@@ -1,5 +1,6 @@
 package com.example.demo.utilities;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class Contactinfo {
@@ -10,6 +11,7 @@ public class Contactinfo {
 	@NotEmpty
 	private String phone;
 	@NotEmpty
+	@Email
 	private String email;
 	public String getContactname() {
 		return contactname;
@@ -34,6 +36,11 @@ public class Contactinfo {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	@Override
+	public String toString() {
+		return "Contactinfo [contactname=" + contactname + ", tittle=" + tittle + ", phone=" + phone + ", email="
+				+ email + "]";
 	}
 
 }

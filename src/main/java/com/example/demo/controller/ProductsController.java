@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.utilities.Basicinfo;
 import com.example.demo.utilities.Contactinfo;
@@ -27,53 +28,33 @@ import com.example.demo.utilities.onlineproducts;
 public class ProductsController {
 	@GetMapping("/products")
 	public ModelAndView productsform(Model model,HttpServletRequest request) {
-
+//		Contactinfo obj= (Contactinfo)request.getSession().getAttribute("contactinfo");
+//		System.out.println(obj.toString());
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("products", new Products());
 		modelAndView.setViewName("products");
-//		Contactinfo obj= (Contactinfo)request.getSession().getAttribute("contactinfo");  
-//		System.out.println(obj.toString());
-//		System.out.println(request.getSession().getAttribute("basicinfo").toString());
 		return modelAndView;
 	}
 
-//	@GetMapping("/products/online")
-//	public void onlineForm(Model model) {
-//		model.addAttribute("onlineproducts", new onlineproducts());
-//	
-//	}
-//
-//	
-//	@GetMapping("/products/offline")
-//	public void offlineForm(Model model) {
-//		model.addAttribute("offlineproducts", new offlineproducts());
-//	
-//	}
 
 	@PostMapping("/products")
-	public ModelAndView productsform(@Valid Products Products,HttpServletRequest request,
-			BindingResult result) {
-		System.out.println(Products.getExpresspaycurrency_USD());
-		System.out.println(Products.getExpresspaycurrency_EUR());
-		System.out.println(Products.getSecurepay_unionpay());
-		System.out.println(Products.getSecurepay_alipay());
-		System.out.println(Products.getPOS_alipay());
-		System.out.println(Products.getPOS_wechatpay());
-		System.out.println(Products.getShowqrcodecurrency_USD());
-		System.out.println(Products.getShowqrcodecurrency_EUR());
-		System.out.println(Products.getExpresspay_settlement());
-		System.out.println(Products.getPOS_settlement());
-		
-		
+	public ModelAndView productsform(@Valid Products Products,BindingResult result,HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
+	
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("Products", Products);
-		modelAndView.setViewName("success");
+	
+		System.out.println("1");
+		modelAndView.setViewName("redirect:/settlement");
 		HttpSession session = request.getSession();  
+		System.out.println("1");
 		session.setAttribute("products",Products);  
-		if (result.hasErrors()) {
-			modelAndView.setViewName("products");
-			return modelAndView;
+		System.out.println("1");
+		if(Products.checkstatus()==true) {
+			redirectAttributes.addFlashAttribute("message", "Please select at least one currency");
+			return new ModelAndView("redirect:/products");
 		}
+		System.out.println("1");
+		System.out.println(Products.toString());
 		return modelAndView;
 	}
 

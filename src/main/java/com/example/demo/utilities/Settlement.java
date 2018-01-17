@@ -1,16 +1,31 @@
 package com.example.demo.utilities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Settlement {
+	@NotEmpty(message = "Please enter your reverse amount")
 	private String withdrawalreserveamount;
+	
 	private String withdrawalregular;
+	
 	private String withdrawalminimumamount;
+	
 	private String withdrawallist;
+	@NotEmpty(message = "Please select lending option")
 	private String lending;
+	@NotEmpty(message = "Please select overdraft option")
 	private String overdraft;
+	
 	private String settlemulticurrency_USD;
 	private String settlemulticurrency_HKD;
 	private String settlemulticurrency_EUR;
 	private String settlemulticurrency_JPY;
+	private String settlemulticurrency_GBP;
+	private String settlemulticurrency_CAD;
+//	private String singlecurrency;
 	@Override
 	public String toString() {
 		return "Settlement [withdrawalreserveamount=" + withdrawalreserveamount + ", withdrawalregular="
@@ -19,8 +34,34 @@ public class Settlement {
 				+ settlemulticurrency_USD + ", settlemulticurrency_HKD=" + settlemulticurrency_HKD
 				+ ", settlemulticurrency_EUR=" + settlemulticurrency_EUR + ", settlemulticurrency_JPY="
 				+ settlemulticurrency_JPY + ", settlemulticurrency_GBP=" + settlemulticurrency_GBP
-				+ ", settlemulticurrency_CAD=" + settlemulticurrency_CAD + ", singlecurrency=" + singlecurrency + "]";
+				+ ", settlemulticurrency_CAD=" + settlemulticurrency_CAD +  "]";
 	}
+	
+	
+	public List<String> getcurrensies(){
+		List<String> currensielist = new ArrayList<String>();
+		if(settlemulticurrency_USD!=null) {
+			currensielist.add(settlemulticurrency_USD);
+		}
+		if(settlemulticurrency_HKD!=null) {
+			currensielist.add(settlemulticurrency_HKD);
+		}
+		if(settlemulticurrency_EUR!=null) {
+			currensielist.add(settlemulticurrency_EUR);
+		}
+		if(settlemulticurrency_JPY!=null) {
+			currensielist.add(settlemulticurrency_JPY);
+		}
+		if(settlemulticurrency_GBP!=null) {
+			currensielist.add(settlemulticurrency_GBP);
+		}
+		if(settlemulticurrency_CAD!=null) {
+			currensielist.add(settlemulticurrency_CAD);
+		}
+		
+		return currensielist;
+	}
+	
 	public String getWithdrawalreserveamount() {
 		return withdrawalreserveamount;
 	}
@@ -93,13 +134,11 @@ public class Settlement {
 	public void setSettlemulticurrency_CAD(String settlemulticurrency_CAD) {
 		this.settlemulticurrency_CAD = settlemulticurrency_CAD;
 	}
-	public String getSinglecurrency() {
-		return singlecurrency;
-	}
-	public void setSinglecurrency(String singlecurrency) {
-		this.singlecurrency = singlecurrency;
-	}
-	private String settlemulticurrency_GBP;
-	private String settlemulticurrency_CAD;
-	private String singlecurrency;
+//	public String getSinglecurrency() {
+//		return singlecurrency;
+//	}
+//	public void setSinglecurrency(String singlecurrency) {
+//		this.singlecurrency = singlecurrency;
+//	}
+
 }

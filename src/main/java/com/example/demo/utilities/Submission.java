@@ -1,8 +1,13 @@
 package com.example.demo.utilities;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Submission {
+	@NotEmpty
 	private String readandagree;
+	@NotEmpty
 	private String signature;
+	@NotEmpty
 	private String currentdate;
 	public String getReadandagree() {
 		return readandagree;

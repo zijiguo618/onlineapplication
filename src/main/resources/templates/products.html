@@ -4,6 +4,9 @@
 </head>
 <body>
 	<script type="text/javascript" src="buttonhide_show.js"></script>
+	<div th:if="${message}">
+			<h2 th:text="${message}" />
+	</div>
 	<form action="#" th:action="@{/products}" th:object="${products}"
 		method="post">
 		<td><input id="onlinepaymentbutton" type="button"
@@ -26,17 +29,46 @@
 				<tr id="securepaytunnel" name="securepaytunnel">
 					<td><input id="securepay_unionpay" type="checkbox"
 						th:field="*{securepay_unionpay}" value="1"
-						name="securepay_unionpay"/>
-						Unionpay</td>
+						name="securepay_unionpay" onchange='securepayunionpaylisetner();'/>
+						UnionPay</td>
 						<td><input id="securepay_wechatpay" type="checkbox"
 						th:field="*{securepay_wechatpay}" value="1"
-						name="securepay_wechatpay"/>
+						name="securepay_wechatpay" onchange='securepayunionpaylisetner();'/>
 						WechatPay</td>
 						<td><input id="securepay_alipay" type="checkbox"
 						th:field="*{securepay_alipay}" value="1"
-						name="securepay_alipay" />
+						name="securepay_alipay" onchange='securepayunionpaylisetner();' />
 						AliPay</td>
 				</tr>
+				<script>
+				function securepayunionpaylisetner(){
+					 if((document.getElementById("securepay_wechatpay").checked ||document.getElementById("securepay_alipay").checked||document.getElementById("securepay_unionpay").checked)==true)
+				    {
+				    document.getElementById("securepaycurrency_USD").disabled = false;
+					document.getElementById("securepaycurrency_JPY").disabled = false;
+					document.getElementById("securepaycurrency_HKD").disabled = false;
+					document.getElementById("securepaycurrency_EUR").disabled = false;
+					document.getElementById("securepaycurrency_GBP").disabled = false;
+					document.getElementById("securepaycurrency_CAD").disabled = false;
+					document.getElementById('seccurepaysettmenet').readOnly = false;
+				    }else{
+				   	 	document.getElementById("securepaycurrency_USD").disabled = true;
+						document.getElementById("securepaycurrency_JPY").disabled = true;
+						document.getElementById("securepaycurrency_HKD").disabled = true;
+						document.getElementById("securepaycurrency_EUR").disabled = true;
+						document.getElementById("securepaycurrency_GBP").disabled = true;
+						document.getElementById("securepaycurrency_CAD").disabled = true;
+						document.getElementById("securepaycurrency_USD").checked = false;
+						document.getElementById("securepaycurrency_JPY").checked = false;
+						document.getElementById("securepaycurrency_HKD").checked = false;
+						document.getElementById("securepaycurrency_EUR").checked = false;
+						document.getElementById("securepaycurrency_GBP").checked = false;
+						document.getElementById("securepaycurrency_CAD").checked = false;
+						document.getElementById('seccurepaysettmenet').readOnly = true;
+				    }
+				}
+				
+				</script>
 				<tr id="securepaycurrencies" name="securepaycurrencies">
 					<td><input id="securepaycurrency_USD" type="checkbox"
 						th:field="*{securepaycurrency_USD}" value="1"
@@ -86,9 +118,39 @@
 				<tr id="expresspaytunnel" name="expresspaytunnel">
 					<td><input id="expresspay_unionpay" type="checkbox"
 						th:field="*{expresspay_unionpay}" value="1"
-						name="expresspay_unionpay"/>
+						name="expresspay_unionpay"  onchange='expresspayunionpaylisetner(this);'/>
 						UnionPay</td>
 				</tr>
+				
+				<script>
+				function expresspayunionpaylisetner(expresspay_unionpay){
+					 if(expresspay_unionpay.checked ==true)
+				    {
+				    document.getElementById("expresspaycurrency_USD").disabled = false;
+					document.getElementById("expresspaycurrency_JPY").disabled = false;
+					document.getElementById("expresspaycurrency_HKD").disabled = false;
+					document.getElementById("expresspaycurrency_EUR").disabled = false;
+					document.getElementById("expresspaycurrency_GBP").disabled = false;
+					document.getElementById("expresspaycurrency_CAD").disabled = false;
+					document.getElementById('expresspaysettmenet').readOnly = false;
+				    }else{
+				   	 	document.getElementById("expresspaycurrency_USD").disabled = true;
+						document.getElementById("expresspaycurrency_JPY").disabled = true;
+						document.getElementById("expresspaycurrency_HKD").disabled = true;
+						document.getElementById("expresspaycurrency_EUR").disabled = true;
+						document.getElementById("expresspaycurrency_GBP").disabled = true;
+						document.getElementById("expresspaycurrency_CAD").disabled = true;
+						document.getElementById("expresspaycurrency_USD").checked = false;
+						document.getElementById("expresspaycurrency_JPY").checked = false;
+						document.getElementById("expresspaycurrency_HKD").checked = false;
+						document.getElementById("expresspaycurrency_EUR").checked = false;
+						document.getElementById("expresspaycurrency_GBP").checked = false;
+						document.getElementById("expresspaycurrency_CAD").checked = false;
+						document.getElementById('expresspaysettmenet').readOnly = true;
+				    }
+				}
+				
+				</script>
 				<tr id="expresspaycurrencies" name="expresspayurrencies">
 					<td><input id="expresspaycurrency_USD" type="checkbox"
 						th:field="*{expresspaycurrency_USD}" value="1"
@@ -115,8 +177,7 @@
 						name="expresspaycurrency_CAD"/>
 						CAD</td>
 				</tr>
-				
-				
+
 				<tr id="expresspaysettlementn" name="expresspaysettlementn">
 				<td> Settlement Cycle Setting:  T+</td>
 				<td><input type="text" th:field="*{expresspay_settlement}" id="expresspaysettmenet"/></td>
@@ -148,13 +209,44 @@
 				<tr id="showQRtunnel" name="showQRtunnel">
 					<td><input id="showqrcode_alipay" type="checkbox"
 						th:field="*{showqrcode_alipay}" value="1"
-						name="showqrcode_alipay"/>
+						name="showqrcode_alipay" onchange='showQRlisetner();'/>
 						AliPay</td>
 						<td><input id="showqrcode_wechatpay" type="checkbox"
 						th:field="*{showqrcode_wechatpay}" value="1"
-						name="showqrcode_wechatpay"/>
+						name="showqrcode_wechatpay" onchange='showQRlisetner();'/>
 						WechatPay</td>
 				</tr>
+				
+				
+				<script>
+				function showQRlisetner(){
+					if((document.getElementById("showqrcode_wechatpay").checked ||document.getElementById("showqrcode_alipay").checked)==true)
+				    {
+				    document.getElementById("showqrcodecurrency_USD").disabled = false;
+					document.getElementById("showqrcodecurrency_JPY").disabled = false;
+					document.getElementById("showqrcodecurrency_HKD").disabled = false;
+					document.getElementById("showqrcodecurrency_EUR").disabled = false;
+					document.getElementById("showqrcodecurrency_GBP").disabled = false;
+					document.getElementById("showqrcodecurrency_CAD").disabled = false;
+					document.getElementById('showqrcode_settlement').readOnly = false;
+				    }else{
+				   	 	document.getElementById("showqrcodecurrency_USD").disabled = true;
+						document.getElementById("showqrcodecurrency_JPY").disabled = true;
+						document.getElementById("showqrcodecurrency_HKD").disabled = true;
+						document.getElementById("showqrcodecurrency_EUR").disabled = true;
+						document.getElementById("showqrcodecurrency_GBP").disabled = true;
+						document.getElementById("showqrcodecurrency_CAD").disabled = true;
+						document.getElementById("showqrcodecurrency_USD").checked = false;
+						document.getElementById("showqrcodecurrency_JPY").checked = false;
+						document.getElementById("showqrcodecurrency_HKD").checked = false;
+						document.getElementById("expresspaycurrency_EUR").checked = false;
+						document.getElementById("expresspaycurrency_GBP").checked = false;
+						document.getElementById("expresspaycurrency_CAD").checked = false;
+						document.getElementById('showqrcode_settlement').readOnly = true;
+				    }
+				}
+				
+				</script>
 				<tr id="showQRcurrencies" name="showQRcurrencies">
 					<td><input id="showqrcodecurrency_USD" type="checkbox"
 						th:field="*{showqrcodecurrency_USD}" value="1"
@@ -181,8 +273,7 @@
 						name="showqrcodecurrency_CAD"/>
 						CAD</td>
 				</tr>
-				
-				
+						
 				<tr id="showQRsettlement" name="showQRsettlement">
 				<td> Settlement Cycle Setting:  T+</td>
 				<td><input type="text" th:field="*{showqrcode_settlement}" id="showqrcode_settlement"/></td>
@@ -204,19 +295,51 @@
 				<tr id="POStunnel" name="POStunnel">
 					<td><input id="POS_unionpay" type="checkbox"
 						th:field="*{POS_unionpay}" value="1"
-						name="POS_unionpay"/>
+						name="POS_unionpay"  onchange='POSlisetner();'/>
 						UnionPay</td>
 						
 						<td><input id="POS_wechatpay" type="checkbox"
 						th:field="*{POS_wechatpay}" value="1"
-						name="POS_wechatpay"/>
+						name="POS_wechatpay"  onchange='POSlisetner();'/>
 						WechatPay</td>
 						<td><input id="POS_alipay" type="checkbox"
 						th:field="*{POS_alipay}" value="1"
-						name="POS_alipay"/>
+						name="POS_alipay"  onchange='POSlisetner();'/>
 						AliPay</td>
 						
 				</tr>
+				
+				<script>
+				function POSlisetner(){
+					 if((document.getElementById("POS_alipay").checked ||document.getElementById("POS_wechatpay").checked||document.getElementById("POS_unionpay").checked)==true)
+				    {
+				    document.getElementById("POScurrency_USD").disabled = false;
+					document.getElementById("POScurrency_JPY").disabled = false;
+					document.getElementById("POScurrency_HKD").disabled = false;
+					document.getElementById("POScurrency_EUR").disabled = false;
+					document.getElementById("POScurrency_GBP").disabled = false;
+					document.getElementById("POScurrency_CAD").disabled = false;
+					document.getElementById('POS_settlement').readOnly = false;
+				    }else{
+				   	 	document.getElementById("POScurrency_USD").disabled = true;
+						document.getElementById("POScurrency_JPY").disabled = true;
+						document.getElementById("POScurrency_HKD").disabled = true;
+						document.getElementById("POScurrency_EUR").disabled = true;
+						document.getElementById("POScurrency_GBP").disabled = true;
+						document.getElementById("POScurrency_CAD").disabled = true;
+						document.getElementById("POScurrency_USD").checked = false;
+						document.getElementById("POScurrency_JPY").checked = false;
+						document.getElementById("POScurrency_HKD").checked = false;
+						document.getElementById("POScurrency_EUR").checked = false;
+						document.getElementById("POScurrency_GBP").checked = false;
+						document.getElementById("POScurrency_CAD").checked = false;
+						document.getElementById('POS_settlement').readOnly = true;
+				    }
+				}
+				
+				</script>
+				
+				
 				<tr id="POScurrencies" name="POScurrencies">
 					<td><input id="POScurrency_USD" type="checkbox"
 						th:field="*{POScurrency_USD}" value="1"
@@ -254,7 +377,37 @@
 			</tr>
 			</table>
 		</table>
-		
+			<script>
+			document.getElementById("POScurrency_USD").disabled = true;
+			document.getElementById("POScurrency_JPY").disabled = true;
+			document.getElementById("POScurrency_HKD").disabled = true;
+			document.getElementById("POScurrency_EUR").disabled = true;
+			document.getElementById("POScurrency_GBP").disabled = true;
+			document.getElementById("POScurrency_CAD").disabled = true;
+			document.getElementById('POS_settlement').readOnly = true;
+			document.getElementById("securepaycurrency_USD").disabled = true;
+			document.getElementById("securepaycurrency_JPY").disabled = true;
+			document.getElementById("securepaycurrency_HKD").disabled = true;
+			document.getElementById("securepaycurrency_EUR").disabled = true;
+			document.getElementById("securepaycurrency_GBP").disabled = true;
+			document.getElementById("securepaycurrency_CAD").disabled = true;
+			document.getElementById('seccurepaysettmenet').readOnly = true;
+			document.getElementById("showqrcodecurrency_USD").disabled = true;
+			document.getElementById("showqrcodecurrency_JPY").disabled = true;
+			document.getElementById("showqrcodecurrency_HKD").disabled = true;
+			document.getElementById("showqrcodecurrency_EUR").disabled = true;
+			document.getElementById("showqrcodecurrency_GBP").disabled = true;
+			document.getElementById("showqrcodecurrency_CAD").disabled = true;
+			document.getElementById('showqrcode_settlement').readOnly = true;
+			document.getElementById("expresspaycurrency_USD").disabled = true;
+			document.getElementById("expresspaycurrency_JPY").disabled = true;
+			document.getElementById("expresspaycurrency_HKD").disabled = true;
+			document.getElementById("expresspaycurrency_EUR").disabled = true;
+			document.getElementById("expresspaycurrency_GBP").disabled = true;
+			document.getElementById("expresspaycurrency_CAD").disabled = true;
+			document.getElementById('expresspaysettmenet').readOnly = true;
+			</script>
+			
 			<tr>
 				<td><button type="submit">Submit</button></td>
 			</tr>

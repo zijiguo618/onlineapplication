@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,26 +23,25 @@ public class ContactinfoController {
 	public ModelAndView greetingForm(Model model,HttpServletRequest request) {
 		System.out.println("confirm contactinfo access");
 		Contactinfo contactinfo = new Contactinfo();
-		MCClist mcclist= new MCClist();
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("contactinfo", contactinfo);
 		modelAndView.setViewName("contactinfo");
-		Basicinfo obj= (Basicinfo)request.getSession().getAttribute("basicinfo");  
-		System.out.println(obj.toString());
-//		System.out.println(request.getSession().getAttribute("basicinfo").toString());
+//		Basicinfo obj= (Basicinfo)request.getSession().getAttribute("basicinfo");  
+//		System.out.println("Basicindo:"+obj.toString());
 		return modelAndView;
 	}
 
 	@PostMapping("/contact")
-	public ModelAndView greetingSubmit(@ModelAttribute Contactinfo contactinfo,HttpServletRequest request,BindingResult result) {
+	public ModelAndView greetingSubmit(@Valid Contactinfo contactinfo,BindingResult result,HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("contactinfo", contactinfo);
-		modelAndView.setViewName("success");
+		modelAndView.setViewName("redirect:/products");
 		HttpSession session = request.getSession();  
 		session.setAttribute("contactinfo",contactinfo);  
+		System.out.println(contactinfo.toString());
 		if (result.hasErrors()) {
-			modelAndView.setViewName("contactinfo");
-			return modelAndView;
+			System.out.println("has error");
+			return new ModelAndView("contactinfo");
 		}
 		return modelAndView;
 	}
