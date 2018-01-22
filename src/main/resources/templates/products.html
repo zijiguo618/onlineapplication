@@ -2,6 +2,13 @@
 <head>
 <script language="javascript" src="/js/jquery.min.js"></script>
 </head>
+<style>
+
+body{
+         text-align: center;
+         }
+
+</style>
 <body>
 	<script type="text/javascript" src="buttonhide_show.js"></script>
 	<div th:if="${message}">
@@ -102,11 +109,11 @@
 				<td><input type="text" th:field="*{securepay_settlement}" id="seccurepaysettmenet"/></td>
 				<script>document.getElementById("seccurepaysettmenet").defaultValue="2";</script>
 				<td th:if="${#fields.hasErrors('securepay_settlement')}"
-					th:errors="*{securepay_settlement}">securepay_settlement Error</td>
+					th:errors="*{securepay_settlement}" style="color: red;">securepay_settlement Error</td>
 			</tr>
 			</table>
 			<table id="expresspaytable" name="expresspaytable">
-				<tr>
+				<tr bgcolor="#f18973">
 					<td><input id="expresspaybutton" type="button"
 						name="expresspaybutton" value="Expresspay Button" /><script
 				type="text/javascript">
@@ -179,16 +186,27 @@
 				</tr>
 
 				<tr id="expresspaysettlementn" name="expresspaysettlementn">
-				<td> Settlement Cycle Setting:  T+</td>
-				<td><input type="text" th:field="*{expresspay_settlement}" id="expresspaysettmenet"/></td>
-				<script>document.getElementById("expresspaysettmenet").defaultValue="2";</script>
-				<td th:if="${#fields.hasErrors('expresspay_settlement')}"
-					th:errors="*{expresspay_settlement}">expresspay_settlement Error</td>
-			</tr>
+					<td>Settlement Cycle Setting: T+</td>
+					<td><input type="text" th:field="*{expresspay_settlement}"
+						id="expresspaysettmenet" /></td>
+					<script>document.getElementById("expresspaysettmenet").defaultValue="2";</script>
+					<td th:if="${#fields.hasErrors('expresspay_settlement')}"
+						th:errors="*{expresspay_settlement}" style="color: red;">expresspay_settlement
+						Error</td>
+				</tr>
+				
+				<tr bgcolor="#f18973"><td><input id="easypay" type="checkbox"
+						th:field="*{easypay}" value="1"
+						name="easypay"  />
+						Easypay</td></tr>
+						
+
 			</table>
+			
 		</table>
-		
-		
+
+	<br/>
+
 		<td><input id="offlinepaymentbutton" type="button"
 			name="offlinepaymentbutton" value="Offline Payment" /> <script
 				type="text/javascript">
@@ -279,7 +297,7 @@
 				<td><input type="text" th:field="*{showqrcode_settlement}" id="showqrcode_settlement"/></td>
 				<script>document.getElementById("showqrcode_settlement").defaultValue="2";</script>
 				<td th:if="${#fields.hasErrors('showqrcode_settlement')}"
-					th:errors="*{securepay_settlement}">securepay_settlement Error</td>
+					th:errors="*{securepay_settlement}" style="color: red;">securepay_settlement Error</td>
 			</tr>
 			</table>
 			<table id="POStable" name="POStable">
@@ -297,7 +315,6 @@
 						th:field="*{POS_unionpay}" value="1"
 						name="POS_unionpay"  onchange='POSlisetner();'/>
 						UnionPay</td>
-						
 						<td><input id="POS_wechatpay" type="checkbox"
 						th:field="*{POS_wechatpay}" value="1"
 						name="POS_wechatpay"  onchange='POSlisetner();'/>
@@ -373,7 +390,7 @@
 				<td><input type="text" th:field="*{POS_settlement}" id="POS_settlement"/></td>
 				<script>document.getElementById("POS_settlement").defaultValue="2";</script>
 				<td th:if="${#fields.hasErrors('POS_settlement')}"
-					th:errors="*{POS_settlement}">expresspay_settlement Error</td>
+					th:errors="*{POS_settlement}" style="color: red;">expresspay_settlement Error</td>
 			</tr>
 			</table>
 		</table>
@@ -407,10 +424,11 @@
 			document.getElementById("expresspaycurrency_CAD").disabled = true;
 			document.getElementById('expresspaysettmenet').readOnly = true;
 			</script>
-			
-			<tr>
-				<td><button type="submit">Submit</button></td>
-			</tr>
+
+		<tr>
+			  <td><a href="contactinfo.html">Previous Page</a><button type="submit">Submit</button><a href="login.html">Log Out</a></td>
+		</tr>
+
 	</form>
 
 </body>

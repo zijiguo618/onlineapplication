@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -11,7 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.service.DB;
+import com.example.demo.utilities.Basicinfo;
 import com.example.demo.utilities.Contactinfo;
 import com.example.demo.utilities.Documents;
 import com.example.demo.utilities.Greeting;
@@ -27,13 +35,15 @@ public class SubmissionController {
 	}
 
 	@PostMapping("/submission")
-	public String greetingSubmit(@Valid Submission Submission,BindingResult result,HttpServletRequest request) {
+	public String greetingSubmit(@Valid Submission Submission,BindingResult result,HttpServletRequest request) throws SQLException, ClassNotFoundException {
 		System.out.println(Submission.toString());
 		HttpSession session = request.getSession();  
 		session.setAttribute("Submission",Submission); 
 		if(result.hasErrors()) {
 			return "submission";
 		}
+		DB db =new DB();
+		db.update2application_submission((int)session.getAttribute("applicationID"), Submission.getSignature(), Submission.getCurrentdate());
 		return "success";
 	}
 }

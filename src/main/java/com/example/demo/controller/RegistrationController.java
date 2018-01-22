@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.service.DB;
+import com.example.demo.utilities.Basicinfo;
 import com.example.demo.utilities.Registration;
 import com.example.demo.utilities.applicant;
 
@@ -32,10 +36,10 @@ public class RegistrationController {
 		modelAndView.setViewName("registration");
 		return modelAndView;
 	}
-
 	@PostMapping("/registration")
 	public ModelAndView processRegistration(@Valid Registration registration,
-			BindingResult result, HttpServletRequest request) {
+			BindingResult result, HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		DB db=new DB();
 		if (!(registration.getpassword()).equals(registration.getconfirmpassword())) {
 			result.rejectValue("password",
 		          "matchingPassword.registration.password",
@@ -46,6 +50,9 @@ public class RegistrationController {
 		}
 	    HttpSession session = request.getSession();  
 		session.setAttribute("registration",registration);  
-		return new ModelAndView("redirect:/basicinfo");
+
+	int status=	db.insert2registration(registration.getemail(),registration.getpassword(),registration.getfirstname(),registration.getlastname(),registration.getcompany());
+	System.out.println(status);
+	return new ModelAndView("redirect:/login");
 	}
 }

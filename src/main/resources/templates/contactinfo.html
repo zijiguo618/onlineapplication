@@ -1,33 +1,36 @@
 <html>
     <body>
-        <form action="#" th:action="@{/contact}" th:object="${contactinfo}" method="post">
+        <form action="#" th:action="@{/contactinfo}" th:object="${contactinfo}" method="post">
             <table>
-            
+
+            	<tr><td>Application ID:</td> <td><p th:text="${applicationID}" /></td></tr>
+
                 <tr>
                     <td>Contact Name:</td>
                     <td><input type="text" th:field="*{contactname}" /></td>
-                    <td th:if="${#fields.hasErrors('contactname')}" th:errors="*{contactname}">contactname Error</td>
+                    <td th:if="${#fields.hasErrors('contactname')}" th:errors="*{contactname}" style="color: red;">contactname Error</td>
                 </tr>
               
                 <tr>
                     <td>Tittle:</td>
                     <td><input type="text" th:field="*{tittle}" /></td>
-                    <td th:if="${#fields.hasErrors('tittle')}" th:errors="*{tittle}">tittle Error</td>
+                    <td th:if="${#fields.hasErrors('tittle')}" th:errors="*{tittle}" style="color: red;">tittle Error</td>
                 </tr>
                 <tr>
                     <td>E-mail:</td>
                     <td><input type="text" th:field="*{email}" /></td>
-                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red;">Email Error</td>
                 </tr>
                 
                 <tr>
                     <td>Phone Number:</td>
                     <td><input type="text" th:field="*{phone}" /></td>
-                    <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">phone Error</td>
+                    <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color: red;">phone Error</td>
                 </tr>
 
                 <tr>
-                    <td><button type="submit">Submit</button></td>
+                  <td><a href="basicinfo.html">Previous Page</a><button type="submit">Submit</button><a href="login.html">Log Out</a></td>
+				
                 </tr>
             </table>
         </form>

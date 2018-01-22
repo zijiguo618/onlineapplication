@@ -1,6 +1,10 @@
 package com.example.demo.utilities;
 
+import java.sql.SQLException;
+
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.example.demo.service.DB;
 
 public class Bankaccount {
 
@@ -24,6 +28,20 @@ public class Bankaccount {
 	@NotEmpty(message = "Please select your bank account type.")
 	private String accounttype;
 	
+	
+	public Bankaccount getbankaccount(int ID) throws ClassNotFoundException, SQLException {
+		DB db =new DB();
+		this.currency=db.getitem("bankcurrency", ID);
+		this.bankname=db.getitem("bankname", ID);
+		this.accountname=db.getitem("bankaccountname", ID);
+		this.account=db.getitem("bankaccountnumber", ID);
+		this.swiftcode=db.getitem("swiftcode", ID);
+		this.routingnumber=db.getitem("routingnumber", ID);
+		this.accounttype=db.getitem("accounttype",ID);
+		
+		db.close();
+		return this;
+	}
 	
 	public String getAccounttype() {
 		return accounttype;

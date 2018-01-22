@@ -1,43 +1,167 @@
 <html>
+<head>
+<script language="javascript" src="/js/jquery.min.js"></script>
+<style>
+         table {
+            padding: 5px;
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height:50px;
+            margin-top:20px;
+            margin-bottom:auto;
+            font-size: 10px;
+             text-align: center;
+            
+         }
+         body{
+            font-family: verdana;
+            font-size: 20px;
+         }
+         p{
+           margin-top:-80px;
+         }
+         td{
+    		padding: 12px;
+    		width: 200px;
+    		border:1px solid #DDDDDD;
+   		border-radius: 3px;
+        
+         }
+        
+         img{
+               margin-left: 260px;
+         }
+          
+           input{
+        		width: 200px;
+        		height:50px;
+        		padding: 12px 20px;
+        		margin: 8px 0;
+      	  }
+  input[type="text"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="time"],
+  input[type="url"],
+  input[type="password"],
+  textarea,
+  select 
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    display: block;
+    outline: none;
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 0;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+  input[type="text"]:focus,
+  input[type="date"]:focus,
+  input[type="datetime"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="time"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus 
+{
+
+}
+td > label{
+    display: block;
+    float: left;
+    margin-top: -19px;
+    background: #FFFFFF;
+    height: 14px;
+    padding: 2px 5px 2px 5px;
+    color: #B9B9B9;
+    font-size: 14px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+          td > span{
+    background: #F3F3F3;
+    display: block;
+    padding: 3px;
+    margin: 0 -9px -9px -9px;
+    text-align: center;
+    color: #C0C0C0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+input[type="submit"]{
+          	 background: #2471FF;
+   		 	border: none;
+ 		  	 padding: 10px 20px 10px 20px;
+   			 border-bottom: 3px solid #5994FF;
+   			 border-radius: 3px;
+    			color: #D2E2FF;
+          }
+         input[type="submit"]:hover{
+           background: #6B9FFF;
+    		color:#fff;
+          }
+        
+      </style> 
+
+</head>
     <body>
+        
+        <img class="centerImage" src="logo.jpg" alt="Logo" width="120" height="120"></img>
         <form action="#" th:action="@{/registration}" th:object="${registration}" method="post">
+            
+            <center><p>Welcome to NihaoPay,we are looking forword your participating</p></center><hr/>
             <table>
             
                 <tr>
-                    <td>First Name:</td>
-                    <td><input type="text" th:field="*{firstname}" /></td>
-                    <td th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">FirstName Error</td>
+                    <td> <label for= "firstname">First Name</label><input type="text" th:field="*{firstname}" /> 	<span>Enter your first name here</span></td>
+                    <td th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" style="color:red;">FirstName Error</td>
                 </tr>
                 <tr>
-                    <td>Last Name:</td>
-                    <td><input type="text" th:field="*{lastname}" /></td>
-                    <td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">LastName Error</td>
+                    <td> <label for= "lastname">Last Name</label><input type="text" th:field="*{lastname}" /><span>Enter Your Last name here</span></td>
+                    
+                    <td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" style="color:red;">LastName Error</td>
                 </tr>
                 <tr>
-                    <td>Company:</td>
-                    <td><input type="text" th:field="*{company}" /></td>
-                    <td th:if="${#fields.hasErrors('company')}" th:errors="*{company}">Company Error</td>
+                    <td> <label for= "company">Company Name</label><input type="text" th:field="*{company}" /><span>Enter your company name here</span></td>
+                    
+                    <td th:if="${#fields.hasErrors('company')}" th:errors="*{company}" style="color:red;">Company Error</td>
                 </tr>
                 <tr>
-                    <td>E-mail:</td>
-                    <td><input type="text" th:field="*{email}" /></td>
-                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+                    <td> <label for= "email">E-mail</label><input type="text" th:field="*{email}" /> <span>Enter your E-mail here</span></td>
+                   
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;">Email Error</td>
                 </tr>
                 
                 <tr>
-                    <td>Password:</td>
-                    <td><input type="password" th:field="*{password}" /></td>
-                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+                   
+                    <td> <label for= "Password">Password</label><input type="password" th:field="*{password}" /> <span>Enter your password here</span></td>
+                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color:red;">Password Error</td>
                 </tr>
                 <tr>
-                    <td>Confirm Password:</td>
-                    <td><input type="password" th:field="*{confirmpassword}" /></td>
-                    <td th:if="${#fields.hasErrors('confirmpassword')}" th:errors="*{confirmpassword}">ConfirmPassword Error</td>
+                    <td> <label for= "Confirm Password">Confirm Password</label><input type="password" th:field="*{confirmpassword}" />  <span>Enter your confirm password here, should be same as password above</span></td>
+                   
+                    <td th:if="${#fields.hasErrors('confirmpassword')}" th:errors="*{confirmpassword}" style="color:red;">ConfirmPassword Error</td>
+
                 </tr>
                 <tr>
-                    <td><button type="submit">Submit</button></td>
+            
                 </tr>
             </table>
+             <center><input type="submit" value="Submit Registration" /></center>
+             <br/>
+             <center> <a href="login.html">Cancel</a></center>
         </form>
     </body>
 </html>

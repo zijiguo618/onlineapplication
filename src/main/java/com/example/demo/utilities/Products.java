@@ -1,5 +1,9 @@
 package com.example.demo.utilities;
 
+import java.sql.SQLException;
+
+import com.example.demo.service.DB;
+
 public class Products {
 
 	private String securepay_unionpay;
@@ -44,6 +48,57 @@ public class Products {
 	private String showqrcode_settlement;
 	private String POS_settlement;
 	private String easypay;
+	
+	public Products getproduct(int ID) throws ClassNotFoundException, SQLException {
+		DB db = new DB();
+		this.securepay_unionpay=db.getitem("securepay_unionpay", ID);
+		this.securepay_wechatpay=db.getitem("securepay_wechatpay", ID);
+		this.securepay_alipay=db.getitem("securepay_alipay", ID);
+		this.securepaycurrency_USD=db.getitem("securepaycurrency_USD", ID);
+		this.securepaycurrency_JPY=db.getitem("securepaycurrency_JPY", ID);
+		this.securepaycurrency_HKD=db.getitem("securepaycurrency_HKD", ID);
+		this.securepaycurrency_EUR=db.getitem("securepaycurrency_EUR",ID);
+		this.securepaycurrency_GBP=db.getitem("securepaycurrency_GBP", ID);
+		this.securepaycurrency_CAD=db.getitem("securepaycurrency_CAD", ID);
+
+		this.expresspay_unionpay=db.getitem("expresspay_unionpay", ID);
+		this.expresspaycurrency_USD=db.getitem("expresspaycurrency_USD", ID);
+		this.expresspaycurrency_JPY=db.getitem("expresspaycurrency_JPY", ID);
+		this.expresspaycurrency_HKD=db.getitem("expresspaycurrency_HKD", ID);
+		this.expresspaycurrency_EUR=db.getitem("expresspaycurrency_EUR", ID);
+		this.expresspaycurrency_GBP=db.getitem("expresspaycurrency_GBP", ID);
+		this.expresspaycurrency_CAD=db.getitem("expresspaycurrency_CAD", ID);
+
+		this.showqrcode_alipay=db.getitem("showqrcode_alipay", ID);
+		this.showqrcode_wechatpay=db.getitem("showqrcode_wechatpay", ID);
+		this.showqrcodecurrency_USD=db.getitem("showqrcodecurrency_USD", ID);
+		this.showqrcodecurrency_JPY=db.getitem("showqrcodecurrency_JPY", ID);
+		this.showqrcodecurrency_HKD=db.getitem("showqrcodecurrency_HKD", ID);
+		this.showqrcodecurrency_EUR=db.getitem("showqrcodecurrency_EUR", ID);
+		this.showqrcodecurrency_GBP=db.getitem("showqrcodecurrency_GBP", ID);
+		this.showqrcodecurrency_CAD=db.getitem("showqrcodecurrency_CAD", ID);
+		
+		this.POS_alipay=db.getitem("POS_alipay", ID);
+		this.POS_wechatpay=db.getitem("POS_wechatpay", ID);
+		this.POS_unionpay=db.getitem("POS_unionpay", ID);
+		this.POScurrency_USD=db.getitem("POScurrency_USD", ID);
+		this.POScurrency_JPY=db.getitem("POScurrency_JPY", ID);
+		this.POScurrency_HKD=db.getitem("POScurrency_HKD", ID);
+		this.POScurrency_EUR=db.getitem("POScurrency_EUR", ID);
+		this.POScurrency_GBP=db.getitem("POScurrency_GBP", ID);
+		this.POScurrency_CAD=db.getitem("POScurrency_CAD", ID);
+		
+		this.expresspay_settlement=db.getitem("expresspay_settlement", ID);
+		this.securepay_settlement=db.getitem("securepay_settlement", ID);
+		this.showqrcode_settlement=db.getitem("showqrcode_settlement", ID);
+		this.POS_settlement=db.getitem("POS_settlement", ID);
+		this.easypay=db.getitem("easypay", ID);
+		db.close();
+		return this;
+		
+	}
+	
+	
 	
 	public String getExpresspay_settlement() {
 		return expresspay_settlement;

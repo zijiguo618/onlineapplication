@@ -1,9 +1,14 @@
 package com.example.demo.utilities;
 
+import java.sql.SQLException;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.example.demo.service.DB;
+
 public class Contactinfo {
+
 	@NotEmpty
 	private String contactname;
 	@NotEmpty
@@ -13,6 +18,18 @@ public class Contactinfo {
 	@NotEmpty
 	@Email
 	private String email;
+	
+	public Contactinfo getcontactinfo(int ID) throws ClassNotFoundException, SQLException {
+		DB db=new DB();
+//		contactname=?, tittle=?,phone=?,contactemail=? where ID
+		this.contactname=db.getitem("contactname", ID);
+		this.tittle=db.getitem("tittle", ID);
+		this.phone=db.getitem("tittle", ID);
+		this.email=db.getitem("contactemail", ID);
+		db.close();
+		return this;
+	}
+	
 	public String getContactname() {
 		return contactname;
 	}

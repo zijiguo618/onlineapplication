@@ -1,9 +1,12 @@
 package com.example.demo.utilities;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.example.demo.service.DB;
 
 public class Settlement {
 	@NotEmpty(message = "Please enter your reverse amount")
@@ -25,6 +28,23 @@ public class Settlement {
 	private String settlemulticurrency_JPY;
 	private String settlemulticurrency_GBP;
 	private String settlemulticurrency_CAD;
+	
+	
+	public Settlement getsettlement(int ID) throws ClassNotFoundException, SQLException {
+		DB db=new DB();
+//		settlemulticurrency=?, overdraft=?,lending=?,withdrawalminimumamount=?,withdrawalregular=?,withdrawalreserveamount
+		this.overdraft=db.getitem("overdraft", ID);
+		this.lending=db.getitem("lending", ID);
+		this.withdrawalminimumamount=db.getitem("withdrawalminimumamount", ID);
+		this.withdrawalregular=db.getitem("withdrawalregular", ID);
+		this.withdrawalreserveamount=db.getitem("withdrawalreserveamount", ID);
+		db.close();
+		return this;
+		
+		
+	}
+	
+	
 //	private String singlecurrency;
 	@Override
 	public String toString() {

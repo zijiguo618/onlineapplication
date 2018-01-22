@@ -6,7 +6,7 @@
 	<div th:if="${message}">
 	<h2 th:text="${message}" />
 	</div>
-	<form action="#" th:action="@{/settlement}" th:object="${settlement}"
+	<form action="#" th:action="@{/settlementaccount}" th:object="${settlement}"
 		method="post">
 		<table>
 		
@@ -184,7 +184,7 @@
 				
 			</tr>
 			 <tr>
-                    <td><button type="submit">Submit</button></td>
+                     <td><a href="products.html">Previous Page</a><button type="submit">Submit</button><a href="login.html">Log Out</a></td>
                 </tr>
 		</table>
 	</form>

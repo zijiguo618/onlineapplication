@@ -3,24 +3,78 @@
 <html>
 <head>
 <script language="javascript" src="/js/jquery.min.js"></script>
+<style>
+div.form {
+	display: block;
+	text-align: center;
+}
+
+form.table {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+table, th, td {
+	padding: 5px;
+	 font-size: 20px;
+}
+
+select {
+	width: 200px;
+}
+
+input[type=text] {
+	width: 200px;
+}
+
+span {
+	display: block
+}
+</style>
 </head>
 <body>
-<div th:if ="${message}">
-			<h2 th:text="${message}" />
-			</div>
+	<div th:if="${message}">
+		<h2 th:text="${message}" />
+	</div>
 	<form action="#" th:action="@{/basicinfo}" th:object="${basicinfo}"
 		method="post">
-		<table>
-			
+
+		<table align="center">
+			<tr>
+				<td>Application ID:</td>
+				<td>
+					<p th:text="${applicationID}" />
+				</td>
+			</tr>
 			<tr>
 				<td>Merchant Name:</td>
 				<td><input type="text" th:field="*{merchantname}" /></td>
-				<td th:if="${#fields.hasErrors('merchantname')}" th:errors="*{merchantname}">MerchantName Error</td>
+				<td th:if="${#fields.hasErrors('merchantname')}"
+					th:errors="*{merchantname}" style="color: red;">MerchantName
+					Error</td>
+			</tr>
+			<tr>
+				<td>Merchant Legal Name:</td>
+				<td><input type="text" th:field="*{merchantlegalname}" /></td>
+				<td th:if="${#fields.hasErrors('merchantlegalname')}"
+					th:errors="*{merchantlegalname}" style="color: red;">LegalName
+					Error</td>
+			</tr>
+			<tr>
+				<td>Merchant Website URL:</td>
+				<td><input type="text" th:field="*{merchanturl}"
+					placeholder="http://" /></td>
+				<td th:if="${#fields.hasErrors('merchanturl')}"
+					th:errors="*{merchanturl}" style="color: red;">WebsiteURL
+					Error</td>
+
 			</tr>
 			<tr>
 				<td>Nature of Merchant:</td>
 				<td><select id="natureofmerchantlist"
 					name="natureofmerchantlist" th:field="*{natureofmerchant}">
+						<option value=" "></option>
 						<option value="Coporation">Coporation</option>
 						<option value="Partnership">Partnership</option>
 						<option value="Sole Proprietorship">Sole Proprietorship</option>
@@ -29,114 +83,9 @@
 						<option value="LLC">LLC</option>
 				</select></td>
 				<td th:if="${#fields.hasErrors('natureofmerchant')}"
-					th:errors="*{natureofmerchant}">natureofmerchant Error</td>
-			</tr>
-			<tr>
-				<td>MCC:</td>
-				<td><select id="mcclist" name="mcclist" th:field="*{mcc}">
-						<option th:each="mcc : ${mcclist}" th:text="${mcc}"
-							th:value="${mcc}" />
-				</select></td>
-				<td th:if="${#fields.hasErrors('merchantlegalname')}"
-					th:errors="*{mcc}">mcc Error</td>
-			</tr>
-			<tr>
-				<td>Federal tax ID:</td>
-				<td><input type="text" th:field="*{federaltaxid}" /></td>
-				<td th:if="${#fields.hasErrors('federaltaxid')}"
-					th:errors="*{federaltaxid}">federaltaxid Error</td>
-			</tr>
-			<tr>
-				<td>Agent:</td>
-				<td><input type="text" th:field="*{agent}" /></td>
-				<td th:if="${#fields.hasErrors('agent')}" th:errors="*{agent}">agent
+					th:errors="*{natureofmerchant}" style="color: red;">natureofmerchant
 					Error</td>
 			</tr>
-			<tr>
-				<td>Merchant Legal Name:</td>
-				<td><input type="text" th:field="*{merchantlegalname}" /></td>
-				<td th:if="${#fields.hasErrors('merchantlegalname')}"
-					th:errors="*{merchantlegalname}">LegalName Error</td>
-			</tr>
-			<tr>
-				<td>Merchant Website URL:</td>
-				<td><input type="text" th:field="*{merchanturl}" /></td>
-				<td th:if="${#fields.hasErrors('merchanturl')}"
-					th:errors="*{merchanturl}">WebsiteURL Error</td>
-			</tr>
-			<tr>
-				<td>Customer Service Tel:</td>
-				<td><input type="text" th:field="*{customerservicetel}" /></td>
-				<td th:if="${#fields.hasErrors('customerservicetel')}"
-					th:errors="*{customerservicetel}">CustomerTel Error</td>
-			</tr>
-			<tr>
-			
-				<td>Mailing Address:</td>
-				<td><select id="mailaddress_country" name="mailaddress_country"
-					th:field="*{mailaddress_country}"></select> <select
-					id="mailaddress_state" name="mailaddress_state"
-					th:field="*{mailaddress_state}"></select> <select
-					id="mailaddress_city" name="mailaddress_city"
-					th:field="*{mailaddress_city}"></select> 
-					
-						<script type="text/javascript" src="ssqaddress.js"></script>
-					<script
-						type="text/javascript">
-						addressInit('mailaddress_country', 'mailaddress_state',
-								'mailaddress_city');
-					</script>
-					</td>
-				<td th:if="${#fields.hasErrors('mailaddress_street')}"
-					th:errors="*{mailaddress_street}">mailaddress_street Errors</td>
-			</tr>
-			<tr>
-				<td>Mailing Address Line 2:</td>
-				<td><input type="text" th:field="*{mailaddress_street}" placeholder="street name"  /> </td>
-				<td><input type="text" th:field="*{mailaddress_zipcode}"  placeholder=" option. Apt Number" /></td>
-				<td><input id="physicaladdressappeared" type="checkbox" th:field="*{addressmatch}" value="1"
-					name="physicaladdressappeared" onchange="return valueChanged()" />
-					Same as Physical Address <script>
-						function valueChanged() {
-							//进入function 但判定语句出错 无法执行
-							var row = document.getElementById("physicaladdress");
-							var row1 = document.getElementById("physicaladdress2");
-							 if (document.getElementById("physicaladdressappeared").checked == true) {
-								row.style.display = "none"; 
-								row1.style.display = "none"; 
-								} else{	
-									row.style.display = ""; 
-									row1.style.display = "";
-									} 
-				}
-			</script></td>
-				
-			</tr>
-
-			<tr id="physicaladdress">
-				<td>Physical Address:</td>
-				<td><select id="phyaddress_country" name="phyaddress_country"
-					th:field="*{phyaddress_country}"></select> <select
-					id="phyaddress_state" name="phyaddress_state"
-					th:field="*{phyaddress_state}"></select> <select
-					id="phyaddress_city" name="phyaddress_city"
-					th:field="*{phyaddress_city}"></select> <script
-						type="text/javascript">
-						addressInit('phyaddress_country', 'phyaddress_state',
-								'phyaddress_city');
-					</script></td>
-				<td th:if="${#fields.hasErrors('phyaddress_country')}"
-					th:errors="*{phyaddress_country}">physicaladdress</td>
-			</tr>
-			<tr id="physicaladdress2">
-				<td>Physical Address Line 2:</td>
-				<td><input type="text" th:field="*{phyaddress_street}"
-					value="Street number"></input><input type="text"
-					th:field="*{phyaddress_zipcode}" value="Zip Code" /></td>
-				<td th:if="${#fields.hasErrors('phyaddress_zipcode')}"
-					th:errors="*{phyaddress_zipcode}">physicaladdress</td>
-			</tr>
-
 			<tr>
 				<td>Merchant type:</td>
 				<td><select id="merchanttypelist" name="merchanttypelist"
@@ -147,15 +96,18 @@
 						<option value="Group">Group</option>
 				</select></td>
 				<td th:if="${#fields.hasErrors('merchanttype')}"
-					th:errors="*{merchanttype}">MerchantType Error</td>
+					th:errors="*{merchanttype}" style="color: red;">MerchantType
+					Error</td>
 			</tr>
 			<tr>
-				<td>Business Established Date (DD/MM/YY):</td>
-				<td><input type="date" th:field="*{establisheddate}" /></td>
-				<td th:if="${#fields.hasErrors('establisheddate')}"
-					th:errors="*{establisheddate}">EstablishedDate Error</td>
+				<td>MCC:</td>
+				<td><select id="mcclist" name="mcclist" th:field="*{mcc}">
+						<option th:each="mcc : ${mcclist}" th:text="${mcc}"
+							th:value="${mcc}" />
+				</select></td>
+				<td th:if="${#fields.hasErrors('merchantlegalname')}"
+					th:errors="*{mcc}" style="color: red;">mcc Error</td>
 			</tr>
-
 			<tr>
 				<td>Industry:</td>
 				<td><select id="industryselect" name="industryselect"
@@ -185,12 +137,139 @@
 						<option value="Other">Other</option>
 				</select></td>
 
-				<td th:if="${#fields.hasErrors('industry')}" th:errors="*{industry}">Industry
+				<td th:if="${#fields.hasErrors('industry')}" th:errors="*{industry}"
+					style="color: red;">Industry Error</td>
+
+			</tr>
+			<tr>
+				<td>Federal tax ID:</td>
+				<td><input type="text" th:field="*{federaltaxid}" /></td>
+				<td th:if="${#fields.hasErrors('federaltaxid')}"
+					th:errors="*{federaltaxid}" style="color: red;">federaltaxid
+					Error</td>
+
+			</tr>
+			<tr>
+				<td>Agent:</td>
+				<td><input type="text" th:field="*{agent}" /></td>
+				<td th:if="${#fields.hasErrors('agent')}" th:errors="*{agent}" style="color: red;">agent
 					Error</td>
 			</tr>
 
 			<tr>
-				<td><button type="submit">Submit</button></td>
+				<td>Customer Service Tel:</td>
+				<td><input type="text" th:field="*{customerservicetel}" /></td>
+				<td th:if="${#fields.hasErrors('customerservicetel')}"
+					th:errors="*{customerservicetel}" style="color: red;">CustomerTel
+					Error</td>
+
+			</tr>
+			<tr>
+				<td>Mailing Address:</td>
+			</tr>
+			<tr>
+				<td>Country:</td>
+				<td><select id="mailaddress_country" name="mailaddress_country"
+					th:field="*{mailaddress_country}" style="width: 250px;" /></td>
+			</tr>
+			<tr>
+				<td>State:</td>
+				<td><select id="mailaddress_state" name="mailaddress_state"
+					th:field="*{mailaddress_state}" style="width: 250px;"></select></td>
+			</tr>
+			<tr>
+				<td>City:</td>
+				<td><select id="mailaddress_city" name="mailaddress_city"
+					th:field="*{mailaddress_city}" style="width: 250px;"></select> <script
+						type="text/javascript" src="ssqaddress.js"></script> <script
+						type="text/javascript">
+							addressInit('mailaddress_country',
+									'mailaddress_state', 'mailaddress_city');
+						</script></td>
+				<td th:if="${#fields.hasErrors('mailaddress_street')}"
+					th:errors="*{mailaddress_street}" style="color: red;">mailaddress_street
+					Errors</td>
+			</tr>
+			<tr>
+				<td>Mailing Address Line 2:</td>
+				<td><input type="text" th:field="*{mailaddress_street}"
+					placeholder="street name" style="width: 250px;" /> <input
+					type="text" th:field="*{mailaddress_zipcode}"
+					placeholder=" option. Apt Number" style="width: 130px;" /></td>
+				
+			</tr>
+			<tr>
+				<td>Physical Address:</td>
+				<td><input id="physicaladdressappeared" type="checkbox"
+					th:field="*{addressmatch}" value="1" name="physicaladdressappeared"
+					onchange="return valueChanged()" /> Same as Physical Address <script>
+						function valueChanged() {
+							//进入function 但判定语句出错 无法执行
+							var row1 = document
+									.getElementById("physicaladdress1");
+							var row2 = document
+									.getElementById("physicaladdress2");
+							var row3 = document
+									.getElementById("physicaladdress3");
+							var row4 = document
+									.getElementById("physicaladdress4");
+							if (document
+									.getElementById("physicaladdressappeared").checked == true) {
+								row1.style.display = "none";
+								row2.style.display = "none";
+								row3.style.display = "none";
+								row4.style.display = "none";
+							} else {
+								row1.style.display = "";
+								row2.style.display = "";
+								row3.style.display = "";
+								row4.style.display = "";
+							}
+						}
+					</script></td>
+			</tr>
+			<tr id="physicaladdress1">
+				<td>Country:</td>
+				<td><select id="phyaddress_country" name="phyaddress_country"
+					th:field="*{phyaddress_country}" style="width: 250px;" /></td>
+			</tr>
+			<tr id="physicaladdress2">
+				<td>State:</td>
+				<td><select id="phyaddress_state" name="phyaddress_state"
+					th:field="*{phyaddress_state}" style="width: 250px;" /></td>
+			</tr>
+			<tr id="physicaladdress3">
+				<td>City:</td>
+				<td><select id="phyaddress_city" name="phyaddress_city"
+					th:field="*{phyaddress_city}" style="width: 250px;" /> <script
+						type="text/javascript">
+						addressInit('phyaddress_country', 'phyaddress_state',
+								'phyaddress_city');
+					</script>
+				</td>
+				<td th:if="${#fields.hasErrors('phyaddress_country')}"
+					th:errors="*{phyaddress_country}" style="color: red;">physicaladdress</td>
+
+			</tr>
+			<tr id="physicaladdress4">
+				<td>Physical Address Line 2:</td>
+				<td><input type="text" th:field="*{phyaddress_street}"
+					placeholder=" Street number" style="width: 250px;" /> <input
+					type="text" th:field="*{phyaddress_zipcode}"
+					placeholder=" option. Apt Number" style="width: 130px;" /></td>
+				<td th:if="${#fields.hasErrors('phyaddress_zipcode')}"
+					th:errors="*{phyaddress_zipcode}">physicaladdress</td>
+			</tr>
+
+			<tr>
+				<td>Business Established Date (DD/MM/YY):</td>
+				<td><input type="date" th:field="*{establisheddate}" /></td>
+				<td th:if="${#fields.hasErrors('establisheddate')}"
+					th:errors="*{establisheddate}">EstablishedDate Error</td>
+			</tr>
+
+			<tr>
+				<td colspan="3"><button type="submit">Submit</button></td>
 			</tr>
 		</table>
 	</form>

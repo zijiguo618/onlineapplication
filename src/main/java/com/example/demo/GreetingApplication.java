@@ -24,4 +24,5 @@ public class GreetingApplication {
             storageService.init();
         };
     }
+    
 }

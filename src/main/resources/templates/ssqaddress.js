@@ -1,5 +1,4 @@
 
-alert("access");
 var addressInit = function(_mailaddress_country, _mailaddress_state,
 		_mailaddress_city, defaultcountry, defaultstate, defaultcity) {
 	var mailaddresscountry = document.getElementById(_mailaddress_country);

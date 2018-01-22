@@ -1,9 +1,15 @@
 package com.example.demo.utilities;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.example.demo.service.DB;
 public class Basicinfo {
+	DB db;
 	@NotEmpty(message = "Please enter your merchant name.")
 	private String merchantname;
 	@NotEmpty(message = "Please enter your merchant Leagel name.")
@@ -35,7 +41,24 @@ public class Basicinfo {
 	public void setAddressmatch(String addressmatch) {
 		this.addressmatch = addressmatch;
 	}
-
+	public Basicinfo getbasicinfo(int ID) throws ClassNotFoundException, SQLException {
+		db=new DB();		
+		this.merchantname=db.getitem("merchantname", ID);
+		this.merchantlegalname=db.getitem("merchantlegalname", ID);
+		this.merchanturl=db.getitem("merchanturl", ID);
+		this.customerservicetel=db.getitem("customersertel", ID);
+		this.merchanttype=db.getitem("type", ID);
+		this.establisheddate=db.getitem("establisheddate", ID);
+		this.natureofmerchant=db.getitem("nature", ID);
+		this.mcc=db.getitem("mcc", ID);
+		this.industry=db.getitem("industry", ID);
+		this.federaltaxid=db.getitem("federaltaxid", ID);
+		this.agent=db.getitem("agent", ID);
+		this.addressmatch=null;
+		db.close();
+		System.out.println(this.toString());
+		return this;
+	}
 	@NotEmpty(message = "Please enter your mailaddress.")
 	private String mailaddress_country;
 	
