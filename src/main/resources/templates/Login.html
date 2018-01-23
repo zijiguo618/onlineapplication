@@ -28,6 +28,9 @@ table td {
 hr {
 	margin-top: 60px;
 }
+a{
+	margin-left: 40px;
+}
 </style>
 </head>
 <body>
@@ -56,15 +59,13 @@ hr {
 				<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
 					style="color: red;">Password Error</td>
 			</tr>
-			<tr>
-				<td><button type="submit" name="loginsubmit"
-						value="loginsubmit">Submit</button></td>
-				<td><a href="registration.html" align="center"> Register</a></td>
 
+			
 
-			</tr>
 		</table>
-
+			<center><button type="submit" name="loginsubmit"
+						value="loginsubmit">Submit</button>
+			<a href="registration.html" align="center"> Register</a></center>
 	</form>
 </body>
 </html>
