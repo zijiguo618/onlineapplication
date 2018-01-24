@@ -112,7 +112,10 @@ input[type="submit"]{
             <table>
             
                 <tr>
-                    <td> <label for= "firstname">First Name</label><input type="text" th:field="*{firstname}" /> 	<span>Enter your first name here</span></td>
+                    <td> <label for= "firstname">First Name</label>
+                    <input type="text" th:field="*{firstname}" /> 	
+                    <span>Enter your first name here</span>
+                    </td>
                     <td th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" style="color:red;">FirstName Error</td>
                 </tr>
                 <tr>
