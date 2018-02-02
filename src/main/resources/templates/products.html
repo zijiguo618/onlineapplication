@@ -1,53 +1,130 @@
+<!DOCTYPE html>
 <html>
 <head>
-<script language="javascript" src="/js/jquery.min.js"></script>
-</head>
-<style>
+<title>Products</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Great Taste Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'/>
+<style type="text/css">
 
-body{
-         text-align: center;
-         }
+input[type="text"], input[type="date"], input[type="datetime"], input[type="number"],
+	input[type="url"], select {
+	height: 50px;
+	padding: 12px 20px;
+	width: 100%;
+	display: block;
+	border: none;
+	height: 25px;
+	line-height: 25px;
+	font-size: 16px;
+	padding: 0;
+	background: #ECEFF1;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+td>label {
+ box-shadow: -0px -1px 2px #B9B9B9;
+    -moz-box-shadow:-0px -1px 2px #B9B9B9;
+    -webkit-box-shadow:-0px -1px 2px #B9B9B9;
+	border-top: 1px solid #B9B9B9;
+    border-left: 1px solid #B9B9B9;
+    border-right: 1px solid #B9B9B9;
+	display: block;
+	float: left;
+	margin-top: 10px;
+	padding: 3px;
+	background: #FFFFFF;
+	height: 25px;
+	padding: 2px 5px 2px 5px;
+	color: #9E9E9E;
+	font-size: 14px;
+	overflow: hidden;
+	font-family: Arial, Helvetica, sans-serif;
+}
+td>span {
+	background: #F3F3F3;
+	display: block;
+	padding: 3px;
+	margin: 1px -9px -9px -9px;
+	text-align: center;
+	color: #C0C0C0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
 
 </style>
+
+</head>
 <body>
-	<script type="text/javascript" src="buttonhide_show.js"></script>
-	<div th:if="${message}">
-			<h2 th:text="${message}" />
-	</div>
-	<form action="#" th:action="@{/products}" th:object="${products}"
+
+<!-- banner-body -->
+	<div class="banner-body">
+		<div class="container">
+			<div class="banner-body-content">
+			<div class="col-xs-3 banner-body-left">
+				<div class="logo">
+					<h1><a href="index.html">Aurfy <span>Inc</span></a></h1>
+				</div>
+				<div class="top-nav">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+						  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						  </button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+							<nav class="stroke">
+								<ul class="nav navbar-nav">
+									<li><a href="index.html" class="hvr-underline-from-left"><i class="home1"></i>BasicInfo</a></li>
+									<li class="active"><a href="products.html" class="hvr-underline-from-left"><i class="prod"></i>products</a></li>
+									<li><a href="short-codes.html" class="hvr-underline-from-left"><i class="text-size1"></i>Settlement</a></li>
+									<li><a href="blog.html" class="hvr-underline-from-left"><i class="edit1"></i>Bank</a></li>
+									<li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
+									<li><a href="submission.html" class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
+									<li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>Mail US</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!-- /.navbar-collapse -->
+					</nav>
+				</div>
+			</div>
+			<div class="col-xs-9 banner-body-right">
+<form action="#" th:action="@{/products}" th:object="${products}"
 		method="post">
-		<td><input id="onlinepaymentbutton" type="button"
-			name="onlinepaymentbutton" value="Online Payment" /> <script
-				type="text/javascript">
+
+		<input id="onlinepaymentbutton" type="button"
+			name="onlinepaymentbutton" value="Online Payment" />
+		
+		
+			<br/>
+		<script type="text/javascript">
 						buttonhide('onlinepaymentbutton','securepaytable');
 						buttonhide('onlinepaymentbutton','expresspaytable');
-						</script></td>
-		<table id="onlinepaymenttable" name="onlinepaymenttable">
-			<table id="securepaytable" name="securepaytable">
-				<tr>
-					<td><input id="securepaybutton" type="button"
-						name="securepaybutton" value="Securepay Button" /><script
-				type="text/javascript">
-						buttonhide('securepaybutton','securepaytunnel');
-						buttonhide('securepaybutton','securepaycurrencies');
-						buttonhide('securepaybutton','securepaysettlementn');
-						</script></td>
-				</tr>
-				<tr id="securepaytunnel" name="securepaytunnel">
-					<td><input id="securepay_unionpay" type="checkbox"
-						th:field="*{securepay_unionpay}" value="1"
-						name="securepay_unionpay" onchange='securepayunionpaylisetner();'/>
-						UnionPay</td>
-						<td><input id="securepay_wechatpay" type="checkbox"
-						th:field="*{securepay_wechatpay}" value="1"
-						name="securepay_wechatpay" onchange='securepayunionpaylisetner();'/>
-						WechatPay</td>
-						<td><input id="securepay_alipay" type="checkbox"
-						th:field="*{securepay_alipay}" value="1"
-						name="securepay_alipay" onchange='securepayunionpaylisetner();' />
-						AliPay</td>
-				</tr>
-				<script>
+						buttonhide('onlinepaymentbutton','easypaytable');
+						buttonhide('onlinepaymentbutton','securehr');
+						</script>
+
+<br/>
+		<script>
 				function securepayunionpaylisetner(){
 					 if((document.getElementById("securepay_wechatpay").checked ||document.getElementById("securepay_alipay").checked||document.getElementById("securepay_unionpay").checked)==true)
 				    {
@@ -76,60 +153,80 @@ body{
 				}
 				
 				</script>
-				<tr id="securepaycurrencies" name="securepaycurrencies">
-					<td><input id="securepaycurrency_USD" type="checkbox"
-						th:field="*{securepaycurrency_USD}" value="1"
-						name="securepaycurrency_USD"  />
-						USD</td>
-						<td><input id="securepaycurrency_JPY" type="checkbox"
-						th:field="*{securepaycurrency_JPY}" value="1"
-						name="securepaycurrency_JPY"/>
-						JPY</td>
-						<td><input id="securepaycurrency_HKD" type="checkbox"
-						th:field="*{securepaycurrency_HKD}" value="1"
-						name="securepaycurrency_HKD"/>
-						HKD</td>
-						<td><input id="securepaycurrency_EUR" type="checkbox"
-						th:field="*{securepaycurrency_EUR}" value="1"
-						name="securepaycurrency_EUR"/>
-						EUR</td>
-						<td><input id="securepaycurrency_GBP" type="checkbox"
-						th:field="*{securepaycurrency_GBP}" value="1"
-						name="securepaycurrency_GBP"/>
-						GBP</td>
-						<td><input id="securepaycurrency_CAD" type="checkbox"
-						th:field="*{securepaycurrency_CAD}" value="1"
-						name="securepaycurrency_CAD"/>
-						CAD</td>
+		<table id="securepaytable" name="securepaytable">
+		
+			<tr><td><input id="securepaybutton" type="button"
+				name="securepaybutton" value="Securepay Button"/></td>
+				
+					<script type="text/javascript">
+						buttonhide('securepaybutton','securepaytunnel');
+						buttonhide('securepaybutton','securepaycurrencies');
+						buttonhide('securepaybutton','securepaysettlementn');
+						</script>
+				
 				</tr>
-				
-				
-				<tr id="securepaysettlementn" name="securepaysettlementn">
-				<td> Settlement Cycle Setting:  T+</td>
-				<td><input type="text" th:field="*{securepay_settlement}" id="seccurepaysettmenet"/></td>
+
+								
+		
+		<tr id="securepaytunnel">
+		<td><label>UnionPay</label><input id="securepay_unionpay" type="checkbox" th:field="*{securepay_unionpay}" value="1" name="securepay_unionpay" onchange='securepayunionpaylisetner();'/>
+		</td>
+		<td> <label>WechatPay</label><input id="securepay_wechatpay" type="checkbox" th:field="*{securepay_wechatpay}" value="1" name="securepay_wechatpay" onchange='securepayunionpaylisetner();'/>
+		</td>
+		<td><label>AliPay</label><input id="securepay_alipay" type="checkbox" th:field="*{securepay_alipay}" value="1" name="securepay_alipay" onchange='securepayunionpaylisetner();' />
+		</td>
+		</tr>
+			<tr id="securepaycurrencies" name="securepaycurrencies">
+				<td><input id="securepaycurrency_USD" type="checkbox"
+					th:field="*{securepaycurrency_USD}" value="1"
+					name="securepaycurrency_USD" /> USD</td>
+				<td><input id="securepaycurrency_JPY" type="checkbox"
+					th:field="*{securepaycurrency_JPY}" value="1"
+					name="securepaycurrency_JPY" /> JPY</td>
+				<td><input id="securepaycurrency_HKD" type="checkbox"
+					th:field="*{securepaycurrency_HKD}" value="1"
+					name="securepaycurrency_HKD" /> HKD</td>
+				<td><input id="securepaycurrency_EUR" type="checkbox"
+					th:field="*{securepaycurrency_EUR}" value="1"
+					name="securepaycurrency_EUR" /> EUR</td>
+				<td><input id="securepaycurrency_GBP" type="checkbox"
+					th:field="*{securepaycurrency_GBP}" value="1"
+					name="securepaycurrency_GBP" /> GBP</td>
+				<td><input id="securepaycurrency_CAD" type="checkbox"
+					th:field="*{securepaycurrency_CAD}" value="1"
+					name="securepaycurrency_CAD" /> CAD</td>
+			</tr>
+
+
+			<tr id="securepaysettlementn" name="securepaysettlementn">
+				<td>Settlement Cycle Setting: T+</td>
+				<td><input type="text" th:field="*{securepay_settlement}"
+					id="seccurepaysettmenet" /></td>
 				<script>document.getElementById("seccurepaysettmenet").defaultValue="2";</script>
 				<td th:if="${#fields.hasErrors('securepay_settlement')}"
-					th:errors="*{securepay_settlement}" style="color: red;">securepay_settlement Error</td>
+					th:errors="*{securepay_settlement}" style="color: red;">securepay_settlement
+					Error</td>
 			</tr>
-			</table>
-			<table id="expresspaytable" name="expresspaytable">
-				<tr bgcolor="#f18973">
-					<td><input id="expresspaybutton" type="button"
-						name="expresspaybutton" value="Expresspay Button" /><script
-				type="text/javascript">
+		</table>
+<br/>
+		<table id="expresspaytable" name="expresspaytable">
+			<tr>
+				<td><input id="expresspaybutton" type="button"
+					name="expresspaybutton" value="Expresspay Button" />
+				<script type="text/javascript">
 						buttonhide('expresspaybutton','expresspaytunnel');
 						buttonhide('expresspaybutton','expresspaycurrencies');
 						buttonhide('expresspaybutton','expresspaysettlementn');
 						</script></td>
-				</tr>
-				<tr id="expresspaytunnel" name="expresspaytunnel">
-					<td><input id="expresspay_unionpay" type="checkbox"
-						th:field="*{expresspay_unionpay}" value="1"
-						name="expresspay_unionpay"  onchange='expresspayunionpaylisetner(this);'/>
-						UnionPay</td>
-				</tr>
-				
-				<script>
+			</tr>
+			<tr id="expresspaytunnel" name="expresspaytunnel">
+				<td><input id="expresspay_unionpay" type="checkbox"
+					th:field="*{expresspay_unionpay}" value="1"
+					name="expresspay_unionpay"
+					onchange='expresspayunionpaylisetner(this);' /> UnionPay</td>
+			</tr>
+
+			<script>
 				function expresspayunionpaylisetner(expresspay_unionpay){
 					 if(expresspay_unionpay.checked ==true)
 				    {
@@ -158,55 +255,55 @@ body{
 				}
 				
 				</script>
-				<tr id="expresspaycurrencies" name="expresspayurrencies">
-					<td><input id="expresspaycurrency_USD" type="checkbox"
-						th:field="*{expresspaycurrency_USD}" value="1"
-						name="expresspaycurrency_USD"  />
-						USD</td>
-						<td><input id="expresspaycurrency_JPY" type="checkbox"
-						th:field="*{expresspaycurrency_JPY}" value="1"
-						name="expresspaycurrency_JPY"/>
-						JPY</td>
-						<td><input id="expresspaycurrency_HKD" type="checkbox"
-						th:field="*{expresspaycurrency_HKD}" value="1"
-						name="expresspaycurrency_HKD"/>
-						HKD</td>
-						<td><input id="expresspaycurrency_EUR" type="checkbox"
-						th:field="*{expresspaycurrency_EUR}" value="1"
-						name="expresspaycurrency_EUR"/>
-						EUR</td>
-						<td><input id="expresspaycurrency_GBP" type="checkbox"
-						th:field="*{expresspaycurrency_GBP}" value="1"
-						name="expresspaycurrency_GBP"/>
-						GBP</td>
-						<td><input id="expresspaycurrency_CAD" type="checkbox"
-						th:field="*{expresspaycurrency_CAD}" value="1"
-						name="expresspaycurrency_CAD"/>
-						CAD</td>
-				</tr>
-
-				<tr id="expresspaysettlementn" name="expresspaysettlementn">
-					<td>Settlement Cycle Setting: T+</td>
-					<td><input type="text" th:field="*{expresspay_settlement}"
-						id="expresspaysettmenet" /></td>
-					<script>document.getElementById("expresspaysettmenet").defaultValue="2";</script>
-					<td th:if="${#fields.hasErrors('expresspay_settlement')}"
-						th:errors="*{expresspay_settlement}" style="color: red;">expresspay_settlement
-						Error</td>
-				</tr>
 				
-				<tr bgcolor="#f18973"><td><input id="easypay" type="checkbox"
-						th:field="*{easypay}" value="1"
-						name="easypay"  />
-						Easypay</td></tr>
-						
+			<tr id="expresspaycurrencies" name="expresspayurrencies">
+				<td><input id="expresspaycurrency_USD" type="checkbox"
+					th:field="*{expresspaycurrency_USD}" value="1"
+					name="expresspaycurrency_USD" /> USD</td>
+				<td><input id="expresspaycurrency_JPY" type="checkbox"
+					th:field="*{expresspaycurrency_JPY}" value="1"
+					name="expresspaycurrency_JPY" /> JPY</td>
+				<td><input id="expresspaycurrency_HKD" type="checkbox"
+					th:field="*{expresspaycurrency_HKD}" value="1"
+					name="expresspaycurrency_HKD" /> HKD</td>
+				<td><input id="expresspaycurrency_EUR" type="checkbox"
+					th:field="*{expresspaycurrency_EUR}" value="1"
+					name="expresspaycurrency_EUR" /> EUR</td>
+				<td><input id="expresspaycurrency_GBP" type="checkbox"
+					th:field="*{expresspaycurrency_GBP}" value="1"
+					name="expresspaycurrency_GBP" /> GBP</td>
+				<td><input id="expresspaycurrency_CAD" type="checkbox"
+					th:field="*{expresspaycurrency_CAD}" value="1"
+					name="expresspaycurrency_CAD" /> CAD</td>
+			</tr>
 
-			</table>
+			<tr id="expresspaysettlementn" name="expresspaysettlementn">
 			
+				<td>Settlement Cycle Setting: T+</td>
+				<td><input type="text" th:field="*{expresspay_settlement}"
+					id="expresspaysettmenet" /></td>
+				<script>document.getElementById("expresspaysettmenet").defaultValue="2";</script>
+				<td th:if="${#fields.hasErrors('expresspay_settlement')}"
+					th:errors="*{expresspay_settlement}" style="color: red;">expresspay_settlement
+					Error</td>
+					
+			</tr>
+
+			
+
+
 		</table>
+<table id="easypaytable">
 
-	<br/>
+			<tr >
+				<td><input id="easypay" type="checkbox" th:field="*{easypay}"
+					value="1" name="easypay" >Easypay</input></td>
+			</tr>
 
+</table>
+
+		<br />	<hr/>
+<br />
 		<td><input id="offlinepaymentbutton" type="button"
 			name="offlinepaymentbutton" value="Offline Payment" /> <script
 				type="text/javascript">
@@ -216,9 +313,9 @@ body{
 		<table id="offlinetable" name="offlinetable">
 			<table id="showQRtable" name="showQRtable">
 				<tr>
-					<td><input id="showQRbutton" type="button"
-						name="showQRbutton" value="Show QR Button" /><script
-				type="text/javascript">
+					<td><input id="showQRbutton" type="button" name="showQRbutton"
+						value="Show QR Button" />
+					<script type="text/javascript">
 						buttonhide('showQRbutton','showQRtunnel');
 						buttonhide('showQRbutton','showQRcurrencies');
 						buttonhide('showQRbutton','showQRsettlement');
@@ -226,16 +323,15 @@ body{
 				</tr>
 				<tr id="showQRtunnel" name="showQRtunnel">
 					<td><input id="showqrcode_alipay" type="checkbox"
-						th:field="*{showqrcode_alipay}" value="1"
-						name="showqrcode_alipay" onchange='showQRlisetner();'/>
-						AliPay</td>
-						<td><input id="showqrcode_wechatpay" type="checkbox"
+						th:field="*{showqrcode_alipay}" value="1" name="showqrcode_alipay"
+						onchange='showQRlisetner();' /> AliPay</td>
+					<td><input id="showqrcode_wechatpay" type="checkbox"
 						th:field="*{showqrcode_wechatpay}" value="1"
-						name="showqrcode_wechatpay" onchange='showQRlisetner();'/>
+						name="showqrcode_wechatpay" onchange='showQRlisetner();' />
 						WechatPay</td>
 				</tr>
-				
-				
+
+
 				<script>
 				function showQRlisetner(){
 					if((document.getElementById("showqrcode_wechatpay").checked ||document.getElementById("showqrcode_alipay").checked)==true)
@@ -268,43 +364,40 @@ body{
 				<tr id="showQRcurrencies" name="showQRcurrencies">
 					<td><input id="showqrcodecurrency_USD" type="checkbox"
 						th:field="*{showqrcodecurrency_USD}" value="1"
-						name="showqrcodecurrency_USD"  />
-						USD</td>
-						<td><input id="showqrcodecurrency_JPY" type="checkbox"
+						name="showqrcodecurrency_USD" /> USD</td>
+					<td><input id="showqrcodecurrency_JPY" type="checkbox"
 						th:field="*{showqrcodecurrency_JPY}" value="1"
-						name="showqrcodecurrency_JPY"/>
-						JPY</td>
-						<td><input id="showqrcodecurrency_HKD" type="checkbox"
+						name="showqrcodecurrency_JPY" /> JPY</td>
+					<td><input id="showqrcodecurrency_HKD" type="checkbox"
 						th:field="*{showqrcodecurrency_HKD}" value="1"
-						name="showqrcodecurrency_HKD"/>
-						HKD</td>
-						<td><input id="showqrcodecurrency_EUR" type="checkbox"
+						name="showqrcodecurrency_HKD" /> HKD</td>
+					<td><input id="showqrcodecurrency_EUR" type="checkbox"
 						th:field="*{showqrcodecurrency_EUR}" value="1"
-						name="showqrcodecurrency_EUR"/>
-						EUR</td>
-						<td><input id="showqrcodecurrency_GBP" type="checkbox"
+						name="showqrcodecurrency_EUR" /> EUR</td>
+					<td><input id="showqrcodecurrency_GBP" type="checkbox"
 						th:field="*{showqrcodecurrency_GBP}" value="1"
-						name="showqrcodecurrency_GBP"/>
-						GBP</td>
-						<td><input id="showqrcodecurrency_CAD" type="checkbox"
+						name="showqrcodecurrency_GBP" /> GBP</td>
+					<td><input id="showqrcodecurrency_CAD" type="checkbox"
 						th:field="*{showqrcodecurrency_CAD}" value="1"
-						name="showqrcodecurrency_CAD"/>
-						CAD</td>
+						name="showqrcodecurrency_CAD" /> CAD</td>
 				</tr>
-						
+
 				<tr id="showQRsettlement" name="showQRsettlement">
-				<td> Settlement Cycle Setting:  T+</td>
-				<td><input type="text" th:field="*{showqrcode_settlement}" id="showqrcode_settlement"/></td>
-				<script>document.getElementById("showqrcode_settlement").defaultValue="2";</script>
-				<td th:if="${#fields.hasErrors('showqrcode_settlement')}"
-					th:errors="*{securepay_settlement}" style="color: red;">securepay_settlement Error</td>
-			</tr>
+					<td>Settlement Cycle Setting: T+</td>
+					<td><input type="text" th:field="*{showqrcode_settlement}"
+						id="showqrcode_settlement" /></td>
+					<script>document.getElementById("showqrcode_settlement").defaultValue="2";</script>
+					<td th:if="${#fields.hasErrors('showqrcode_settlement')}"
+						th:errors="*{showqrcode_settlement}" style="color: red;">showqrcode_settlement
+						Error</td>
+				</tr>
 			</table>
+	<br/>
 			<table id="POStable" name="POStable">
 				<tr>
-					<td><input id="POSbutton" type="button"
-						name="POSbutton" value="POS Button" /><script
-				type="text/javascript">
+					<td><input id="POSbutton" type="button" name="POSbutton"
+						value="POS Button" />
+					<script type="text/javascript">
 						buttonhide('POSbutton','POStunnel');
 						buttonhide('POSbutton','POScurrencies');
 						buttonhide('POSbutton','POSsettelemtn');
@@ -312,20 +405,17 @@ body{
 				</tr>
 				<tr id="POStunnel" name="POStunnel">
 					<td><input id="POS_unionpay" type="checkbox"
-						th:field="*{POS_unionpay}" value="1"
-						name="POS_unionpay"  onchange='POSlisetner();'/>
-						UnionPay</td>
-						<td><input id="POS_wechatpay" type="checkbox"
-						th:field="*{POS_wechatpay}" value="1"
-						name="POS_wechatpay"  onchange='POSlisetner();'/>
-						WechatPay</td>
-						<td><input id="POS_alipay" type="checkbox"
-						th:field="*{POS_alipay}" value="1"
-						name="POS_alipay"  onchange='POSlisetner();'/>
-						AliPay</td>
-						
+						th:field="*{POS_unionpay}" value="1" name="POS_unionpay"
+						onchange='POSlisetner();' /> UnionPay</td>
+					<td><input id="POS_wechatpay" type="checkbox"
+						th:field="*{POS_wechatpay}" value="1" name="POS_wechatpay"
+						onchange='POSlisetner();' /> WechatPay</td>
+					<td><input id="POS_alipay" type="checkbox"
+						th:field="*{POS_alipay}" value="1" name="POS_alipay"
+						onchange='POSlisetner();' /> AliPay</td>
+
 				</tr>
-				
+
 				<script>
 				function POSlisetner(){
 					 if((document.getElementById("POS_alipay").checked ||document.getElementById("POS_wechatpay").checked||document.getElementById("POS_unionpay").checked)==true)
@@ -355,46 +445,46 @@ body{
 				}
 				
 				</script>
-				
-				
+
+
 				<tr id="POScurrencies" name="POScurrencies">
 					<td><input id="POScurrency_USD" type="checkbox"
-						th:field="*{POScurrency_USD}" value="1"
-						name="POScurrency_USD"  />
+						th:field="*{POScurrency_USD}" value="1" name="POScurrency_USD" />
 						USD</td>
-						<td><input id="POScurrency_JPY" type="checkbox"
-						th:field="*{POScurrency_JPY}" value="1"
-						name="POScurrency_JPY"/>
+					<td><input id="POScurrency_JPY" type="checkbox"
+						th:field="*{POScurrency_JPY}" value="1" name="POScurrency_JPY" />
 						JPY</td>
-						<td><input id="POScurrency_HKD" type="checkbox"
-						th:field="*{POScurrency_HKD}" value="1"
-						name="POScurrency_HKD"/>
+					<td><input id="POScurrency_HKD" type="checkbox"
+						th:field="*{POScurrency_HKD}" value="1" name="POScurrency_HKD" />
 						HKD</td>
-						<td><input id="POScurrency_EUR" type="checkbox"
-						th:field="*{POScurrency_EUR}" value="1"
-						name="POScurrency_EUR"/>
+					<td><input id="POScurrency_EUR" type="checkbox"
+						th:field="*{POScurrency_EUR}" value="1" name="POScurrency_EUR" />
 						EUR</td>
-						<td><input id="POScurrency_GBP" type="checkbox"
-						th:field="*{POScurrency_GBP}" value="1"
-						name="POScurrency_GBP"/>
+					<td><input id="POScurrency_GBP" type="checkbox"
+						th:field="*{POScurrency_GBP}" value="1" name="POScurrency_GBP" />
 						GBP</td>
-						<td><input id="POScurrency_CAD" type="checkbox"
-						th:field="*{POScurrency_CAD}" value="1"
-						name="POScurrency_CAD"/>
+					<td><input id="POScurrency_CAD" type="checkbox"
+						th:field="*{POScurrency_CAD}" value="1" name="POScurrency_CAD" />
 						CAD</td>
 				</tr>
-				
-				
+
+
 				<tr id="POSsettelemtn" name="POSsettelemtn">
-				<td> Settlement Cycle Setting:  T+</td>
-				<td><input type="text" th:field="*{POS_settlement}" id="POS_settlement"/></td>
-				<script>document.getElementById("POS_settlement").defaultValue="2";</script>
-				<td th:if="${#fields.hasErrors('POS_settlement')}"
-					th:errors="*{POS_settlement}" style="color: red;">expresspay_settlement Error</td>
-			</tr>
+					<td>Settlement Cycle Setting: T+</td>
+					<td><input type="text" th:field="*{POS_settlement}"
+						id="POS_settlement" /></td>
+					<script>document.getElementById("POS_settlement").defaultValue="2";</script>
+					<td th:if="${#fields.hasErrors('POS_settlement')}"
+						th:errors="*{POS_settlement}" style="color: red;">POS_settlement
+						Error</td>
+				</tr>
 			</table>
 		</table>
-			<script>
+		<br/>
+		<a href="contactinfo.html" style="padding-right:20px;">Previous Page</a><input type="submit">
+		</input>
+		<a href="login.html" style="padding-left:20px;">Log Out</a>
+		<script>
 			document.getElementById("POScurrency_USD").disabled = true;
 			document.getElementById("POScurrency_JPY").disabled = true;
 			document.getElementById("POScurrency_HKD").disabled = true;
@@ -425,11 +515,24 @@ body{
 			document.getElementById('expresspaysettmenet').readOnly = true;
 			</script>
 
-		<tr>
-			  <td><a href="contactinfo.html">Previous Page</a><button type="submit">Submit</button><a href="login.html">Log Out</a></td>
-		</tr>
-
 	</form>
+			</div>
 
+
+			
+			<div class="footer">
+				<div class="footer-left">
+					<p>Copyright &copy; 2016.Company name All rights reserved.<a href="http://nihaopay.com/" target="_blank" title="aurfy">NihaoPay</a> </p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+<!-- //banner-body -->
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
 </body>
 </html>

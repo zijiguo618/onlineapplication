@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Great Taste Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'/>
+<style type="text/css">
+
+input[type="text"], input[type="date"], input[type="datetime"], input[type="number"],
+	input[type="url"], select {
+	height: 50px;
+	padding: 12px 20px;
+	width: 100%;
+	display: block;
+	border: none;
+	height: 25px;
+	line-height: 25px;
+	font-size: 16px;
+	padding: 0;
+	background: #ECEFF1;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+td>label {
+ box-shadow: -0px -1px 2px #B9B9B9;
+    -moz-box-shadow:-0px -1px 2px #B9B9B9;
+    -webkit-box-shadow:-0px -1px 2px #B9B9B9;
+	border-top: 1px solid #B9B9B9;
+    border-left: 1px solid #B9B9B9;
+    border-right: 1px solid #B9B9B9;
+	display: block;
+	float: left;
+	margin-top: 10px;
+	padding: 3px;
+	background: #FFFFFF;
+	height: 25px;
+	padding: 2px 5px 2px 5px;
+	color: #9E9E9E;
+	font-size: 14px;
+	overflow: hidden;
+	font-family: Arial, Helvetica, sans-serif;
+}
+td>span {
+	background: #F3F3F3;
+	display: block;
+	padding: 3px;
+	margin: 1px -9px -9px -9px;
+	text-align: center;
+	color: #C0C0C0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+</style>
+
+</head>
+<body>
+
+<form action="#" th:action="@{/basicinfo}" th:object="${basicinfo}"
+		method="post">
+	<div class="banner-body">
+		<div class="container">
+			<div class="banner-body-content">
+			<div class="col-xs-3 banner-body-left">
+				<div class="logo">
+					<h1><a href="index.html">Aurfy <span>Inc</span></a></h1>
+				</div>
+				<div class="top-nav">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+						  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						  </button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+							<nav class="stroke">
+								<ul class="nav navbar-nav">
+									<li class="active"><a href="index.html"><i class="home"></i>BasicInfo</a></li>
+									<li><a href="products.html" class="hvr-underline-from-left"><i class="prod1"></i>products</a></li>
+									<li><a href="short-codes.html" class="hvr-underline-from-left"><i class="text-size1"></i>Settlement</a></li>
+									<li><a href="blog.html" class="hvr-underline-from-left"><i class="edit1"></i>Bank</a></li>
+									<li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
+									<li><a href="submission.html" class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
+									<li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>Mail US</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!-- /.navbar-collapse -->
+					</nav>
+				</div>
+			</div>
+			<div class="col-xs-9 banner-body-right">
+
+		<table align="center">
+			<tr>
+				<td>Application ID: <p th:text="${applicationID}" /></td>
+			</tr>
+			<tr>
+				<td><label for="merchantname">Merchant Name</label><input
+					type="text" th:field="*{merchantname}" /><span>Please enter
+						your merchant Name</span></td>
+				<td th:if="${#fields.hasErrors('merchantname')}"
+					th:errors="*{merchantname}" style="color: red;">MerchantName
+					Error</td>
+			</tr>
+			<tr>
+
+				<td><label for="merchantlegalname">Merchant Legal Name</label><input
+					type="text" th:field="*{merchantlegalname}" /><span>Please
+						enter your Merchant Legal Name</span></td>
+				<td th:if="${#fields.hasErrors('merchantlegalname')}"
+					th:errors="*{merchantlegalname}" style="color: red;">LegalName
+					Error</td>
+			</tr>
+			<tr>
+				<td><label for="merchantwebsiteurl">Merchant Website </label><input type="text" th:field="*{merchanturl}"
+					placeholder="http://" /><span>Please enter your website URL
+						eg. https://www.google.com</span></td>
+				<td th:if="${#fields.hasErrors('merchanturl')}"
+					th:errors="*{merchanturl}" style="color: red;">WebsiteURL
+					Error</td>
+
+			</tr>
+			<tr>
+				<td><label for="natureofmerchant">Nature of Merchant</label><select
+					id="natureofmerchantlist" name="natureofmerchantlist"
+					th:field="*{natureofmerchant}">
+						<option value=" "></option>
+						<option value="CORPORATION">Coporation</option>
+						<option value="PARTNERSHIP">Partnership</option>
+						<option value="SOLEPROPRIETORSHIP">Sole Proprietorship</option>
+						<option value="PROFESSIONALASSOC">Professional assoc</option>
+						<option value="TAXEXEMPTORG">Tax exempt org.(510C)</option>
+						<option value="LLC">LLC</option>
+						<option value="OTHER">OTHER</option>
+				</select><span>Please select your merchant nature</span></td>
+				<td th:if="${#fields.hasErrors('natureofmerchant')}"
+					th:errors="*{natureofmerchant}" style="color: red;">natureofmerchant
+					Error</td>
+			</tr>
+			<tr>
+
+				<td><label for="merchanttype">Merchant type</label><select
+					id="merchanttypelist" name="merchanttypelist"
+					th:field="*{merchanttype}">
+						<option value=""></option>
+						<option value="INDIVIDUALACCOUNT">Individual</option>
+						<option value="COMPANYACCOUNT">Company</option>
+						<option value="GROUP">Group</option>
+				</select><span>Please select your merchant type</span></td>
+				<td th:if="${#fields.hasErrors('merchanttype')}"
+					th:errors="*{merchanttype}" style="color: red;">MerchantType
+					Error</td>
+			</tr>
+
+			<tr>
+				<td><label for="mcc">MCC</label><select id="mcclist"
+					name="mcclist" th:field="*{mcc}">
+						<option th:each="mcc : ${mcclist}" th:text="${mcc}"
+							th:value="${mcc}" />
+				</select><span>Please select your MCC field</span></td>
+				<td th:if="${#fields.hasErrors('merchantlegalname')}"
+					th:errors="*{mcc}" style="color: red;">mcc Error</td>
+			</tr>
+			<tr>
+
+				<td><label for="industry">Industry</label><select
+					id="industryselect" name="industryselect" th:field="*{industry}">
+						<option value=""></option>
+						<option value="Internet and eCommerce">Internet and
+							eCommerce</option>
+						<option value="Electronic">Electronic</option>
+						<option value="Automotive">Automotive</option>
+						<option value="Education and School">Education and School</option>
+						<option value="Tourism and Travel">Tourism and travel</option>
+						<option value="Beauty and Health Care">Beauty and Health
+							Care</option>
+						<option value="Resturant and Food">Resturant and Food</option>
+						<option value="Retail">Retail</option>
+						<option value="Jewelry">Jewelry</option>
+						<option value="Fashion">Fashion</option>
+						<option value="Baby products and Toys">Baby products and
+							Toys</option>
+						<option value="Entertainment, music and Games">Entertainment,
+							Music and Games</option>
+						<option value="Sports and Outdoors">Sports and Outdoors</option>
+						<option value="Professional Services">Professional
+							Services</option>
+						<option value="Business Services">Business Services</option>
+						<option value="Government Services">Government Services</option>
+						<option value="Other">Other</option>
+				</select><span>Please select the industry of your business</span></td>
+
+				<td th:if="${#fields.hasErrors('industry')}" th:errors="*{industry}"
+					style="color: red;">Industry Error</td>
+
+			</tr>
+			<tr>
+
+				<td><label for="federaltaxid">Federal tax ID</label><input
+					type="text" th:field="*{federaltaxid}" /><span>Please enter
+						your Federal tax ID</span></td>
+				<td th:if="${#fields.hasErrors('federaltaxid')}"
+					th:errors="*{federaltaxid}" style="color: red;">federaltaxid
+					Error</td>
+
+			</tr>
+			<tr>
+
+				<td><label for="agent">Agent Name</label><input type="text"
+					th:field="*{agent}" /><span>Please enter your agent Name</span></td>
+				<td th:if="${#fields.hasErrors('agent')}" th:errors="*{agent}"
+					style="color: red;">agent Error</td>
+			</tr>
+
+			<tr>
+				<td><label for="customerservicetel">Customer Service
+						Tel</label><input type="text" th:field="*{customerservicetel}" /><span>Please
+						enter the phone number of your customer service</span></td>
+				<td th:if="${#fields.hasErrors('customerservicetel')}"
+					th:errors="*{customerservicetel}" style="color: red;">CustomerTel
+					Error</td>
+
+			</tr>
+
+			<tr>
+				<td><label for="establishdate">Business Established
+						Date (MM/DD/YY)</label><input type="date" th:field="*{establisheddate}" /><span>Please
+						select your establish date</span></td>
+				<td th:if="${#fields.hasErrors('establisheddate')}"
+					th:errors="*{establisheddate}" style="color: red;">EstablishedDate
+					Error</td>
+			</tr>
+
+<tr>
+
+				<td><label for="timeZone">timeZone</label><select
+					id="timeZoneselect" name="timeZoneselect" th:field="*{timeZone}">
+						<option value=""></option>
+						<option value="ETC_GMT_12">GMT-12:00</option>
+						<option value="US_SAMOA">Samoa Standard Time</option>
+						<option value="HST">Hawaii Standard Time</option>
+						<option value="PACIFIC_MARQUESAS">Marquesas Time</option>
+						<option value="AST">Alaska Standard Time</option>
+						<option value="PST">Pacific Standard Time</option>
+						<option value="MST">Mountain Standard Time</option>
+						<option value="CST">Central Standard Time</option>
+						<option value="EST">Eastern Standard Time</option>
+						<option value="AMERICA_CARACAS">Venezuela Time</option>
+						<option value="PRT">Atlantic Standard Time</option>
+						<option value="CNT">Newfoundland Standard Time</option>
+						<option value="AGT">Argentine Time</option>
+						<option value="BET">Brasilia Time</option>
+						<option value="ETC_GMT_2">GMT-02:00</option>
+						<option value="AMERICA_SCORESBYSUND">Eastern Greenland Time</option>
+						<option value="ETC_GREENWICH">Greenwich Mean Time</option>
+						<option value="UTC">Coordinated Universal Time</option>
+						<option value="WET">Western European Time</option>
+						<option value="AFRICA_BANGUI">Western African Time</option>
+						<option value="CET">Central European Time"</option>
+						<option value="ART">Eastern European Time</option>
+						<option value="CAT">Central African Time</option>
+						<option value="ISRAEL">Israel Standard Time</option>
+						<option value="EAT">Eastern African Time</option>
+						<option value="ETC_GMT_3">GMT+03:00</option>
+						<option value="ASIA_RIYADH87">GMT+03:07</option>
+						<option value="IRAN">Iran Standard Time</option>
+						<option value="ETC_GMT_4">GMT+04:00</option>
+						<option value="W_SU">Moscow Standard Time</option>
+						<option value="ASIA_KABUL">Afghanistan Time</option>
+						<option value="PLT">Pakistan Time</option>
+						<option value="IST">India Standard Time</option>
+						<option value="ASIA_KATMANDU">Nepal Time</option>
+						<option value="ETC_GMT_6">GMT+06:00</option>
+						<option value="ASIA_RANGOON">Myanmar Time</option>
+						<option value="INDIAN_COCOS">Cocos Islands Time</option>
+						<option value="ETC_GM_7">GMT+07:00</option>
+						<option value="VST">Indochina Time</option>
+						<option value="CTT">China Standard Time</option>
+						<option value="AUSTRALIA_RUCLA">Central Western Standard Time ( Australia)</option>
+						<option value="JST">Japan Standard Time</option>
+						<option value="ROK">Korea Standard Time</option>
+						<option value="ACT">Central Standard Time (Northern Territory)</option>
+						<option value="AET">Eastern Standard Time (New South Wales)</option>
+						<option value="ETC_GMT_10">GMT+10:00</option>
+						<option value="AUSTRALIA_LHI">Lord Howe Standard Time</option>
+						<option value="SST">Solomon Is. Time</option>
+						<option value="PACIFIC_NORFOLK">Norfolk Time</option>
+						<option value="NST">New Zealand Standard Time</option>
+						<option value="NZ_CHAT">Chatham Standard Time</option>
+						<option value="MIT">West Samoa Time</option>
+						<option value="ETC_GMT_14">GMT+14:00</option>
+						<option value="PACIFIC_KIRITIMATI">Line Is. Time</option>
+				</select><span>Please select the Time Zone of your city</span></td>
+
+				<td th:if="${#fields.hasErrors('timeZone')}" th:errors="*{timeZone}"
+					style="color: red;">Industry Error</td>
+
+			</tr>
+			
+		</table>
+
+<center>
+		<fieldset>
+			<legend>Mailing Address</legend>
+			<label>Country <select id="mailaddress_country"
+				name="mailaddress_country" th:field="*{mailaddress_country}"
+				style="width: 250px;"></select>
+			</label> <label>State <select id="mailaddress_state"
+				name="mailaddress_state" th:field="*{mailaddress_state}"
+				style="width: 250px;"></select>
+			</label> <label>City <select id="mailaddress_city"
+				name="mailaddress_city" th:field="*{mailaddress_city}"
+				style="width: 250px;"></select>
+			</label> <label>Street <input type="text"
+				th:field="*{mailaddress_street}" placeholder="street name"
+				style="width: 250px;" />
+			</label> <label>ZipCode <input type="text"
+				th:field="*{mailaddress_zipcode}" placeholder="Zip Code"
+				style="width: 130px;" />
+			
+			</label> 
+			
+			<label th:if="${#fields.hasErrors('mailaddress_street')}"
+				th:errors="*{mailaddress_street}" style="color: red;" />
+
+			<script type="text/javascript" src="ssqaddress.js"></script>
+			<script type="text/javascript">
+							addressInit('mailaddress_country',
+									'mailaddress_state', 'mailaddress_city');
+						</script>
+		</fieldset>
+
+		<input type="submit" />
+</center>
+	
+			</div>
+
+
+			
+			<div class="footer">
+				<div class="footer-left">
+					<p>Copyright &copy; 2016.Company name All rights reserved.<a href="http://nihaopay.com/" target="_blank" title="模板之家">NihaoPay</a> </p>
+				</div>
+				
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+<!-- //banner-body -->
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+</form>
+</body>
+</html>

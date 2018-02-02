@@ -26,6 +26,8 @@ import com.example.demo.utilities.Basicinfo;
 import com.example.demo.utilities.MCClist;
 
 import com.example.demo.utilities.Registration;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class BasicinfoController {
@@ -39,7 +41,7 @@ public class BasicinfoController {
 		int applicationid = (int) session.getAttribute("applicationID");
 		modelAndView.addObject("basicinfo", basicinfo.getbasicinfo(applicationid));
 		modelAndView.addObject("applicationID", applicationid);
-		modelAndView.setViewName("basicinfo");
+		modelAndView.setViewName("index");
 		modelAndView.addObject("mcclist", mcclist.getlist());
 		return modelAndView;
 	}
@@ -48,60 +50,39 @@ public class BasicinfoController {
 	public ModelAndView processRegistration(@Valid Basicinfo basicinfo,BindingResult result,HttpServletRequest request,RedirectAttributes redirectAttributes) throws SQLException, ClassNotFoundException {
 		ModelAndView modelAndView = new ModelAndView();
 		DB db = new DB();
+		System.out.println("confirm button");
 		String mailingaddress = basicinfo.getMailaddress_country() + " , " + basicinfo.getMailaddress_state() + " , "
 				+ basicinfo.getMailaddress_city() + " , " + basicinfo.getMailaddress_street() + " , "
 				+ basicinfo.getMailaddress_zipcode();
-		String 	physicaladdress = basicinfo.getPhyaddress_country() + " , " + basicinfo.getPhyaddress_state() + " , "
-				+ basicinfo.getPhyaddress_city() + " , " + basicinfo.getPhyaddress_street() + " , "
-				+ basicinfo.getPhyaddress_zipcode();
-		if (basicinfo.getAddressmatch()!= null && basicinfo.getAddressmatch().equals("1")) {
-			physicaladdress = mailingaddress;
-			System.out.println("-----------same address");
-			basicinfo.setPhyaddress_country(basicinfo.getMailaddress_country());
-			basicinfo.setPhyaddress_state(basicinfo.getMailaddress_state());
-			basicinfo.setPhyaddress_city(basicinfo.getMailaddress_city());
-			basicinfo.setPhyaddress_street(basicinfo.getMailaddress_street());
-			basicinfo.setPhyaddress_zipcode(basicinfo.getMailaddress_zipcode());
-
-		} else {
-			if (basicinfo.getPhyaddress_country() == null) {
-				redirectAttributes.addFlashAttribute("message",
-						"Please enter your Physical Address Country cannot be Empty");
-				modelAndView.setViewName("redirect:/basicinfo");
-				return modelAndView;
-			}
-			if (basicinfo.getPhyaddress_street() == null||basicinfo.getPhyaddress_street() =="") {
-				redirectAttributes.addFlashAttribute("message",
-						"Please enter your Physical Address Street, it cannot be Empty");
-				modelAndView.setViewName("redirect:/basicinfo");
-				return modelAndView;
-			}
-			if (basicinfo.getPhyaddress_zipcode() == null||basicinfo.getPhyaddress_zipcode() == "") {
-				redirectAttributes.addFlashAttribute("message",
-						"Please enter your Physical Address Zipcode, it cannot be Empty");
-				modelAndView.setViewName("redirect:/basicinfo");
-				return modelAndView;
-			}
-		}
+		
 
 		if (result.hasErrors()) {
 			System.out.println("errors happreed");
 			MCClist mcclist= new MCClist();
 			modelAndView.addObject("mcclist", mcclist.getlist());
-			modelAndView.setViewName("basicinfo");
+			modelAndView.setViewName("index");
 			return modelAndView;
 		}
 		HttpSession session = request.getSession();
 		session.setAttribute("basicinfo", basicinfo);
 		modelAndView.setViewName("redirect:/contactinfo");
 		db.update2application_basic((int)session.getAttribute("applicationID"), basicinfo.getMerchantname(), basicinfo.getMerchantlegalname(),
-				basicinfo.getMerchanturl(), basicinfo.getCustomerservicetel(), basicinfo.getmerchanttype(),
+				basicinfo.getMerchanturl(), basicinfo.getCustomerservicetel(), basicinfo.getMerchanttype(),
 				basicinfo.getEstablisheddate(), basicinfo.getNatureofmerchant(), basicinfo.getMcc(),
-				basicinfo.getIndustry(), basicinfo.getFederaltaxid(), basicinfo.getAgent(), physicaladdress,
+				basicinfo.getIndustry(), basicinfo.getFederaltaxid(), basicinfo.getAgent(),
 				mailingaddress);
 		db.updatestage((int)session.getAttribute("applicationID"), 1, "stage");
-	
-
+		 ObjectMapper mapperObj = new ObjectMapper();
+		 String jsonStr;
+		try {
+			System.out.println("----hson----");
+			jsonStr = mapperObj.writeValueAsString(basicinfo);
+			System.out.println(jsonStr);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       
 		return modelAndView;
 	}
 

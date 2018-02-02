@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Settlement</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Great Taste Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'/>
+</head>
+<body>
+
+<!-- banner-body -->
+	<div class="banner-body">
+		<div class="container">
+			<div class="banner-body-content">
+			<div class="col-xs-3 banner-body-left">
+				<div class="logo">
+					<h1><a href="index.html">Aurfy <span>Inc</span></a></h1>
+				</div>
+				<div class="top-nav">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+						  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						  </button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+							<nav class="stroke">
+								<ul class="nav navbar-nav">
+									<li><a href="index.html" class="hvr-underline-from-left"><i class="home1"></i>BasicInfo</a></li>
+									<li><a href="products.html" class="hvr-underline-from-left"><i class="prod1"></i>products</a></li>
+									<li class="active"><a href="short-codes.html" ><i class="text-size"></i>Settlement</a></li>
+									<li ><a href="blog.html" class="hvr-underline-from-left"><i class="edit1"></i>Bank</a></li>
+									<li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
+									<li><a href="submission.html" class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
+									<li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>Mail US</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!-- /.navbar-collapse -->
+					</nav>
+				</div>
+			</div>
+			<div class="col-xs-9 banner-body-right">
+				<form action="#" th:action="@{/settlementaccount}" th:object="${settlement}"
+		method="post">
+		<table>
+		
+			<tr>
+				<td><input type="radio" name="radAnswer"
+					id="settlesinglecurrency" value="settlesinglecurrency" />Single
+					Currency Settlement</td>
+
+				<td>
+					<input type="radio" name="singlecurrency" id="settlesinglecurrency_USD" th:field="*{settlemulticurrency_USD}" th:value="USD" />USD 
+					<input type="radio"	name="singlecurrency" id="settlesinglecurrency_JPY" th:field="*{settlemulticurrency_JPY}" th:value="JPY"/>JPY 
+					<input type="radio" name="singlecurrency" id="settlesinglecurrency_HKD" th:field="*{settlemulticurrency_HKD}" th:value="HKD" />HKD
+					<input type="radio" name="singlecurrency" id="settlesinglecurrency_EUR" th:field="*{settlemulticurrency_EUR}" th:value="EUR"/>EUR 
+					<input type="radio" name="singlecurrency" id="settlesinglecurrency_GBP" th:field="*{settlemulticurrency_GBP}" th:value="GBP"/>GBP 
+					<input type="radio" name="singlecurrency" id="settlesinglecurrency_CAD" th:field="*{settlemulticurrency_CAD}" th:value="CAD"/>CAD
+				</td>
+			</tr>
+			<tr>
+				<td><input type="radio" name="radAnswer"
+					id="settlemulticurrencies" value="settlemulticurrencies" />Multiple
+					Currency Settlement</td>
+
+				<td><input type="checkbox" name="settlemulticurrency_USD" id="settlemulticurrency_USD" th:field="*{settlemulticurrency_USD}" th:value="USD"/>USD 
+					<input type="checkbox" name="settlemulticurrency_JPY" id="settlemulticurrency_JPY" th:field="*{settlemulticurrency_JPY}" th:value="JPY"/>JPY
+					<input type="checkbox" name="settlemulticurrency_HKD" id="settlemulticurrency_HKD" th:field="*{settlemulticurrency_HKD}" th:value="HKD"/>HKD 
+					<input type="checkbox" name="settlemulticurrency_EUR" id="settlemulticurrency_EUR" th:field="*{settlemulticurrency_EUR}" th:value="EUR"/>EUR
+					<input type="checkbox" name="settlemulticurrency_GBP" id="settlemulticurrency_GBP" th:field="*{settlemulticurrency_GBP}" th:value="GBP"/>GBP 
+					<input type="checkbox" name="settlemulticurrency_CAD" id="settlemulticurrency_CAD" th:field="*{settlemulticurrency_CAD}" th:value="CAD"/>CAD
+				</td>
+			</tr>
+			<script>
+			document.getElementById("settlemulticurrency_USD").disabled = true;
+			document.getElementById("settlemulticurrency_JPY").disabled = true;
+			document.getElementById("settlemulticurrency_HKD").disabled = true;
+			document.getElementById("settlemulticurrency_EUR").disabled = true;
+			document.getElementById("settlemulticurrency_GBP").disabled = true;
+			document.getElementById("settlemulticurrency_CAD").disabled = true;
+			document.getElementById("settlesinglecurrency_USD").disabled=true;
+			document.getElementById("settlesinglecurrency_JPY").disabled=true;
+			document.getElementById("settlesinglecurrency_HKD").disabled=true;
+			document.getElementById("settlesinglecurrency_EUR").disabled=true;
+			document.getElementById("settlesinglecurrency_GBP").disabled=true;
+			document.getElementById("settlesinglecurrency_CAD").disabled=true;
+			document.getElementById("settlemulticurrency_USD").checked = false;
+			document.getElementById("settlemulticurrency_JPY").checked = false;
+			document.getElementById("settlemulticurrency_HKD").checked = false;
+			document.getElementById("settlemulticurrency_EUR").checked = false;
+			document.getElementById("settlemulticurrency_GBP").checked = false;
+			document.getElementById("settlemulticurrency_CAD").checked = false;
+			document.getElementById("settlesinglecurrency_USD").checked=false;
+			document.getElementById("settlesinglecurrency_JPY").checked=false;
+			document.getElementById("settlesinglecurrency_HKD").checked=false;
+			document.getElementById("settlesinglecurrency_EUR").checked=false;
+			document.getElementById("settlesinglecurrency_GBP").checked=false;
+			document.getElementById("settlesinglecurrency_CAD").checked=false; 
+			</script>
+			<script>
+    			document.getElementById("settlesinglecurrency").onclick=function() {
+    			document.getElementById("settlesinglecurrency_USD").disabled=false;
+			document.getElementById("settlesinglecurrency_JPY").disabled=false;
+			document.getElementById("settlesinglecurrency_HKD").disabled=false;
+			document.getElementById("settlesinglecurrency_EUR").disabled=false;
+			document.getElementById("settlesinglecurrency_GBP").disabled=false;
+			document.getElementById("settlesinglecurrency_CAD").disabled=false; 
+			
+			document.getElementById("settlemulticurrency_USD").checked = false;
+			document.getElementById("settlemulticurrency_JPY").checked = false;
+			document.getElementById("settlemulticurrency_HKD").checked = false;
+			document.getElementById("settlemulticurrency_EUR").checked = false;
+			document.getElementById("settlemulticurrency_GBP").checked = false;
+			document.getElementById("settlemulticurrency_CAD").checked = false;
+			
+			document.getElementById("settlemulticurrency_USD").disabled = true;
+			document.getElementById("settlemulticurrency_JPY").disabled = true;
+			document.getElementById("settlemulticurrency_HKD").disabled = true;
+			document.getElementById("settlemulticurrency_EUR").disabled = true;
+			document.getElementById("settlemulticurrency_GBP").disabled = true;
+			document.getElementById("settlemulticurrency_CAD").disabled = true;
+			
+    		};
+    		document.getElementById("settlemulticurrencies").onclick=function() {
+    			document.getElementById("settlesinglecurrency_USD").disabled=true;
+			document.getElementById("settlesinglecurrency_JPY").disabled=true;
+			document.getElementById("settlesinglecurrency_HKD").disabled=true;
+			document.getElementById("settlesinglecurrency_EUR").disabled=true;
+			document.getElementById("settlesinglecurrency_GBP").disabled=true;
+			document.getElementById("settlesinglecurrency_CAD").disabled=true;
+			
+			document.getElementById("settlesinglecurrency_USD").checked=false;
+			document.getElementById("settlesinglecurrency_JPY").checked=false;
+			document.getElementById("settlesinglecurrency_HKD").checked=false;
+			document.getElementById("settlesinglecurrency_EUR").checked=false;
+			document.getElementById("settlesinglecurrency_GBP").checked=false;
+			document.getElementById("settlesinglecurrency_CAD").checked=false; 
+			
+			document.getElementById("settlemulticurrency_USD").disabled = false;
+			document.getElementById("settlemulticurrency_JPY").disabled = false;
+			document.getElementById("settlemulticurrency_HKD").disabled = false;
+			document.getElementById("settlemulticurrency_EUR").disabled = false;
+			document.getElementById("settlemulticurrency_GBP").disabled = false;
+			document.getElementById("settlemulticurrency_CAD").disabled = false;
+    		};
+    		</script>
+			<tr>
+				<td>Whether to allow account overdraft:</td>
+				<td><input type="radio" name="overdraft" value="yes" th:field="*{overdraft}"/>Yes <input
+					type="radio" name="overdraft" value="no" th:field="*{overdraft}"/>No</td>
+				<td th:if="${#fields.hasErrors('overdraft')}" th:errors="*{overdraft}" style="color: red;">overdraft Error</td>
+					
+			</tr>
+			<tr>
+				<td>Whether to allow account lending:</td>
+				<td><input type="radio" name="lending" value="yes" th:field="*{lending}"/>Yes <input
+					type="radio" name="lending" value="no" th:field="*{lending}"/>No</td>
+					<td th:if="${#fields.hasErrors('lending')}" th:errors="*{lending}" style="color: red;">lending Error</td>
+					
+			</tr>
+			<tr />
+			<tr>
+				<td>Withdrawl Way:</td>
+				<td><select id="withdrawallist" name="withdrawallist" th:field="*{withdrawallist}">
+						<option value="">---Select---</option>
+						<option value="Minimum">Minimum amount</option>
+						<option value="Regular">Regular</option>
+						<option value="Manually">Manually</option>
+				</select></td>
+				<td th:if="${#fields.hasErrors('withdrawallist')}" th:errors="*{withdrawallist}" style="color: red;">withdrawallist Error</td>
+				
+			</tr>
+			<tr id="minumumrow">
+				<td>Minimum amount:</td>
+				<td></td>
+				<td><input type="text" id="withdrawalminimumamount" th:field="*{withdrawalminimumamount}"/></td>
+			</tr>
+			<tr id="regularrow">
+				<td>Regular:</td>
+				<td><select id="withdrawalregular" name="withdrawalregular" th:field="*{withdrawalregular}">
+						<option value=""></option>
+						<option value="Daily">Daily</option>
+						<option value="Once a week">Once a week</option>
+						<option value="Twice a week">Twice a week</option>
+						<option value="Monthly">Monthly</option>
+				</select></td>
+			</tr>
+			<script>
+    			 document.getElementById("regularrow").style.display="none";
+	    		 document.getElementById("minumumrow").style.display="none";
+    			var selectactivity = document.getElementById("withdrawallist");
+    			selectactivity.addEventListener("change", function() {
+    			    if(this.value == "Minimum")
+    			    {
+    			    	document.getElementById("withdrawalregular").selectedIndex=0;
+    			    	 document.getElementById("minumumrow").style.display="block";
+    			    	 document.getElementById("regularrow").style.display="none";
+    			       
+    			    }else if(this.value == "Regular"){
+    			    	
+    			    	 document.getElementById("minumumrow").style.display="none";
+    			    	 document.getElementById("regularrow").style.display="block";
+    			    }else if(this.value == "Manually"){
+    			   	 document.getElementById('withdrawalminimumamount').value='';
+    			    	 document.getElementById("regularrow").style.display="none";
+    			    	 document.getElementById("minumumrow").style.display="none";
+    			    	 document.getElementById("withdrawalregular").selectedIndex=0;
+    			    	 
+    			    }
+    			});
+    		
+    		</script>
+
+			<tr>
+				<td>Reserve Amount:</td>
+				<td><input type="text" id="withdrawalreserveamount" th:field="*{withdrawalreserveamount}"/></td>
+				<td th:if="${#fields.hasErrors('withdrawalreserveamount')}" th:errors="*{withdrawalreserveamount}" style="color: red;">withdrawalreserveamount Error</td>
+				
+			</tr>
+			 <tr>
+                     <td><a href="products.html">Previous Page</a><button type="submit">Submit</button><a href="login.html">Log Out</a></td>
+                </tr>
+		</table>
+	</form>
+				
+			</div>
+			<div class="clearfix"> </div>
+			
+			<div class="footer">
+				<div class="footer-left">
+					<ul>
+						<li><a href="#">Privacy Policy</a>|</li>
+						<li><a href="#">Terms of Use</a>|</li>
+						<li><a href="mail.html">Contact Us</a></li>
+					</ul>
+					<p>Copyright &copy; 2016.Company name All rights reserved.<a href="http://nihaopay.com/" target="_blank" title="模板之家">NihaoPay</a> </p>
+				</div>
+				
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		</div>
+	</div>
+<!-- //banner-body -->
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+</body>
+</html>

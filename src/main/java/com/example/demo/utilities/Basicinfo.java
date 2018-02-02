@@ -34,6 +34,16 @@ public class Basicinfo {
 	@NotEmpty(message = "Please enter your agent name.")
 	private String agent;
 	private String addressmatch;
+	@NotEmpty(message = "Please select your timezone.")
+	private String timeZone;
+	public String getTimeZone() {
+		return timeZone;
+	}
+
+	public void setTimeZone(String timeZone) {
+		this.timeZone = timeZone;
+	}
+
 	public String getAddressmatch() {
 		return addressmatch;
 	}
@@ -77,6 +87,109 @@ public class Basicinfo {
 //	@NotEmpty
 //	private String merchantstorepic;
 	
+
+
+
+	@Override
+	public String toString() {
+		return "Basicinfo [merchantname=" + merchantname + ", merchantlegalname=" + merchantlegalname + ", merchanturl="
+				+ merchanturl + ", customerservicetel=" + customerservicetel + ", merchanttype=" + merchanttype
+				+ ", establisheddate=" + establisheddate + ", natureofmerchant=" + natureofmerchant + ", mcc=" + mcc
+				+ ", industry=" + industry + ", federaltaxid=" + federaltaxid + ", agent=" + agent + ", addressmatch="
+				+ addressmatch + ", mailaddress_country=" + mailaddress_country + ", mailaddress_state="
+				+ mailaddress_state + ", mailaddress_city=" + mailaddress_city + ", mailaddress_street="
+				+ mailaddress_street + ", mailaddress_zipcode=" + mailaddress_zipcode + ", phyaddress_country="
+				+ phyaddress_country + ", phyaddress_state=" + phyaddress_state + ", phyaddress_city=" + phyaddress_city
+				+ ", phyaddress_street=" + phyaddress_street + ", phyaddress_zipcode=" + phyaddress_zipcode + "]";
+	}
+
+	public String getMerchantname() {
+		return merchantname;
+	}
+
+	public void setMerchantname(String merchantname) {
+		this.merchantname = merchantname;
+	}
+
+	public String getMerchantlegalname() {
+		return merchantlegalname;
+	}
+
+	public void setMerchantlegalname(String merchantlegalname) {
+		this.merchantlegalname = merchantlegalname;
+	}
+
+	public String getMerchanturl() {
+		return merchanturl;
+	}
+
+	public void setMerchanturl(String merchanturl) {
+		this.merchanturl = merchanturl;
+	}
+
+	public String getCustomerservicetel() {
+		return customerservicetel;
+	}
+
+	public void setCustomerservicetel(String customerservicetel) {
+		this.customerservicetel = customerservicetel;
+	}
+
+	public String getMerchanttype() {
+		return merchanttype;
+	}
+
+	public void setMerchanttype(String merchanttype) {
+		this.merchanttype = merchanttype;
+	}
+
+	public String getEstablisheddate() {
+		return establisheddate;
+	}
+
+	public void setEstablisheddate(String establisheddate) {
+		this.establisheddate = establisheddate;
+	}
+
+	public String getNatureofmerchant() {
+		return natureofmerchant;
+	}
+
+	public void setNatureofmerchant(String natureofmerchant) {
+		this.natureofmerchant = natureofmerchant;
+	}
+
+	public String getMcc() {
+		return mcc;
+	}
+
+	public void setMcc(String mcc) {
+		this.mcc = mcc;
+	}
+
+	public String getIndustry() {
+		return industry;
+	}
+
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+
+	public String getFederaltaxid() {
+		return federaltaxid;
+	}
+
+	public void setFederaltaxid(String federaltaxid) {
+		this.federaltaxid = federaltaxid;
+	}
+
+	public String getAgent() {
+		return agent;
+	}
+
+	public void setAgent(String agent) {
+		this.agent = agent;
+	}
 
 	public String getMailaddress_country() {
 		return mailaddress_country;
@@ -158,167 +271,4 @@ public class Basicinfo {
 		this.phyaddress_zipcode = phyaddress_zipcode;
 	}
 
-	public String getMerchantname() {
-		return merchantname;
-	}
-
-	public void setMerchantname(String merchantname) {
-		this.merchantname = merchantname;
-	}
-
-	public String getMerchantlegalname() {
-		return merchantlegalname;
-	}
-
-	public void setMerchantlegalname(String merchantlegalname) {
-		this.merchantlegalname = merchantlegalname;
-	}
-
-	public String getMerchanturl() {
-		return merchanturl;
-	}
-
-	public void setMerchanturl(String merchanturl) {
-		this.merchanturl = merchanturl;
-	}
-
-	public String getCustomerservicetel() {
-		return customerservicetel;
-	}
-
-	public void setCustomerservicetel(String customerservicetel) {
-		this.customerservicetel = customerservicetel;
-	}
-
-	@Override
-	public String toString() {
-		return "Basicinfo [merchantname=" + merchantname + ", merchantlegalname=" + merchantlegalname + ", merchanturl="
-				+ merchanturl + ", customerservicetel=" + customerservicetel + ", merchanttype=" + merchanttype
-				+ ", establisheddate=" + establisheddate + ", natureofmerchant=" + natureofmerchant + ", mcc=" + mcc
-				+ ", industry=" + industry + ", federaltaxid=" + federaltaxid + ", agent=" + agent + ", addressmatch="
-				+ addressmatch + ", mailaddress_country=" + mailaddress_country + ", mailaddress_state="
-				+ mailaddress_state + ", mailaddress_city=" + mailaddress_city + ", mailaddress_street="
-				+ mailaddress_street + ", mailaddress_zipcode=" + mailaddress_zipcode + ", phyaddress_country="
-				+ phyaddress_country + ", phyaddress_state=" + phyaddress_state + ", phyaddress_city=" + phyaddress_city
-				+ ", phyaddress_street=" + phyaddress_street + ", phyaddress_zipcode=" + phyaddress_zipcode + "]";
-	}
-
-	public String getMerchanttype() {
-		return merchanttype;
-	}
-
-	public void setMerchanttype(String merchanttype) {
-		this.merchanttype = merchanttype;
-	}
-
-	public String getEstablisheddate() {
-		return establisheddate;
-	}
-
-	public void setEstablisheddate(String establisheddate) {
-		this.establisheddate = establisheddate;
-	}
-
-	public String getNatureofmerchant() {
-		return natureofmerchant;
-	}
-
-	public void setNatureofmerchant(String natureofmerchant) {
-		this.natureofmerchant = natureofmerchant;
-	}
-
-	public String getMcc() {
-		return mcc;
-	}
-
-	public void setMcc(String mcc) {
-		this.mcc = mcc;
-	}
-
-	public String getIndustry() {
-		return industry;
-	}
-
-	public void setIndustry(String industry) {
-		this.industry = industry;
-	}
-
-	public String getFederaltaxid() {
-		return federaltaxid;
-	}
-
-	public void setFederaltaxid(String federaltaxid) {
-		this.federaltaxid = federaltaxid;
-	}
-
-	public String getAgent() {
-		return agent;
-	}
-
-	public void setAgent(String agent) {
-		this.agent = agent;
-	}
-//
-//	public String getMerchantstorepic() {
-//		return merchantstorepic;
-//	}
-//
-//	public void setMerchantstorepic(String merchantstorepic) {
-//		this.merchantstorepic = merchantstorepic;
-//	}
-
-	// public void set() {
-	// this.=;
-	// }
-	// public String get() {
-	// return ;
-	// }
-	public void setestablisheddate(String establisheddate) {
-		this.establisheddate = establisheddate;
-	}
-
-	public String getestablisheddate() {
-		return establisheddate;
-	}
-
-	public void setmerchanttype(String merchanttype) {
-		this.merchanttype = merchanttype;
-	}
-
-	public String getmerchanttype() {
-		return merchanttype;
-	}
-
-	public void setmerchanturl(String merchanturl) {
-		this.merchanturl = merchanturl;
-	}
-
-	public String getmerchanturl() {
-		return merchanturl;
-	}
-
-	public void setcustomerservicetel(String customerservicetel) {
-		this.customerservicetel = customerservicetel;
-	}
-
-	public String getcustomerservicetel() {
-		return customerservicetel;
-	}
-
-	public void setmerchantname(String merchantname) {
-		this.merchantname = merchantname;
-	}
-
-	public String getmerchantname() {
-		return merchantname;
-	}
-
-	public void setmerchantlegalname(String merchantlegalname) {
-		this.merchantlegalname = merchantlegalname;
-			
-	}
-
-	public String getmerchantlegalname() {
-		return merchantlegalname;
-	}
 }

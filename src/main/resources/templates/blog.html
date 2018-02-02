@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bank</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Great Taste Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'/>
+</head>
+<body>
+
+<!-- banner-body -->
+	<div class="banner-body">
+		<div class="container">
+			<div class="banner-body-content">
+			<div class="col-xs-3 banner-body-left">
+				<div class="logo">
+					<h1><a href="index.html">Aurfy <span>Inc</span></a></h1>
+				</div>
+				<div class="top-nav">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+						  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						  </button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+							<nav class="stroke">
+								<ul class="nav navbar-nav">
+									<li><a href="index.html" class="hvr-underline-from-left"><i class="home1"></i>Home</a></li>
+									<li><a href="products.html" class="hvr-underline-from-left"><i class="prod1"></i>products</a></li>
+									<li><a href="short-codes.html" class="hvr-underline-from-left"><i class="text-size1"></i>Settlement</a></li>
+									<li class="active"><a href="blog.html"><i class="edit"></i>Bank</a></li>
+								
+									<li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
+									<li><a href="submission.html" class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
+										
+									<li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>Mail US</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!-- /.navbar-collapse -->
+					</nav>
+				</div>
+			</div>
+			<div class="col-xs-9 banner-body-right">
+				<form action="#" th:action="@{/bankaccount}" th:object="${bankaccount}"
+		method="post">
+		<table>
+		<script>
+			document.getElementById("swiftcoderow").style.display="none";
+		 	document.getElementById("routingnumberrow").style.display="none";
+		</script>
+			<tr th:if="${message}"> 
+			<h2 th:text="${message}" /></tr>
+			<tr>
+				<td>Account Type:</td>
+				<td><input type="radio" name="accounttype" value="Individual" th:field="*{accounttype}"/>Individual</td>
+				<td><input type="radio" name="accounttype" value="Company" th:field="*{accounttype}"/>Company</td>
+				<td><input type="radio" name="accounttype" value="Group" th:field="*{accounttype}"/>Group</td>
+				<td th:if="${#fields.hasErrors('accounttype')}" th:errors="*{accounttype}" style="color: red;">MerchantName Error</td>
+				
+			</tr>
+			<tr>
+				<td>Currency:</td>
+				<td><select id="currencylist" name="currencylist" th:field="*{currency}">
+						<option th:each="currency : ${currencylist}" th:text="${currency}"
+							th:value="${currency}" />
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Bank Address:</td></tr>
+			<tr>	<td>
+				<select id="bankaddress_country" name="bankaddress_country"
+					th:field="*{bankaddress_country}">
+				</select></td>
+			</tr>
+					
+					<tr>	<td> <select id="bankaddress_state" name="bankaddress_state"
+					th:field="*{bankaddress_state}"></select> </td></tr>
+					<tr>	<td><select	id="bankaddress_city" name="bankaddress_city"
+					th:field="*{bankaddress_city}"></select> </td></tr>
+					
+					<script type="text/javascript" src="ssqaddress.js"></script>
+					<script	type="text/javascript">	addressInit('bankaddress_country', 'bankaddress_state',
+								'bankaddress_city');
+					
+					</script>
+					
+					<script>
+					var countryselected=document.getElementById("bankaddress_country");
+					countryselected.addEventListener("change", function() {
+						if(this.value=="United States"){
+							 document.getElementById('swiftinput').value='';
+	    			    			 document.getElementById("swiftcoderow").style.display="none";
+	    			    	 		 document.getElementById("routingnumberrow").style.display="block";
+						}else{
+							 document.getElementById('routinginput').value='';
+			    			 document.getElementById("swiftcoderow").style.display="block";
+			    	 		 document.getElementById("routingnumberrow").style.display="none";
+						}
+					});
+					
+				</script>	
+			<tr>
+				<td><input type="text" th:field="*{bankaddress_street}" placeholder="Detailed Address*"/></td>
+				<td th:if="${#fields.hasErrors('bankaddress_street')}"
+					th:errors="*{bankaddress_street}" style="color: red;">bankaddress_street</td>
+			</tr>
+			
+			<tr>
+				<td>Bank Name:</td>
+				<td><input type="text" th:field="*{bankname}" /></td>
+				<td th:if="${#fields.hasErrors('bankname')}"
+					th:errors="*{bankname}" style="color: red;">bankname Error</td>
+			</tr>
+			
+			<tr>
+				<td>Account Name:</td>
+				<td><input type="text" th:field="*{accountname}"/></td>
+				<td th:if="${#fields.hasErrors('accountname')}"
+					th:errors="*{accountname}" style="color: red;">accountname Error</td>
+			</tr>
+			
+			<tr>
+				<td>Account Number:</td>
+				<td><input type="text" th:field="*{account}"/></td>
+				<td th:if="${#fields.hasErrors('account')}"
+					th:errors="*{account}" style="color: red;">account Error</td>
+			</tr>
+			
+			<tr id="swiftcoderow">
+				<td>Swift Code:</td>
+				<td><input id="swiftinput" type="text" th:field="*{swiftcode}"/></td>
+			</tr>
+			
+			<tr id="routingnumberrow">
+				<td>Routing Number:</td>
+				<td><input id="routinginput" type="text" th:field="*{routingnumber}"/></td>
+			</tr>
+			<script>
+			 document.getElementById("swiftcoderow").style.display="none";
+			 </script>
+			
+			<tr>
+                  <td><a href="settlementaccount.html">Previous Page</a><button type="submit">Submit</button><a href="login.html">Log Out</a></td>
+                </tr>
+		</table>
+	</form>
+				
+			</div>
+			<div class="clearfix"> </div>
+			
+			<div class="footer">
+				<div class="footer-left">
+					<ul>
+						<li><a href="#">Privacy Policy</a>|</li>
+						<li><a href="#">Terms of Use</a>|</li>
+						<li><a href="mail.html">Contact Us</a></li>
+					</ul>
+					<p>Copyright &copy; 2016.Company name All rights reserved.<a href="http://nihaopay.com/" target="_blank" title="模板之家">NihaoPay</a> </p>
+				</div>
+				
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		</div>
+	</div>
+<!-- //banner-body -->
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+</body>
+</html>

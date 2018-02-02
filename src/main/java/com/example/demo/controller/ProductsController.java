@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +28,12 @@ import com.example.demo.utilities.Basicinfo;
 import com.example.demo.utilities.Contactinfo;
 import com.example.demo.utilities.Greeting;
 import com.example.demo.utilities.Products;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+
+import net.minidev.json.parser.JSONParser;
+import net.minidev.json.parser.ParseException;
 @Controller
 public class ProductsController {
 	@GetMapping("/products")
@@ -78,9 +86,20 @@ public class ProductsController {
 			db.update((int)session.getAttribute("applicationID"), Products.getShowqrcode_wechatpay(), "showqrcode_wechatpay");
 			db.update((int)session.getAttribute("applicationID"), Products.getShowqrcode_alipay(), "showqrcode_alipay");
 
+ObjectMapper mapper = new ObjectMapper();
+try {
+	
+	String jsonString = mapper.writeValueAsString(Products);
+	System.out.println("jsonString = " + jsonString);
+} catch (JsonProcessingException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();}
 		System.out.println(Products.toString());
 		db.updatestage((int)session.getAttribute("applicationID"), 3, "stage");
+//		JSONObject jsonObj = new JSONObject(Products.toString());
+//		System.out.println(jsonObj.toString());
 		return modelAndView;
+	
 	}
 
 }

@@ -2,10 +2,15 @@ package com.example.demo.utilities;
 
 import java.sql.SQLException;
 
+import org.json.JSONObject;
+
 import com.example.demo.service.DB;
 
-public class Products {
+import net.minidev.json.parser.JSONParser;
+import net.minidev.json.parser.ParseException;
 
+public class Products {
+	//UP_EBANK_PAY
 	private String securepay_unionpay;
 	private String securepay_wechatpay;
 	private String securepay_alipay;
@@ -357,7 +362,6 @@ public class Products {
 				+ securepay_settlement + ", showqrcode_settlement=" + showqrcode_settlement + ", POS_settlement="
 				+ POS_settlement + ", easypay=" + easypay + "]";
 	}
-	
 
 
 	public boolean checkstatus() {

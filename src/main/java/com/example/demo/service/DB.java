@@ -104,8 +104,8 @@ public class DB {
 		st.closeOnCompletion();
 		return updateEXP_done;
 	}
-	public int update2application_basic(int id, String merchantname, String merchantlegalname,String merchanturl,String customersertel,String type,String establisheddate,String nature,String mcc,String industry,String federaltaxid,String agent,String physicaladdress, String mailaddress) throws SQLException{
-		String sql = " update onlineapplication.application set merchantname=?, merchantlegalname=?,merchanturl=?,customersertel=?,type=?,establisheddate=?,nature=?,mcc=?,industry=?,federaltaxid=?,agent=?,physicaladdress=?,mailaddress=? where ID ="+id;
+	public int update2application_basic(int id, String merchantname, String merchantlegalname,String merchanturl,String customersertel,String type,String establisheddate,String nature,String mcc,String industry,String federaltaxid,String agent, String mailaddress) throws SQLException{
+		String sql = " update onlineapplication.application set merchantname=?, merchantlegalname=?,merchanturl=?,customersertel=?,type=?,establisheddate=?,nature=?,mcc=?,industry=?,federaltaxid=?,agent=?,mailaddress=? where ID ="+id;
 		System.out.println("update basicinfo");
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,merchantname);
@@ -119,8 +119,7 @@ public class DB {
 		st.setString(9,industry);
 		st.setString(10,federaltaxid);
 		st.setString(11,agent);
-		st.setString(12,physicaladdress);
-		st.setString(13,mailaddress);
+		st.setString(12,mailaddress);
 		int updateEXP_done = st.executeUpdate();
 	
 		st.closeOnCompletion();
