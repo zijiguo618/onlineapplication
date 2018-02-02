@@ -11,264 +11,329 @@ import com.example.demo.service.DB;
 public class Basicinfo {
 	DB db;
 	@NotEmpty(message = "Please enter your merchant name.")
-	private String merchantname;
+	private String name;
 	@NotEmpty(message = "Please enter your merchant Leagel name.")
-	private String merchantlegalname;
+	private String abbreviation;
 	@NotEmpty(message = "Please enter your merchant URL.")
 	@URL(message = "Your URL should start with http: ")
-	private String merchanturl;
+	private String website;
 	@NotEmpty(message = "Please enter your Customer service Telephone number.")
 	private String customerservicetel;
 	@NotEmpty(message = "Please select your merchant type.")
-	private String merchanttype;
+	private String merchantType;
 	@NotEmpty(message = "Please select your merchant established date.")
-	private String establisheddate;
+	private String effectiveDate;
 	@NotEmpty(message = "Please select.")
-	private String natureofmerchant;
+	private String merchantProperty;
 	@NotEmpty(message = "Please select MCC.")
 	private String mcc;
 	@NotEmpty(message = "Please select industry.")
 	private String industry;
 	@NotEmpty(message = "Please enter your federal tax ID.")
-	private String federaltaxid;
+	private String federalID;
 	@NotEmpty(message = "Please enter your agent name.")
-	private String agent;
-	private String addressmatch;
+	private String agentId;
 	@NotEmpty(message = "Please select your timezone.")
 	private String timeZone;
-	public String getTimeZone() {
-		return timeZone;
+	@NotEmpty(message = "Please enter your mailaddress.")
+	private String countryName;
+	private String stateName;
+	private String cityName;
+	private String countryCode;
+	private String stateCode;
+	private String cityCode;
+	@NotEmpty(message = "Please enter your mailaddress.")
+	private String streetName1;
+	private String streetName2;
+	@NotEmpty(message = "Please enter Contactor.")
+	private String contactPerson; // 联系人
+	@NotEmpty(message = "Please enter the phone of Contoctor.")
+	private String contactPhone; // 联系人电话
+	@NotEmpty(message = "Please enter the email of Contoctor.")
+	private String contactEmail; // 联系人电子邮箱
+	private String comments; // 商户备注信息
+	private String branchId;
+	private String terminateDate;
+	public String getTerminateDate() {
+		return terminateDate;
 	}
 
-	public void setTimeZone(String timeZone) {
-		this.timeZone = timeZone;
+
+	public void setTerminateDate(String terminateDate) {
+		this.terminateDate = terminateDate;
 	}
 
-	public String getAddressmatch() {
-		return addressmatch;
+
+	public String getBranchId() {
+		return branchId;
 	}
 
-	public void setAddressmatch(String addressmatch) {
-		this.addressmatch = addressmatch;
+
+	public void setBranchId(String branchId) {
+		this.branchId = branchId;
 	}
+
+
 	public Basicinfo getbasicinfo(int ID) throws ClassNotFoundException, SQLException {
 		db=new DB();		
-		this.merchantname=db.getitem("merchantname", ID);
-		this.merchantlegalname=db.getitem("merchantlegalname", ID);
-		this.merchanturl=db.getitem("merchanturl", ID);
+		this.name=db.getitem("merchantname", ID);
+		this.abbreviation=db.getitem("merchantlegalname", ID);
+		this.website=db.getitem("merchanturl", ID);
 		this.customerservicetel=db.getitem("customersertel", ID);
-		this.merchanttype=db.getitem("type", ID);
-		this.establisheddate=db.getitem("establisheddate", ID);
-		this.natureofmerchant=db.getitem("nature", ID);
+		this.merchantType=db.getitem("type", ID);
+		this.effectiveDate=db.getitem("establisheddate", ID);
+		this.merchantProperty=db.getitem("nature", ID);
 		this.mcc=db.getitem("mcc", ID);
 		this.industry=db.getitem("industry", ID);
-		this.federaltaxid=db.getitem("federaltaxid", ID);
-		this.agent=db.getitem("agent", ID);
-		this.addressmatch=null;
+		this.federalID=db.getitem("federaltaxid", ID);
+		this.agentId=db.getitem("agent", ID);
 		db.close();
 		System.out.println(this.toString());
 		return this;
 	}
-	@NotEmpty(message = "Please enter your mailaddress.")
-	private String mailaddress_country;
-	
-	private String mailaddress_state;
-	
-	private String mailaddress_city;
-	@NotEmpty(message = "Please enter your mailaddress.")
-	private String mailaddress_street;
-	private String mailaddress_zipcode;
-//	@NotEmpty
-	private String phyaddress_country;
-	private String phyaddress_state;
-	private String phyaddress_city;
-	private String phyaddress_street;
-	private String phyaddress_zipcode;
-//	@NotEmpty
-//	private String merchantstorepic;
-	
 
 
-
-	@Override
-	public String toString() {
-		return "Basicinfo [merchantname=" + merchantname + ", merchantlegalname=" + merchantlegalname + ", merchanturl="
-				+ merchanturl + ", customerservicetel=" + customerservicetel + ", merchanttype=" + merchanttype
-				+ ", establisheddate=" + establisheddate + ", natureofmerchant=" + natureofmerchant + ", mcc=" + mcc
-				+ ", industry=" + industry + ", federaltaxid=" + federaltaxid + ", agent=" + agent + ", addressmatch="
-				+ addressmatch + ", mailaddress_country=" + mailaddress_country + ", mailaddress_state="
-				+ mailaddress_state + ", mailaddress_city=" + mailaddress_city + ", mailaddress_street="
-				+ mailaddress_street + ", mailaddress_zipcode=" + mailaddress_zipcode + ", phyaddress_country="
-				+ phyaddress_country + ", phyaddress_state=" + phyaddress_state + ", phyaddress_city=" + phyaddress_city
-				+ ", phyaddress_street=" + phyaddress_street + ", phyaddress_zipcode=" + phyaddress_zipcode + "]";
+	public String getName() {
+		return name;
 	}
 
-	public String getMerchantname() {
-		return merchantname;
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setMerchantname(String merchantname) {
-		this.merchantname = merchantname;
+
+	public String getAbbreviation() {
+		return abbreviation;
 	}
 
-	public String getMerchantlegalname() {
-		return merchantlegalname;
+
+	public void setAbbreviation(String abbreviation) {
+		this.abbreviation = abbreviation;
 	}
 
-	public void setMerchantlegalname(String merchantlegalname) {
-		this.merchantlegalname = merchantlegalname;
+
+	public String getWebsite() {
+		return website;
 	}
 
-	public String getMerchanturl() {
-		return merchanturl;
+
+	public void setWebsite(String website) {
+		this.website = website;
 	}
 
-	public void setMerchanturl(String merchanturl) {
-		this.merchanturl = merchanturl;
+
+	public String getCountryCode() {
+		return countryCode;
 	}
+
+
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
+	}
+
+
+	public String getStateCode() {
+		return stateCode;
+	}
+
+
+	public void setStateCode(String stateCode) {
+		this.stateCode = stateCode;
+	}
+
+
+	public String getCityCode() {
+		return cityCode;
+	}
+
+
+	public void setCityCode(String cityCode) {
+		this.cityCode = cityCode;
+	}
+
 
 	public String getCustomerservicetel() {
 		return customerservicetel;
 	}
 
+
 	public void setCustomerservicetel(String customerservicetel) {
 		this.customerservicetel = customerservicetel;
 	}
 
-	public String getMerchanttype() {
-		return merchanttype;
+
+	public String getMerchantType() {
+		return merchantType;
 	}
 
-	public void setMerchanttype(String merchanttype) {
-		this.merchanttype = merchanttype;
+
+	public void setMerchantType(String merchantType) {
+		this.merchantType = merchantType;
 	}
 
-	public String getEstablisheddate() {
-		return establisheddate;
+
+	public String getEffectiveDate() {
+		return effectiveDate;
 	}
 
-	public void setEstablisheddate(String establisheddate) {
-		this.establisheddate = establisheddate;
+
+	public void setEffectiveDate(String effectiveDate) {
+		this.effectiveDate = effectiveDate;
 	}
 
-	public String getNatureofmerchant() {
-		return natureofmerchant;
+
+	public String getMerchantProperty() {
+		return merchantProperty;
 	}
 
-	public void setNatureofmerchant(String natureofmerchant) {
-		this.natureofmerchant = natureofmerchant;
+
+	public void setMerchantProperty(String merchantProperty) {
+		this.merchantProperty = merchantProperty;
 	}
+
 
 	public String getMcc() {
 		return mcc;
 	}
 
+
 	public void setMcc(String mcc) {
 		this.mcc = mcc;
 	}
+
 
 	public String getIndustry() {
 		return industry;
 	}
 
+
 	public void setIndustry(String industry) {
 		this.industry = industry;
 	}
 
-	public String getFederaltaxid() {
-		return federaltaxid;
+
+	public String getFederalID() {
+		return federalID;
 	}
 
-	public void setFederaltaxid(String federaltaxid) {
-		this.federaltaxid = federaltaxid;
+
+	public void setFederalID(String federalID) {
+		this.federalID = federalID;
 	}
 
-	public String getAgent() {
-		return agent;
+
+	public String getAgentId() {
+		return agentId;
 	}
 
-	public void setAgent(String agent) {
-		this.agent = agent;
+
+	public void setAgentId(String agentId) {
+		this.agentId = agentId;
 	}
 
-	public String getMailaddress_country() {
-		return mailaddress_country;
+
+	public String getTimeZone() {
+		return timeZone;
 	}
 
-	public void setMailaddress_country(String mailaddress_country) {
-		this.mailaddress_country = mailaddress_country;
+
+	public void setTimeZone(String timeZone) {
+		this.timeZone = timeZone;
 	}
 
-	public String getMailaddress_state() {
-		return mailaddress_state;
+
+	public String getCountryName() {
+		return countryName;
 	}
 
-	public void setMailaddress_state(String mailaddress_state) {
-		this.mailaddress_state = mailaddress_state;
+
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
 	}
 
-	public String getMailaddress_city() {
-		return mailaddress_city;
+
+	public String getStateName() {
+		return stateName;
 	}
 
-	public void setMailaddress_city(String mailaddress_city) {
-		this.mailaddress_city = mailaddress_city;
+
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
 	}
 
-	public String getMailaddress_street() {
-		return mailaddress_street;
+
+	public String getCityName() {
+		return cityName;
 	}
 
-	public void setMailaddress_street(String mailaddress_street) {
-		this.mailaddress_street = mailaddress_street;
+
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
 
-	public String getMailaddress_zipcode() {
-		return mailaddress_zipcode;
+
+	public String getStreetName1() {
+		return streetName1;
 	}
 
-	public void setMailaddress_zipcode(String mailaddress_zipcode) {
-		this.mailaddress_zipcode = mailaddress_zipcode;
+
+	public void setStreetName1(String streetName1) {
+		this.streetName1 = streetName1;
 	}
 
-	public String getPhyaddress_country() {
-		return phyaddress_country;
+
+	public String getStreetName2() {
+		return streetName2;
 	}
 
-	public void setPhyaddress_country(String phyaddress_country) {
-		this.phyaddress_country = phyaddress_country;
+
+	public void setStreetName2(String streetName2) {
+		this.streetName2 = streetName2;
 	}
 
-	public String getPhyaddress_state() {
-		return phyaddress_state;
+
+	public String getContactPerson() {
+		return contactPerson;
 	}
 
-	public void setPhyaddress_state(String phyaddress_state) {
-		this.phyaddress_state = phyaddress_state;
+
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
 	}
 
-	public String getPhyaddress_city() {
-		return phyaddress_city;
+
+	public String getContactPhone() {
+		return contactPhone;
 	}
 
-	public void setPhyaddress_city(String phyaddress_city) {
-		this.phyaddress_city = phyaddress_city;
+
+	public void setContactPhone(String contactPhone) {
+		this.contactPhone = contactPhone;
 	}
 
-	public String getPhyaddress_street() {
-		return phyaddress_street;
+
+	public String getContactEmail() {
+		return contactEmail;
 	}
 
-	public void setPhyaddress_street(String phyaddress_street) {
-		this.phyaddress_street = phyaddress_street;
+
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
 	}
 
-	public String getPhyaddress_zipcode() {
-		return phyaddress_zipcode;
+
+	public String getComments() {
+		return comments;
 	}
 
-	public void setPhyaddress_zipcode(String phyaddress_zipcode) {
-		this.phyaddress_zipcode = phyaddress_zipcode;
+
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
+
+	
+	
+	
 
 }

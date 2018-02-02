@@ -2,7 +2,8 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -12,12 +13,17 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.websocket.Session;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -51,11 +57,24 @@ public class BasicinfoController {
 		ModelAndView modelAndView = new ModelAndView();
 		DB db = new DB();
 		System.out.println("confirm button");
-		String mailingaddress = basicinfo.getMailaddress_country() + " , " + basicinfo.getMailaddress_state() + " , "
-				+ basicinfo.getMailaddress_city() + " , " + basicinfo.getMailaddress_street() + " , "
-				+ basicinfo.getMailaddress_zipcode();
+		String mailingaddress = basicinfo.getCountryName() + " , " + basicinfo.getStateName() + " , "
+				+ basicinfo.getCityName() + " , " + basicinfo.getStreetName1() + " , "
+				+ basicinfo.getStreetName2();
 		
-
+		String[] basiccounty=basicinfo.getCountryName().split(",");
+		basicinfo.setCountryCode(basiccounty[1]);
+		basicinfo.setCountryName(basiccounty[0]);
+		if(basicinfo.getStateName()!=null) {
+		String[] basicstate=basicinfo.getStateName().split(",");
+		basicinfo.setStateCode(basicstate[1]);
+		basicinfo.setStateName(basicstate[0]);}
+		if(basicinfo.getCityName()!=null) {
+		String[] basiccity=basicinfo.getCityName().split(",");
+		basicinfo.setCityCode(basiccity[1]);
+		basicinfo.setCityName(basiccity[0]);
+		}
+		basicinfo.setMcc(basicinfo.getMcc().split("	")[0]);
+		
 		if (result.hasErrors()) {
 			System.out.println("errors happreed");
 			MCClist mcclist= new MCClist();
@@ -66,10 +85,10 @@ public class BasicinfoController {
 		HttpSession session = request.getSession();
 		session.setAttribute("basicinfo", basicinfo);
 		modelAndView.setViewName("redirect:/contactinfo");
-		db.update2application_basic((int)session.getAttribute("applicationID"), basicinfo.getMerchantname(), basicinfo.getMerchantlegalname(),
-				basicinfo.getMerchanturl(), basicinfo.getCustomerservicetel(), basicinfo.getMerchanttype(),
-				basicinfo.getEstablisheddate(), basicinfo.getNatureofmerchant(), basicinfo.getMcc(),
-				basicinfo.getIndustry(), basicinfo.getFederaltaxid(), basicinfo.getAgent(),
+		db.update2application_basic((int)session.getAttribute("applicationID"), basicinfo.getName(), basicinfo.getAbbreviation(),
+				basicinfo.getWebsite(), basicinfo.getCustomerservicetel(), basicinfo.getMerchantType(),
+				basicinfo.getEffectiveDate(), basicinfo.getMerchantProperty(), basicinfo.getMcc(),
+				basicinfo.getIndustry(), basicinfo.getFederalID(), basicinfo.getAgentId(),
 				mailingaddress);
 		db.updatestage((int)session.getAttribute("applicationID"), 1, "stage");
 		 ObjectMapper mapperObj = new ObjectMapper();
@@ -78,7 +97,28 @@ public class BasicinfoController {
 			System.out.println("----hson----");
 			jsonStr = mapperObj.writeValueAsString(basicinfo);
 			System.out.println(jsonStr);
+		    RestTemplate rt = new RestTemplate();
+		    HttpHeaders httpHeaders = new HttpHeaders();
+			httpHeaders.add("Content-Type", "application/json; charset=UTF-8");
+			Map<String, String> hashMap = new LinkedHashMap<String, String>();
+			HashMap<String,String> resultmaps = new ObjectMapper().readValue(jsonStr, HashMap.class);
+			hashMap.put("random", "1234556");
+			hashMap.put("orderNo", "Z20170327110912921426");
+			hashMap.put("requestSource","");
+			HttpEntity<Map<String, String>> requestEntity = new HttpEntity<Map<String, String>>(resultmaps, httpHeaders);
+			ResponseEntity<String> resp = rt.exchange("http://serviceweb.nihaopay.work/merBaseInfo/save",HttpMethod.POST,requestEntity, String.class);
+			 
+			//获取返回的header
+			List<String> val = resp.getHeaders().get("Set-Cookie");
+			System.out.println(val);
+	 
+			//获得返回值
+			String body = resp.getBody();
+			System.out.println(body.toString());
 		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

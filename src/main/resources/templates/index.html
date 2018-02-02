@@ -9,6 +9,7 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="text/javascript" src="ssqaddress12.js"></script>
 <!-- //for-mobile-apps -->
 <link href="bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="style.css" rel="stylesheet" type="text/css" media="all" />
@@ -116,26 +117,26 @@ td>span {
 			</tr>
 			<tr>
 				<td><label for="merchantname">Merchant Name</label><input
-					type="text" th:field="*{merchantname}" /><span>Please enter
+					type="text" th:field="*{name}" /><span>Please enter
 						your merchant Name</span></td>
-				<td th:if="${#fields.hasErrors('merchantname')}"
-					th:errors="*{merchantname}" style="color: red;">MerchantName
+				<td th:if="${#fields.hasErrors('name')}"
+					th:errors="*{name}" style="color: red;">MerchantName
 					Error</td>
 			</tr>
 			<tr>
 
-				<td><label for="merchantlegalname">Merchant Legal Name</label><input
-					type="text" th:field="*{merchantlegalname}" /><span>Please
+				<td><label for="abbreviation">Merchant Legal Name</label><input
+					type="text" th:field="*{abbreviation}" /><span>Please
 						enter your Merchant Legal Name</span></td>
-				<td th:if="${#fields.hasErrors('merchantlegalname')}"
-					th:errors="*{merchantlegalname}" style="color: red;">LegalName
+				<td th:if="${#fields.hasErrors('abbreviation')}"
+					th:errors="*{abbreviation}" style="color: red;">LegalName
 					Error</td>
 			</tr>
 			<tr>
-				<td><label for="merchantwebsiteurl">Merchant Website </label><input type="text" th:field="*{merchanturl}"
+				<td><label for="website">Merchant Website </label><input type="text" th:field="*{website}"
 					placeholder="http://" /><span>Please enter your website URL
 						eg. https://www.google.com</span></td>
-				<td th:if="${#fields.hasErrors('merchanturl')}"
+				<td th:if="${#fields.hasErrors('website')}"
 					th:errors="*{merchanturl}" style="color: red;">WebsiteURL
 					Error</td>
 
@@ -143,7 +144,7 @@ td>span {
 			<tr>
 				<td><label for="natureofmerchant">Nature of Merchant</label><select
 					id="natureofmerchantlist" name="natureofmerchantlist"
-					th:field="*{natureofmerchant}">
+					th:field="*{merchantProperty}">
 						<option value=" "></option>
 						<option value="CORPORATION">Coporation</option>
 						<option value="PARTNERSHIP">Partnership</option>
@@ -153,22 +154,22 @@ td>span {
 						<option value="LLC">LLC</option>
 						<option value="OTHER">OTHER</option>
 				</select><span>Please select your merchant nature</span></td>
-				<td th:if="${#fields.hasErrors('natureofmerchant')}"
-					th:errors="*{natureofmerchant}" style="color: red;">natureofmerchant
+				<td th:if="${#fields.hasErrors('merchantProperty')}"
+					th:errors="*{merchantProperty}" style="color: red;">natureofmerchant
 					Error</td>
 			</tr>
 			<tr>
 
 				<td><label for="merchanttype">Merchant type</label><select
 					id="merchanttypelist" name="merchanttypelist"
-					th:field="*{merchanttype}">
+					th:field="*{merchantType}">
 						<option value=""></option>
 						<option value="INDIVIDUALACCOUNT">Individual</option>
 						<option value="COMPANYACCOUNT">Company</option>
 						<option value="GROUP">Group</option>
 				</select><span>Please select your merchant type</span></td>
-				<td th:if="${#fields.hasErrors('merchanttype')}"
-					th:errors="*{merchanttype}" style="color: red;">MerchantType
+				<td th:if="${#fields.hasErrors('merchantType')}"
+					th:errors="*{merchantType}" style="color: red;">MerchantType
 					Error</td>
 			</tr>
 
@@ -178,7 +179,7 @@ td>span {
 						<option th:each="mcc : ${mcclist}" th:text="${mcc}"
 							th:value="${mcc}" />
 				</select><span>Please select your MCC field</span></td>
-				<td th:if="${#fields.hasErrors('merchantlegalname')}"
+				<td th:if="${#fields.hasErrors('mcc')}"
 					th:errors="*{mcc}" style="color: red;">mcc Error</td>
 			</tr>
 			<tr>
@@ -217,18 +218,18 @@ td>span {
 			<tr>
 
 				<td><label for="federaltaxid">Federal tax ID</label><input
-					type="text" th:field="*{federaltaxid}" /><span>Please enter
+					type="text" th:field="*{federalID}" /><span>Please enter
 						your Federal tax ID</span></td>
-				<td th:if="${#fields.hasErrors('federaltaxid')}"
-					th:errors="*{federaltaxid}" style="color: red;">federaltaxid
+				<td th:if="${#fields.hasErrors('federalID')}"
+					th:errors="*{federalID}" style="color: red;">federaltaxid
 					Error</td>
 
 			</tr>
 			<tr>
 
 				<td><label for="agent">Agent Name</label><input type="text"
-					th:field="*{agent}" /><span>Please enter your agent Name</span></td>
-				<td th:if="${#fields.hasErrors('agent')}" th:errors="*{agent}"
+					th:field="*{agentId}" /><span>Please enter your agent Name</span></td>
+				<td th:if="${#fields.hasErrors('agentId')}" th:errors="*{agentId}"
 					style="color: red;">agent Error</td>
 			</tr>
 
@@ -244,10 +245,19 @@ td>span {
 
 			<tr>
 				<td><label for="establishdate">Business Established
-						Date (MM/DD/YY)</label><input type="date" th:field="*{establisheddate}" /><span>Please
+						Date (MM/DD/YY)</label><input type="date" th:field="*{effectiveDate}" /><span>Please
 						select your establish date</span></td>
-				<td th:if="${#fields.hasErrors('establisheddate')}"
-					th:errors="*{establisheddate}" style="color: red;">EstablishedDate
+				<td th:if="${#fields.hasErrors('effectiveDate')}"
+					th:errors="*{effectiveDate}" style="color: red;">EstablishedDate
+					Error</td>
+			</tr>
+			
+			<tr>
+				<td><label for="terminateDate">Business terminate
+						Date (MM/DD/YY)</label><input type="date" th:field="*{terminateDate}" /><span>Please
+						select your terminate date</span></td>
+				<td th:if="${#fields.hasErrors('terminateDate')}"
+					th:errors="*{terminateDate}" style="color: red;">terminateDate
 					Error</td>
 			</tr>
 
@@ -316,42 +326,81 @@ td>span {
 					style="color: red;">Industry Error</td>
 
 			</tr>
+
+			<tr>
+				<td><label for="Contactname">Contact Name</label><input
+					type="text" th:field="*{contactPerson}" /><span>Please enter
+						the name of contactor</span></td>
+				<td th:if="${#fields.hasErrors('contactPerson')}"
+					th:errors="*{contactPerson}" style="color: red;">contactPerson
+					Error</td>
+			</tr>
+				<tr>
+				<td><label for="contactPhone">Contact Phone</label><input
+					type="text" th:field="*{contactPhone}" /><span>Please enter
+						the Phone number of contactor</span></td>
+				<td th:if="${#fields.hasErrors('contactPhone')}"
+					th:errors="*{contactPhone}" style="color: red;">contactPhone
+					Error</td>
+			</tr>
+				<tr>
+				<td><label for="contactEmail">Contact Email</label><input
+					type="text" th:field="*{contactEmail}" /><span>Please enter
+						the Email of contactor</span></td>
+				<td th:if="${#fields.hasErrors('contactEmail')}"
+					th:errors="*{contactEmail}" style="color: red;">contactEmail
+					Error</td>
+			</tr>
+			
+			<tr>
+				<td><label for="branchId">branchId</label><input
+					type="text" th:field="*{branchId}" /><span>Please enter
+						the branchId</span></td>
+				<td th:if="${#fields.hasErrors('branchId')}"
+					th:errors="*{branchId}" style="color: red;">branchId
+					Error</td>
+			</tr>
+			
+			<tr>
+				<td><label for="comments">Comments</label><input
+					type="text" th:field="*{comments}" /><span>Please enter
+						comment (Optional)</span></td>
+				<td th:if="${#fields.hasErrors('comments')}"
+					th:errors="*{comments}" style="color: red;">comments
+					Error</td>
+			</tr>
 			
 		</table>
 
-<center>
+
 		<fieldset>
-			<legend>Mailing Address</legend>
+			<legend>Mailing Address:</legend>
 			<label>Country <select id="mailaddress_country"
-				name="mailaddress_country" th:field="*{mailaddress_country}"
+				name="mailaddress_country" th:field="*{countryName}"
 				style="width: 250px;"></select>
 			</label> <label>State <select id="mailaddress_state"
-				name="mailaddress_state" th:field="*{mailaddress_state}"
+				name="mailaddress_state" th:field="*{stateName}"
 				style="width: 250px;"></select>
 			</label> <label>City <select id="mailaddress_city"
-				name="mailaddress_city" th:field="*{mailaddress_city}"
+				name="mailaddress_city" th:field="*{cityName}"
 				style="width: 250px;"></select>
 			</label> <label>Street <input type="text"
-				th:field="*{mailaddress_street}" placeholder="street name"
+				th:field="*{streetName1}" placeholder="street name"
 				style="width: 250px;" />
 			</label> <label>ZipCode <input type="text"
-				th:field="*{mailaddress_zipcode}" placeholder="Zip Code"
+				th:field="*{streetName2}" placeholder="Zip Code"
 				style="width: 130px;" />
 			
 			</label> 
 			
-			<label th:if="${#fields.hasErrors('mailaddress_street')}"
-				th:errors="*{mailaddress_street}" style="color: red;" />
+			<label th:if="${#fields.hasErrors('streetName1')}"
+				th:errors="*{streetName1}" style="color: red;" />
 
-			<script type="text/javascript" src="ssqaddress.js"></script>
-			<script type="text/javascript">
-							addressInit('mailaddress_country',
-									'mailaddress_state', 'mailaddress_city');
-						</script>
+			
 		</fieldset>
 
 		<input type="submit" />
-</center>
+
 	
 			</div>
 
@@ -371,6 +420,11 @@ td>span {
 <!-- //banner-body -->
 <!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
+	
+			<script type="text/javascript">
+							addressInit('mailaddress_country',
+									'mailaddress_state', 'mailaddress_city');
+						</script>
 <!-- //for bootstrap working -->
 </form>
 </body>
